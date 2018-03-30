@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.goyth.com/"/>
-  <updated>2018-03-30T05:01:39.000Z</updated>
+  <updated>2018-03-30T08:23:54.000Z</updated>
   <id>http://www.goyth.com/</id>
   
   <author>
@@ -21,15 +21,16 @@
     <link href="http://www.goyth.com/2018/03/29/hello/"/>
     <id>http://www.goyth.com/2018/03/29/hello/</id>
     <published>2018-03-29T14:26:35.000Z</published>
-    <updated>2018-03-30T05:01:39.000Z</updated>
+    <updated>2018-03-30T08:23:54.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="hello-Hexo-Makedown-语法测试一"><a href="#hello-Hexo-Makedown-语法测试一" class="headerlink" title="hello Hexo Makedown 语法测试一"></a>hello Hexo Makedown 语法测试一</h1><h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="http://www.goyth.com/" title="tittle">个人博客地址</a><br>I get 10 times more traffic from <a href="http://google.com/" title="Google" target="_blank" rel="noopener">Google</a> than from<br><a href="http://search.yahoo.com/" title="Yahoo Search" target="_blank" rel="noopener">Yahoo</a> or <a href="http://search.msn.com/" title="MSN Search" target="_blank" rel="noopener">MSN</a>.</p><h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><p><img src="/2018/03/29/hello/dog.JPG" alt="makedown picture" title="Title"></p><h3 id="指定大小图片"><a href="#指定大小图片" class="headerlink" title="指定大小图片"></a>指定大小图片</h3><p> <img src="/2018/03/29/hello/dog.JPG" width="100" height="100" alt="图片名称" align="center"></p><h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><blockquote><p>Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy.</p><footer><strong>David Levithan</strong><cite>Wide Awake</cite></footer></blockquote><h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><h3 id="普通代码块"><a href="#普通代码块" class="headerlink" title="普通代码块"></a>普通代码块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(&apos;Hello World!&apos;);</span><br></pre></td></tr></table></figure><h3 id="指定语言代码块"><a href="#指定语言代码块" class="headerlink" title="指定语言代码块"></a>指定语言代码块</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(<span class="string">'Hello World!'</span>);</span><br></pre></td></tr></table></figure><h3 id="反引号代码块"><a href="#反引号代码块" class="headerlink" title="反引号代码块"></a>反引号代码块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hello hexo</span><br></pre></td></tr></table></figure><!-- <img src="/2018/03/29/hello/dog.JPG"> –&gt;-->]]></content>
+    <content type="html"><![CDATA[<p><img src="/2018/03/29/hello/dog.JPG" alt="makedown picture" title="Title"></p><h1 id="hello-Hexo-Makedown-语法测试一"><a href="#hello-Hexo-Makedown-语法测试一" class="headerlink" title="hello Hexo Makedown 语法测试一"></a>hello Hexo Makedown 语法测试一</h1><h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="http://www.goyth.com/" title="tittle">个人博客地址</a><br>I get 10 times more traffic from <a href="http://google.com/" title="Google" target="_blank" rel="noopener">Google</a> than from<br><a href="http://search.yahoo.com/" title="Yahoo Search" target="_blank" rel="noopener">Yahoo</a> or <a href="http://search.msn.com/" title="MSN Search" target="_blank" rel="noopener">MSN</a>.</p><h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><p><img src="/2018/03/29/hello/dog.JPG" alt="makedown picture" title="Title"></p><h3 id="指定大小图片"><a href="#指定大小图片" class="headerlink" title="指定大小图片"></a>指定大小图片</h3><p> <img src="/2018/03/29/hello/dog.JPG" width="100" height="100" alt="图片名称" align="center"></p><h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><blockquote><p>Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy.</p><footer><strong>David Levithan</strong><cite>Wide Awake</cite></footer></blockquote><h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><h3 id="普通代码块"><a href="#普通代码块" class="headerlink" title="普通代码块"></a>普通代码块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(&apos;Hello World!&apos;);</span><br></pre></td></tr></table></figure><h3 id="指定语言代码块"><a href="#指定语言代码块" class="headerlink" title="指定语言代码块"></a>指定语言代码块</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(<span class="string">'Hello World!'</span>);</span><br></pre></td></tr></table></figure><h3 id="反引号代码块"><a href="#反引号代码块" class="headerlink" title="反引号代码块"></a>反引号代码块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hello hexo</span><br></pre></td></tr></table></figure><!-- <img src="/2018/03/29/hello/dog.JPG"> –&gt;-->]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;hello-Hexo-Makedown-语法测试一&quot;&gt;&lt;a href=&quot;#hello-Hexo-Makedown-语法测试一&quot; class=&quot;headerlink&quot; title=&quot;hello Hexo Makedown 语法测试一&quot;&gt;&lt;/a&gt;hello Hexo 
+        &lt;p&gt;&lt;img src=&quot;/2018/03/29/hello/dog.JPG&quot; alt=&quot;makedown picture&quot; title=&quot;Title&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;hello-Hexo-Makedown-语法测试一&quot;&gt;&lt;a href=&quot;#hello-Hexo-Ma
       
     
     </summary>
