@@ -21,19 +21,19 @@
   
   
   
-  <meta name="description" content="原型对象无论什么时候，只要创建一个新函数，就会根据一组特定的规则为该函数创建一个 prototype 属性，这个属性指向函数的原型对象。默认情况下，所有原型对象都会自动获得一个 constructor（构造函数）属性，这个属性指向 prototype 属性所在的函数。123function Person()&amp;#123;&amp;#125;  当我们用构造函数创建一个实例时，也会为这个实例创建一个 __pr">
+  <meta name="description" content="原型对象无论什么时候，只要创建一个新函数，就会根据一组特定的规则为该函数创建一个 prototype 属性，这个属性指向函数的原型对象。默认情况下，所有原型对象都会自动获得一个 constructor（构造函数）属性，这个属性指向 prototype 属性所在的函数。">
 <meta name="keywords" content="JavaScript,prototype,extend">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript 原型链与继承">
 <meta property="og:url" content="http://www.goyth.com/2018/04/23/prototypeAndExtend/index.html">
 <meta property="og:site_name" content="GOYTH">
-<meta property="og:description" content="原型对象无论什么时候，只要创建一个新函数，就会根据一组特定的规则为该函数创建一个 prototype 属性，这个属性指向函数的原型对象。默认情况下，所有原型对象都会自动获得一个 constructor（构造函数）属性，这个属性指向 prototype 属性所在的函数。123function Person()&amp;#123;&amp;#125;  当我们用构造函数创建一个实例时，也会为这个实例创建一个 __pr">
+<meta property="og:description" content="原型对象无论什么时候，只要创建一个新函数，就会根据一组特定的规则为该函数创建一个 prototype 属性，这个属性指向函数的原型对象。默认情况下，所有原型对象都会自动获得一个 constructor（构造函数）属性，这个属性指向 prototype 属性所在的函数。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.goyth.com/2018/04/23/prototypeAndExtend/Person.png">
-<meta property="og:updated_time" content="2018-04-24T04:03:00.000Z">
+<meta property="og:updated_time" content="2018-04-24T04:08:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript 原型链与继承">
-<meta name="twitter:description" content="原型对象无论什么时候，只要创建一个新函数，就会根据一组特定的规则为该函数创建一个 prototype 属性，这个属性指向函数的原型对象。默认情况下，所有原型对象都会自动获得一个 constructor（构造函数）属性，这个属性指向 prototype 属性所在的函数。123function Person()&amp;#123;&amp;#125;  当我们用构造函数创建一个实例时，也会为这个实例创建一个 __pr">
+<meta name="twitter:description" content="原型对象无论什么时候，只要创建一个新函数，就会根据一组特定的规则为该函数创建一个 prototype 属性，这个属性指向函数的原型对象。默认情况下，所有原型对象都会自动获得一个 constructor（构造函数）属性，这个属性指向 prototype 属性所在的函数。">
 <meta name="twitter:image" content="http://www.goyth.com/2018/04/23/prototypeAndExtend/Person.png">
   
     <link rel="alternate" href="/atom.xml" title="GOYTH" type="application/atom+xml">
@@ -198,7 +198,9 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="原型对象"><a href="#原型对象" class="headerlink" title="原型对象"></a>原型对象</h3><p>无论什么时候，只要创建一个新函数，就会根据一组特定的规则为该函数创建一个 <code>prototype</code> 属性，这个属性指向函数的原型对象。默认情况下，所有原型对象都会自动获得一个 <code>constructor</code>（构造函数）属性，这个属性指向 <code>prototype</code> 属性所在的函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function Person()&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <h3 id="原型对象"><a href="#原型对象" class="headerlink" title="原型对象"></a>原型对象</h3><p>无论什么时候，只要创建一个新函数，就会根据一组特定的规则为该函数创建一个 <code>prototype</code> 属性，这个属性指向函数的原型对象。默认情况下，所有原型对象都会自动获得一个 <code>constructor</code>（构造函数）属性，这个属性指向 <code>prototype</code> 属性所在的函数。</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">function Person()&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="/2018/04/23/prototypeAndExtend/Person.png" alt=""></p>
 <p>当我们用构造函数创建一个实例时，也会为这个实例创建一个 <code>__proto__</code> 属性，这个<code>__proto__</code> 属性是一个指针指向构造函数的原型对象</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let person = new Person();</span><br><span class="line">person.__proto__ === Person.prototype    // true</span><br><span class="line">let person1 = new Person();</span><br><span class="line">person1.__proto__ === Person.prototype    // true</span><br></pre></td></tr></table></figure>
