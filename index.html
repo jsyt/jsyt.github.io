@@ -19,16 +19,16 @@
   
   
   
-  <meta name="description" content="get busy living or get busy dying">
+  <meta name="description" content="I hear and I forget, I see and I remember, I do and I understand.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="GOYTH">
 <meta property="og:url" content="http://www.goyth.com/index.html">
 <meta property="og:site_name" content="GOYTH">
-<meta property="og:description" content="get busy living or get busy dying">
+<meta property="og:description" content="I hear and I forget, I see and I remember, I do and I understand.">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GOYTH">
-<meta name="twitter:description" content="get busy living or get busy dying">
+<meta name="twitter:description" content="I hear and I forget, I see and I remember, I do and I understand.">
   
     <link rel="alternate" href="/atom.xml" title="GOYTH" type="application/atom+xml">
   
@@ -100,7 +100,7 @@ var themeMenus = {};
           </h1>
 
           
-            <div class="site-description">get busy living or get busy dying</div>
+            <div class="site-description">I hear and I forget, I see and I remember, I do and I understand.</div>
           
             
           <nav id="main-navigation" class="main-navigation" role="navigation">
@@ -166,6 +166,74 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-browserRendering"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2018/05/23/browserRendering/">浏览器页面渲染流程梳理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2018/05/23/browserRendering/" class="article-date">
+	  <time datetime="2018-05-23T09:14:52.000Z" itemprop="datePublished">May 23, 2018</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+
+          
+            <div class="entry-thumbnail">
+              <a href="/2018/05/23/browserRendering/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/3" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+            </div>
+            <div class="entry-summary">
+            浏览器渲染基本流程浏览器渲染流程如下图所示：
+图片来源：https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/
+大概可以划分成以下几个步骤：
+
+解析HTML文本并构建DOM tree
+解析CSS样式表并构建CSSOM tree
+根据DOM tree 和 CSSOM tree 构建 Render tree
+根据Re...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2018/05/23/browserRendering/#more">Continue Reading →</a>
+          </p>
+        </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Browser/">Browser</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Browser/">Browser</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-debounceAndThrottle"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -194,12 +262,13 @@ var themeMenus = {};
 
           
             <div class="entry-thumbnail">
-              <a href="/2018/05/10/debounceAndThrottle/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/9" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+              <a href="/2018/05/10/debounceAndThrottle/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/3" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
             </div>
             <div class="entry-summary">
             函数防抖（debounce)函数防抖是指在函数调用动作触发n秒后才开始执行，n秒内若再次触发，则重新开始计时，再次等待n秒后才开始执行。如果n秒内不断触发，那就不断重新开始计时，一直等到有一个n秒内没有触发，才开始执行此函数。
 根据描述，我们可以用setTimeout来实现一个简单版的防抖函数
-第一版1234567891011／*** @ fn 回调函数 * @ delay 延迟时间 *／f...
+
+第一版1234567891011／*** @ fn 回调函数 * @ delay 延迟时间 *／...
           
 
         
@@ -257,7 +326,7 @@ var themeMenus = {};
 
           
             <div class="entry-thumbnail">
-              <a href="/2018/05/08/dockerDeploy/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/5" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+              <a href="/2018/05/08/dockerDeploy/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/8" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
             </div>
             <div class="entry-summary">
             本文将以一个标准的 Vue 项目为例，完全抛弃传统的前端项目开发部署方式，基于 Docker 容器技术打造一个精简的前端持续集成的开发环境。
@@ -334,7 +403,7 @@ Docker： Docker 快速入门
 
           
             <div class="entry-thumbnail">
-              <a href="/2018/04/23/prototypeAndExtend/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/1" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+              <a href="/2018/04/23/prototypeAndExtend/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/9" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
             </div>
             <div class="entry-summary">
             原型对象无论什么时候，只要创建一个新函数，就会根据一组特定的规则为该函数创建一个 prototype 属性，这个属性指向函数的原型对象。默认情况下，所有原型对象都会自动获得一个 constructor（构造函数）属性，这个属性指向 prototype 属性所在的函数。
@@ -399,7 +468,7 @@ Docker： Docker 快速入门
 
           
             <div class="entry-thumbnail">
-              <a href="/2018/04/01/JSRegExp/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/9" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+              <a href="/2018/04/01/JSRegExp/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/2" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
             </div>
             <div class="entry-summary">
             正则表达式一种几乎可以在所有的程序设计语言里和所有的计算机平台上使用的文字处理工具。它可以用来查找特定的信息（搜索），也可以用来查找并编辑特定的信息（替换）。核心是 匹配，匹配位置或者匹配字符
@@ -464,7 +533,7 @@ Docker： Docker 快速入门
 
           
             <div class="entry-thumbnail">
-              <a href="/2018/03/29/hello/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/5" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+              <a href="/2018/03/29/hello/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/1" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
             </div>
             <div class="entry-summary">
             
@@ -530,7 +599,7 @@ hello Hexo Makedown 语法测试一
 
           
             <div class="entry-thumbnail">
-              <a href="/2018/03/03/hello-world/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/4" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+              <a href="/2018/03/03/hello-world/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/1" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
             </div>
             <div class="entry-summary">
             Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
@@ -650,7 +719,7 @@ Qu...
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -663,6 +732,18 @@ Qu...
     </ul>
     <div class="widget">
       <ul>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2018/05/23/browserRendering/">浏览器页面渲染流程梳理</a></h6>
+              <span>May 23, 2018</span>
+            </div>
+
+          </li>
         
           <li class="clearfix">
 
@@ -724,18 +805,6 @@ Qu...
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2018/03/03/hello-world/">Hello World</a></h6>
-              <span>March 3, 2018</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -745,7 +814,7 @@ Qu...
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Diary/">Diary</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Diary/Life/">Life</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/RegExp/">RegExp</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/extend/">extend</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/debounce-debounce/">debounce debounce</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/test/">test</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Browser/">Browser</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Diary/">Diary</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Diary/Life/">Life</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/RegExp/">RegExp</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/extend/">extend</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/debounce-debounce/">debounce debounce</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/test/">test</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -755,7 +824,7 @@ Qu...
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HYT/">HYT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RegExp/">RegExp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TEST/">TEST</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debounce/">debounce</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/extend/">extend</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/prototype/">prototype</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/throttle/">throttle</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Browser/">Browser</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HYT/">HYT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RegExp/">RegExp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TEST/">TEST</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debounce/">debounce</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/extend/">extend</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/prototype/">prototype</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/throttle/">throttle</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -765,7 +834,7 @@ Qu...
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/HYT/" style="font-size: 10px;">HYT</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/RegExp/" style="font-size: 10px;">RegExp</a> <a href="/tags/TEST/" style="font-size: 20px;">TEST</a> <a href="/tags/debounce/" style="font-size: 10px;">debounce</a> <a href="/tags/extend/" style="font-size: 10px;">extend</a> <a href="/tags/prototype/" style="font-size: 10px;">prototype</a> <a href="/tags/throttle/" style="font-size: 10px;">throttle</a>
+      <a href="/tags/Browser/" style="font-size: 10px;">Browser</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/HYT/" style="font-size: 10px;">HYT</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/RegExp/" style="font-size: 10px;">RegExp</a> <a href="/tags/TEST/" style="font-size: 20px;">TEST</a> <a href="/tags/debounce/" style="font-size: 10px;">debounce</a> <a href="/tags/extend/" style="font-size: 10px;">extend</a> <a href="/tags/prototype/" style="font-size: 10px;">prototype</a> <a href="/tags/throttle/" style="font-size: 10px;">throttle</a>
     </div>
   </div>
 
