@@ -21,19 +21,19 @@
   
   
   
-  <meta name="description" content="浏览器渲染流程浏览器渲染流程如下图所示： 图片来源：https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/ 大概可以划分成以下几个步骤：  通过HTML解析器解析HTML文本并构建DOM tree 通过CSS解析器解析CSS样式表并构建CSSOM tree 根据DOM tree 和 CSSOM tree 构建 Rend">
+  <meta name="description" content="浏览器渲染流程浏览器渲染流程如下图所示：  大概可以划分成以下几个步骤：  通过HTML解析器解析HTML文本并构建DOM tree 通过CSS解析器解析CSS样式表并构建CSSOM tree 根据DOM tree 和 CSSOM tree 构建 Render tree Render tree 刚构建完后是没有元素节点坐标、尺寸大小等信息的，此时需要通过Reflow(Layout)进行布局处理">
 <meta name="keywords" content="Browser">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浏览器渲染之回流（Reflow）与重绘（Repaint）">
 <meta property="og:url" content="http://www.goyth.com/2018/05/25/reflowAndRepaint/index.html">
 <meta property="og:site_name" content="GOYTH">
-<meta property="og:description" content="浏览器渲染流程浏览器渲染流程如下图所示： 图片来源：https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/ 大概可以划分成以下几个步骤：  通过HTML解析器解析HTML文本并构建DOM tree 通过CSS解析器解析CSS样式表并构建CSSOM tree 根据DOM tree 和 CSSOM tree 构建 Rend">
+<meta property="og:description" content="浏览器渲染流程浏览器渲染流程如下图所示：  大概可以划分成以下几个步骤：  通过HTML解析器解析HTML文本并构建DOM tree 通过CSS解析器解析CSS样式表并构建CSSOM tree 根据DOM tree 和 CSSOM tree 构建 Render tree Render tree 刚构建完后是没有元素节点坐标、尺寸大小等信息的，此时需要通过Reflow(Layout)进行布局处理">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.goyth.com/2018/05/25/reflowAndRepaint/webkitflow.png">
-<meta property="og:updated_time" content="2018-05-25T13:59:45.178Z">
+<meta property="og:updated_time" content="2018-05-25T14:06:42.344Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浏览器渲染之回流（Reflow）与重绘（Repaint）">
-<meta name="twitter:description" content="浏览器渲染流程浏览器渲染流程如下图所示： 图片来源：https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/ 大概可以划分成以下几个步骤：  通过HTML解析器解析HTML文本并构建DOM tree 通过CSS解析器解析CSS样式表并构建CSSOM tree 根据DOM tree 和 CSSOM tree 构建 Rend">
+<meta name="twitter:description" content="浏览器渲染流程浏览器渲染流程如下图所示：  大概可以划分成以下几个步骤：  通过HTML解析器解析HTML文本并构建DOM tree 通过CSS解析器解析CSS样式表并构建CSSOM tree 根据DOM tree 和 CSSOM tree 构建 Render tree Render tree 刚构建完后是没有元素节点坐标、尺寸大小等信息的，此时需要通过Reflow(Layout)进行布局处理">
 <meta name="twitter:image" content="http://www.goyth.com/2018/05/25/reflowAndRepaint/webkitflow.png">
   
     <link rel="alternate" href="/atom.xml" title="GOYTH" type="application/atom+xml">
@@ -199,20 +199,23 @@ var themeMenus = {};
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="浏览器渲染流程"><a href="#浏览器渲染流程" class="headerlink" title="浏览器渲染流程"></a>浏览器渲染流程</h2><p>浏览器渲染流程如下图所示：</p>
-<p><img src="/2018/05/25/reflowAndRepaint/webkitflow.png" alt=""><br><em>图片来源：<a href="https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/" target="_blank" rel="noopener">https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/</a></em></p>
+<p><img src="/2018/05/25/reflowAndRepaint/webkitflow.png" alt=""></p>
 <p>大概可以划分成以下几个步骤：</p>
 <ol>
 <li>通过HTML解析器解析HTML文本并构建DOM tree</li>
 <li>通过CSS解析器解析CSS样式表并构建CSSOM tree</li>
 <li>根据DOM tree 和 CSSOM tree 构建 Render tree</li>
 <li>Render tree 刚构建完后是没有元素节点坐标、尺寸大小等信息的，此时需要通过Reflow(Layout)进行布局处理，计算出元素在屏幕上显示的位置，尺寸大小等信息。</li>
-<li>遍历渲染树，对每一个元素节点进行绘制（Painting）</li>
-</ol>
+<li><p>遍历渲染树，对每一个元素节点进行绘制（Painting）</p>
 <p>回流（Reflow）与重绘（Repaint）就分别发生在第四步和第五步</p>
+</li>
+</ol>
 <a id="more"></a>
 <h2 id="回流（Reflow）和重绘（Repaint）的定义"><a href="#回流（Reflow）和重绘（Repaint）的定义" class="headerlink" title="回流（Reflow）和重绘（Repaint）的定义"></a>回流（Reflow）和重绘（Repaint）的定义</h2><h3 id="回流（Reflow）"><a href="#回流（Reflow）" class="headerlink" title="回流（Reflow）"></a>回流（Reflow）</h3><p>对于DOM结构中的各个元素都有自己的盒子（模型），这些都需要浏览器根据各种样式（浏览器的、开发人员定义的等）来计算，并根据计算结果将元素放到它该出现的位置，这个过程称之为reflow。</p>
 <h3 id="重绘（Repaint）"><a href="#重绘（Repaint）" class="headerlink" title="重绘（Repaint）"></a>重绘（Repaint）</h3><p>当各种盒子的位置、大小以及其他属性，例如颜色、字体大小等都确定下来后，浏览器于是便把这些元素都按照各自的特性绘制了一遍，于是页面的内容出现了，这个过程称之为 repaint。</p>
+<blockquote>
 <p>回流（Reflow）和重绘（Repaint）会对性能产生一定的影响，尤其是当引发全局的回流和重绘时。</p>
+</blockquote>
 <h2 id="导致回流（Reflow）和重绘（Repaint）的操作"><a href="#导致回流（Reflow）和重绘（Repaint）的操作" class="headerlink" title="导致回流（Reflow）和重绘（Repaint）的操作"></a>导致回流（Reflow）和重绘（Repaint）的操作</h2><ol>
 <li>调整窗口大小</li>
 <li>改变字体</li>
