@@ -21,13 +21,13 @@
   
   
   
-  <meta name="description" content="浏览器渲染基本流程浏览器渲染流程如下图所示： 图片来源：https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/ 大概可以划分成以下几个步骤：  解析HTML文本并构建DOM tree 解析CSS样式表并构建CSSOM tree 根据DOM tree 和 CSSOM tree 构建 Render tree 根据Rende">
+  <meta name="description" content="浏览器渲染基本流程浏览器渲染流程如下图所示： 图片来源：https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/ 大概可以划分成以下几个步骤：  通过HTML解析器解析HTML文本并构建DOM tree 通过CSS解析器解析CSS样式表并构建CSSOM tree 根据DOM tree 和 CSSOM tree 构建 Re">
 <meta name="keywords" content="Browser">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浏览器页面渲染流程梳理">
 <meta property="og:url" content="http://www.goyth.com/2018/05/23/browserRendering/index.html">
 <meta property="og:site_name" content="GOYTH">
-<meta property="og:description" content="浏览器渲染基本流程浏览器渲染流程如下图所示： 图片来源：https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/ 大概可以划分成以下几个步骤：  解析HTML文本并构建DOM tree 解析CSS样式表并构建CSSOM tree 根据DOM tree 和 CSSOM tree 构建 Render tree 根据Rende">
+<meta property="og:description" content="浏览器渲染基本流程浏览器渲染流程如下图所示： 图片来源：https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/ 大概可以划分成以下几个步骤：  通过HTML解析器解析HTML文本并构建DOM tree 通过CSS解析器解析CSS样式表并构建CSSOM tree 根据DOM tree 和 CSSOM tree 构建 Re">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.goyth.com/2018/05/23/browserRendering/webkitflow.png">
 <meta property="og:image" content="http://www.goyth.com/2018/05/23/browserRendering/parsing.png">
@@ -38,10 +38,10 @@
 <meta property="og:image" content="http://www.goyth.com/2018/05/23/browserRendering/render-tree-construction.png">
 <meta property="og:image" content="http://www.goyth.com/2018/05/23/browserRendering/render&dom.png">
 <meta property="og:image" content="http://www.goyth.com/2018/05/23/browserRendering/reflow.png">
-<meta property="og:updated_time" content="2018-05-23T15:34:30.145Z">
+<meta property="og:updated_time" content="2018-05-25T11:48:33.584Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浏览器页面渲染流程梳理">
-<meta name="twitter:description" content="浏览器渲染基本流程浏览器渲染流程如下图所示： 图片来源：https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/ 大概可以划分成以下几个步骤：  解析HTML文本并构建DOM tree 解析CSS样式表并构建CSSOM tree 根据DOM tree 和 CSSOM tree 构建 Render tree 根据Rende">
+<meta name="twitter:description" content="浏览器渲染基本流程浏览器渲染流程如下图所示： 图片来源：https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/ 大概可以划分成以下几个步骤：  通过HTML解析器解析HTML文本并构建DOM tree 通过CSS解析器解析CSS样式表并构建CSSOM tree 根据DOM tree 和 CSSOM tree 构建 Re">
 <meta name="twitter:image" content="http://www.goyth.com/2018/05/23/browserRendering/webkitflow.png">
   
     <link rel="alternate" href="/atom.xml" title="GOYTH" type="application/atom+xml">
@@ -210,11 +210,11 @@ var themeMenus = {};
 <p><img src="/2018/05/23/browserRendering/webkitflow.png" alt=""><br><em>图片来源：<a href="https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/" target="_blank" rel="noopener">https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/</a></em></p>
 <p>大概可以划分成以下几个步骤：</p>
 <ol>
-<li>解析HTML文本并构建DOM tree</li>
-<li>解析CSS样式表并构建CSSOM tree</li>
+<li>通过HTML解析器解析HTML文本并构建DOM tree</li>
+<li>通过CSS解析器解析CSS样式表并构建CSSOM tree</li>
 <li>根据DOM tree 和 CSSOM tree 构建 Render tree</li>
-<li>根据Render tree信息进行布局处理（Layout）</li>
-<li>对页面元素进行绘制（Painting）</li>
+<li>Render tree 刚构建完后是没有元素节点坐标、尺寸大小等信息的，此时需要通过Layout(Reflow)进行布局处理，计算出元素在屏幕上显示的位置，尺寸大小等信息。</li>
+<li>遍历渲染树，对每一个元素节点进行绘制（Painting）</li>
 </ol>
 <a id="more"></a>
 <h3 id="解析（Parsing）"><a href="#解析（Parsing）" class="headerlink" title="解析（Parsing）"></a>解析（Parsing）</h3><p>解析的过程分为两个步骤：词法分析和语法分析。<br>词法分析负责将输入内容分解成一个个有效标记；而语法分析负责根据语言的语法规则分析文档的结构，从而构建解析树。通过词法分析可以将无关的字符（比如空格和换行符）分离出来。</p>

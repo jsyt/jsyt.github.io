@@ -166,6 +166,97 @@ var themeMenus = {};
         
           <section id="main">
   
+    <article id="post-reflowAndRepaint"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2018/05/25/reflowAndRepaint/">浏览器渲染之回流（Reflow）与重绘（Repaint）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2018/05/25/reflowAndRepaint/" class="article-date">
+	  <time datetime="2018-05-25T10:39:42.000Z" itemprop="datePublished">May 25, 2018</time>
+	</a>
+
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="浏览器渲染流程"><a href="#浏览器渲染流程" class="headerlink" title="浏览器渲染流程"></a>浏览器渲染流程</h2><p>浏览器渲染流程如下图所示：</p>
+<p><img src="/2018/05/25/reflowAndRepaint/webkitflow.png" alt=""><br><em>图片来源：<a href="https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/" target="_blank" rel="noopener">https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/</a></em></p>
+<p>大概可以划分成以下几个步骤：</p>
+<ol>
+<li>通过HTML解析器解析HTML文本并构建DOM tree</li>
+<li>通过CSS解析器解析CSS样式表并构建CSSOM tree</li>
+<li>根据DOM tree 和 CSSOM tree 构建 Render tree</li>
+<li>Render tree 刚构建完后是没有元素节点坐标、尺寸大小等信息的，此时需要通过Reflow(Layout)进行布局处理，计算出元素在屏幕上显示的位置，尺寸大小等信息。</li>
+<li>遍历渲染树，对每一个元素节点进行绘制（Painting）</li>
+</ol>
+<p>回流（Reflow）与重绘（Repaint）就分别发生在第四步和第五步</p>
+<h2 id="回流（Reflow）和重绘（Repaint）的定义"><a href="#回流（Reflow）和重绘（Repaint）的定义" class="headerlink" title="回流（Reflow）和重绘（Repaint）的定义"></a>回流（Reflow）和重绘（Repaint）的定义</h2><h3 id="回流（Reflow）"><a href="#回流（Reflow）" class="headerlink" title="回流（Reflow）"></a>回流（Reflow）</h3><p>对于DOM结构中的各个元素都有自己的盒子（模型），这些都需要浏览器根据各种样式（浏览器的、开发人员定义的等）来计算，并根据计算结果将元素放到它该出现的位置，这个过程称之为reflow。</p>
+<h3 id="重绘（Repaint）"><a href="#重绘（Repaint）" class="headerlink" title="重绘（Repaint）"></a>重绘（Repaint）</h3><p>当各种盒子的位置、大小以及其他属性，例如颜色、字体大小等都确定下来后，浏览器于是便把这些元素都按照各自的特性绘制了一遍，于是页面的内容出现了，这个过程称之为 repaint。</p>
+<p>回流（Reflow）和重绘（Repaint）会对性能产生一定的影响，尤其是当引发全局的回流和重绘时。</p>
+<h2 id="导致回流（Reflow）和重绘（Repaint）的操作"><a href="#导致回流（Reflow）和重绘（Repaint）的操作" class="headerlink" title="导致回流（Reflow）和重绘（Repaint）的操作"></a>导致回流（Reflow）和重绘（Repaint）的操作</h2><ol>
+<li>调整窗口大小</li>
+<li>改变字体</li>
+<li>增加或者移除样式表</li>
+<li>内容变化，比如用户在input框中输入文字</li>
+<li>激活 CSS 伪类，比如 :hover (IE 中为兄弟结点伪类的激活)</li>
+<li>操作 class 属性</li>
+<li>脚本操作 DOM</li>
+<li>计算 offsetWidth 和 offsetHeight 属性</li>
+<li>设置 style 属性的值 </li>
+</ol>
+<h2 id="如何尽量避免回流（Reflow）和重绘（Repaint）"><a href="#如何尽量避免回流（Reflow）和重绘（Repaint）" class="headerlink" title="如何尽量避免回流（Reflow）和重绘（Repaint）"></a>如何尽量避免回流（Reflow）和重绘（Repaint）</h2><ol>
+<li><p>不要一条一条地修改 DOM 的样式。与其这样，还不如预先定义好 css 的 class，然后修改 DOM 的 className，即将多次改变样式属性的操作合并成一次操作：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 不好的写法</span><br><span class="line">var left = 10,</span><br><span class="line">top = 10;</span><br><span class="line">el.style.left = left + &quot;px&quot;;</span><br><span class="line">el.style.top  = top  + &quot;px&quot;;</span><br><span class="line">el.style.background = &apos;#eee&apos;; </span><br><span class="line">// 比较好的写法</span><br><span class="line">el.className += &quot; theclassname&quot;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>让要操作的元素进行”离线处理”，处理完后一起更新 </p>
+</li>
+</ol>
+<ul>
+<li>使用DocumentFragment进行缓存操作,引发一次回流和重绘； </li>
+<li>使用display:none技术，只引发两次回流和重绘。原理：由于display属性为none的元素不在渲染树中，对隐藏的元素操 作不会引发其他元素的重排。如果要对一个元素进行复杂的操作时，可以先隐藏它，操作完成后再显示。这样只在隐藏和显示时触发2次重排。 </li>
+<li>先克隆Dom节点(cloneNode) 修改完后，再用克隆的Dom节点将原来的节点替换掉，只引发一次回流和重绘； </li>
+</ul>
+<ol>
+<li>将需要多次重排的元素，position属性设为absolute或fixed，这样此元素就脱离了文档流，它的变化不会影响到其他元素为动画的 HTML 元素，例如动画，那么修改他们的 CSS 是会大大减小 reflow 。因为,它们不影响其他元素的布局，所它他们只会导致重新绘制，而不是一个完整回流。这样消耗会更低</li>
+<li>不要用tables布局的一个原因就是tables中某个元素一旦触发reflow就会导致table里所有的其它元素reflow。在适合用table的场合，可以设置table-layout为auto或fixed，这样可以让table一行一行的渲染，这种做法也是为了限制reflow的影响范围。</li>
+<li>尽可能的修改层级比较低的 DOM节点。当然，改变层级比较底的 DOM节点有可能会造成大面积的 reflow，但是也可能影响范围很小。<br>因为改变 DOM 树中的一级会导致所有层级的改变，上至根部，下至被改变节点的子节点。这导致大量时间耗费在执行 reflow 上面 </li>
+<li>不要把 DOM 节点的属性值放在一个循环里当成循环里的变量。不然这会导致大量地读写这个结点的属性。</li>
+<li>避免使用CSS的JavaScript表达式，如果css里有expression，每次都会重新计算一遍。</li>
+</ol>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Browser/">Browser</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Browser/">Browser</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-nsum"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
@@ -194,7 +285,7 @@ var themeMenus = {};
 
           
             <div class="entry-thumbnail">
-              <a href="/2018/05/25/nsum/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/4" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+              <a href="/2018/05/25/nsum/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/5" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
             </div>
             <div class="entry-summary">
             问题描述给定一个包含多个整数且排好序的数组 nums 和一个目标值 target，判断 nums 中是否存在 N(N&gt;1) 个元素，使得 N 个元素之和与 target 相等？找出所有满足条件且不重复的N元组。
@@ -212,6 +303,9 @@ JavaScript 版本123456789101112131415161718...
     </div>
     <footer class="entry-meta entry-footer">
       
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Browser/">Browser</a>
+
       
   <span class="ico-tags"></span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
@@ -255,17 +349,16 @@ JavaScript 版本123456789101112131415161718...
 
           
             <div class="entry-thumbnail">
-              <a href="/2018/05/23/browserRendering/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/4" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+              <a href="/2018/05/23/browserRendering/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/6" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
             </div>
             <div class="entry-summary">
             浏览器渲染基本流程浏览器渲染流程如下图所示：
 图片来源：https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/
 大概可以划分成以下几个步骤：
 
-解析HTML文本并构建DOM tree
-解析CSS样式表并构建CSSOM tree
-根据DOM tree 和 CSSOM tree 构建 Render tree
-根据Re...
+通过HTML解析器解析HTML文本并构建DOM tree
+通过CSS解析器解析CSS样式表并构建CSSOM tree
+根据DOM tree 和 CSSOM tree 构建 ...
           
 
         
@@ -323,7 +416,7 @@ JavaScript 版本123456789101112131415161718...
 
           
             <div class="entry-thumbnail">
-              <a href="/2018/05/10/debounceAndThrottle/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/10" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+              <a href="/2018/05/10/debounceAndThrottle/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/1" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
             </div>
             <div class="entry-summary">
             函数防抖（debounce)函数防抖是指在函数调用动作触发n秒后才开始执行，n秒内若再次触发，则重新开始计时，再次等待n秒后才开始执行。如果n秒内不断触发，那就不断重新开始计时，一直等到有一个n秒内没有触发，才开始执行此函数。
@@ -387,7 +480,7 @@ JavaScript 版本123456789101112131415161718...
 
           
             <div class="entry-thumbnail">
-              <a href="/2018/05/08/dockerDeploy/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/6" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+              <a href="/2018/05/08/dockerDeploy/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/10" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
             </div>
             <div class="entry-summary">
             本文将以一个标准的 Vue 项目为例，完全抛弃传统的前端项目开发部署方式，基于 Docker 容器技术打造一个精简的前端持续集成的开发环境。
@@ -529,7 +622,7 @@ Docker： Docker 快速入门
 
           
             <div class="entry-thumbnail">
-              <a href="/2018/04/01/JSRegExp/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/6" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+              <a href="/2018/04/01/JSRegExp/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/1" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
             </div>
             <div class="entry-summary">
             正则表达式一种几乎可以在所有的程序设计语言里和所有的计算机平台上使用的文字处理工具。它可以用来查找特定的信息（搜索），也可以用来查找并编辑特定的信息（替换）。核心是 匹配，匹配位置或者匹配字符
@@ -594,7 +687,7 @@ Docker： Docker 快速入门
 
           
             <div class="entry-thumbnail">
-              <a href="/2018/03/29/hello/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/1" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+              <a href="/2018/03/29/hello/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/3" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
             </div>
             <div class="entry-summary">
             
@@ -660,7 +753,7 @@ hello Hexo Makedown 语法测试一
 
           
             <div class="entry-thumbnail">
-              <a href="/2018/03/03/hello-world/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/9" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+              <a href="/2018/03/03/hello-world/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/7" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
             </div>
             <div class="entry-summary">
             Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
@@ -780,7 +873,7 @@ Qu...
     <h3 class="widget-title">Archives</h3>
 
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -793,6 +886,18 @@ Qu...
     </ul>
     <div class="widget">
       <ul>
+        
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/2018/05/25/reflowAndRepaint/">浏览器渲染之回流（Reflow）与重绘（Repaint）</a></h6>
+              <span>May 25, 2018</span>
+            </div>
+
+          </li>
         
           <li class="clearfix">
 
@@ -854,18 +959,6 @@ Qu...
 
           </li>
         
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2018/04/01/JSRegExp/">JS 的正则表达式</a></h6>
-              <span>April 1, 2018</span>
-            </div>
-
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -875,7 +968,7 @@ Qu...
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Browser/">Browser</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Diary/">Diary</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Diary/Life/">Life</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/RegExp/">RegExp</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/extend/">extend</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/debounce-debounce/">debounce debounce</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/test/">test</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Browser/">Browser</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Diary/">Diary</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Diary/Life/">Life</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/RegExp/">RegExp</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/extend/">extend</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/debounce-debounce/">debounce debounce</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/test/">test</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -885,7 +978,7 @@ Qu...
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Browser/">Browser</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HYT/">HYT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RegExp/">RegExp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TEST/">TEST</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debounce/">debounce</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/extend/">extend</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/prototype/">prototype</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/throttle/">throttle</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/">Algorithm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Browser/">Browser</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HYT/">HYT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RegExp/">RegExp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TEST/">TEST</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/debounce/">debounce</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/extend/">extend</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/prototype/">prototype</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/throttle/">throttle</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -895,7 +988,7 @@ Qu...
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/Browser/" style="font-size: 10px;">Browser</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/HYT/" style="font-size: 10px;">HYT</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/RegExp/" style="font-size: 10px;">RegExp</a> <a href="/tags/TEST/" style="font-size: 20px;">TEST</a> <a href="/tags/debounce/" style="font-size: 10px;">debounce</a> <a href="/tags/extend/" style="font-size: 10px;">extend</a> <a href="/tags/prototype/" style="font-size: 10px;">prototype</a> <a href="/tags/throttle/" style="font-size: 10px;">throttle</a>
+      <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/Browser/" style="font-size: 20px;">Browser</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/HYT/" style="font-size: 10px;">HYT</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/RegExp/" style="font-size: 10px;">RegExp</a> <a href="/tags/TEST/" style="font-size: 20px;">TEST</a> <a href="/tags/debounce/" style="font-size: 10px;">debounce</a> <a href="/tags/extend/" style="font-size: 10px;">extend</a> <a href="/tags/prototype/" style="font-size: 10px;">prototype</a> <a href="/tags/throttle/" style="font-size: 10px;">throttle</a>
     </div>
   </div>
 
