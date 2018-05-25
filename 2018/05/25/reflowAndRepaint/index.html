@@ -30,7 +30,7 @@
 <meta property="og:description" content="浏览器渲染流程浏览器渲染流程如下图所示：  大概可以划分成以下几个步骤：  通过HTML解析器解析HTML文本并构建DOM tree 通过CSS解析器解析CSS样式表并构建CSSOM tree 根据DOM tree 和 CSSOM tree 构建 Render tree Render tree 刚构建完后是没有元素节点坐标、尺寸大小等信息的，此时需要通过Reflow(Layout)进行布局处理">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.goyth.com/2018/05/25/reflowAndRepaint/webkitflow.png">
-<meta property="og:updated_time" content="2018-05-25T14:07:53.986Z">
+<meta property="og:updated_time" content="2018-05-25T14:12:36.378Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浏览器渲染之回流（Reflow）与重绘（Repaint）">
 <meta name="twitter:description" content="浏览器渲染流程浏览器渲染流程如下图所示：  大概可以划分成以下几个步骤：  通过HTML解析器解析HTML文本并构建DOM tree 通过CSS解析器解析CSS样式表并构建CSSOM tree 根据DOM tree 和 CSSOM tree 构建 Render tree Render tree 刚构建完后是没有元素节点坐标、尺寸大小等信息的，此时需要通过Reflow(Layout)进行布局处理">
@@ -234,7 +234,7 @@ var themeMenus = {};
 </li>
 </ol>
 <ul>
-<li>使用DocumentFragment进行缓存操作,引发一次回流和重绘； </li>
+<li>使用documentFragment对象进行缓存操作,引发一次回流和重绘； </li>
 <li>使用display:none技术，只引发两次回流和重绘。原理：由于display属性为none的元素不在渲染树中，对隐藏的元素操 作不会引发其他元素的重排。如果要对一个元素进行复杂的操作时，可以先隐藏它，操作完成后再显示。这样只在隐藏和显示时触发2次重排。 </li>
 <li>先克隆Dom节点(cloneNode) 修改完后，再用克隆的Dom节点将原来的节点替换掉，只引发一次回流和重绘； </li>
 </ul>
