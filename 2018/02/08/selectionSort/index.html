@@ -30,7 +30,7 @@
 <meta property="og:description" content="常见的内部排序算法有：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序、基数排序等。这里主要介绍选择排序 排序算法总览：  选择排序选择排序（Selection sort）是一种简单直观的排序算法。它的工作原理是每一次从待排序的数据元素中选出最小（或最大）的一个元素，存放在序列的起始位置，直到全部待排序的数据元素排完。 选择排序是不稳定的排序方法（比如序列[5， 5， 3]第一次">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.goyth.com/2018/02/08/selectionSort/bubbleSort/sort.png">
-<meta property="og:updated_time" content="2018-05-28T06:10:32.654Z">
+<meta property="og:updated_time" content="2018-05-28T06:11:50.040Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="selectionSort">
 <meta name="twitter:description" content="常见的内部排序算法有：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序、基数排序等。这里主要介绍选择排序 排序算法总览：  选择排序选择排序（Selection sort）是一种简单直观的排序算法。它的工作原理是每一次从待排序的数据元素中选出最小（或最大）的一个元素，存放在序列的起始位置，直到全部待排序的数据元素排完。 选择排序是不稳定的排序方法（比如序列[5， 5， 3]第一次">
@@ -202,6 +202,7 @@ var themeMenus = {};
 <p>排序算法总览：</p>
 <p><img src="/2018/02/08/selectionSort/bubbleSort/sort.png" alt=""></p>
 <h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p>选择排序（Selection sort）是一种简单直观的排序算法。它的工作原理是每一次从待排序的数据元素中选出最小（或最大）的一个元素，存放在序列的起始位置，直到全部待排序的数据元素排完。 选择排序是不稳定的排序方法（比如序列[5， 5， 3]第一次就将第一个[5]与[3]交换，导致第一个5挪动到第二个5后面）。</p>
+<a id="more"></a>
 <h2 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">function selectionSort(arr)&#123;</span><br><span class="line">  var len = arr.length,</span><br><span class="line">      minIndex = 0;</span><br><span class="line">  for(var i = 0; i &lt; len-1; i++)&#123;</span><br><span class="line">    minIndex = i;</span><br><span class="line">    for(var j = i + 1; j &lt; len; j++)&#123;</span><br><span class="line">      if(arr[j] &lt; arr[minIndex])&#123;</span><br><span class="line">        minIndex = j;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(minIndex != i)&#123;</span><br><span class="line">      [arr[minIndex], arr[i]] = [arr[i], arr[minIndex]]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 测试</span><br><span class="line">var arr = [3, 2, 4, 9, 1, 5, 7, 6, 8];</span><br><span class="line">var arrSorted = selectionSort(arr);</span><br><span class="line">console.log(arrSorted);</span><br><span class="line">// 控制台将输出：[1, 2, 3, 4, 5, 6, 7, 8, 9]</span><br></pre></td></tr></table></figure>
       
     </div>
