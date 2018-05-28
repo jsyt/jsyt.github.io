@@ -13,26 +13,28 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>hello world | GOYTH</title>
+  <title>排序算法之冒泡排序 | GOYTH</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="TEST" />
+  <meta name="keywords" content="Algorithm" />
   
   
   
   
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
-<meta name="keywords" content="TEST">
+  <meta name="description" content="常见的内部排序算法有：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序、基数排序等。这里主要介绍冒泡排序 排序算法总览：  冒泡排序冒泡排序（Bubble Sort），是一种计算机科学领域的较简单的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。这个算法的名字由来">
+<meta name="keywords" content="Algorithm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://www.goyth.com/2018/03/03/hello-world/index.html">
+<meta property="og:title" content="排序算法之冒泡排序">
+<meta property="og:url" content="http://www.goyth.com/2018/03/08/bubbleSort/index.html">
 <meta property="og:site_name" content="GOYTH">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta property="og:description" content="常见的内部排序算法有：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序、基数排序等。这里主要介绍冒泡排序 排序算法总览：  冒泡排序冒泡排序（Bubble Sort），是一种计算机科学领域的较简单的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。这个算法的名字由来">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-30T13:57:01.000Z">
+<meta property="og:image" content="http://www.goyth.com/2018/03/08/bubbleSort/sort.png">
+<meta property="og:updated_time" content="2018-05-28T03:29:21.320Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta name="twitter:title" content="排序算法之冒泡排序">
+<meta name="twitter:description" content="常见的内部排序算法有：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序、基数排序等。这里主要介绍冒泡排序 排序算法总览：  冒泡排序冒泡排序（Bubble Sort），是一种计算机科学领域的较简单的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。这个算法的名字由来">
+<meta name="twitter:image" content="http://www.goyth.com/2018/03/08/bubbleSort/sort.png">
   
     <link rel="alternate" href="/atom.xml" title="GOYTH" type="application/atom+xml">
   
@@ -168,7 +170,7 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-hello-world" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-bubbleSort" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -176,7 +178,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" class="article-title" itemprop="name">
-      Hello World
+      排序算法之冒泡排序
     </h1>
   
 
@@ -184,8 +186,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2018/03/03/hello-world/" class="article-date">
-	  <time datetime="2018-03-03T08:46:06.221Z" itemprop="datePublished">March 3, 2018</time>
+	Posted on <a href="/2018/03/08/bubbleSort/" class="article-date">
+	  <time datetime="2018-03-08T02:40:24.000Z" itemprop="datePublished">March 8, 2018</time>
 	</a>
 
       
@@ -196,26 +198,23 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.<br><a id="more"></a></p>
-<h2 id="Quick-Tests"><a href="#Quick-Tests" class="headerlink" title="Quick Tests"></a>Quick Tests</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+        <p>常见的内部排序算法有：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序、基数排序等。这里主要介绍冒泡排序</p>
+<p>排序算法总览：</p>
+<p><img src="/2018/03/08/bubbleSort/sort.png" alt=""></p>
+<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><p>冒泡排序（Bubble Sort），是一种计算机科学领域的较简单的排序算法。<br>它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。<br>这个算法的名字由来是因为越大的元素会经由交换慢慢“浮”到数列的顶端，故名“冒泡排序”。</p>
+<h2 id="算法原理编辑"><a href="#算法原理编辑" class="headerlink" title="算法原理编辑"></a>算法原理编辑</h2><p>冒泡排序算法的运作如下：（从前往后）<br>比较相邻的元素。如果第一个比第二个大，就交换他们两个。<br>对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。在这一点，最后的元素应该会是最大的数。<br>针对所有的元素重复以上的步骤，除了最后一个。<br>持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。</p>
+<h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function bubbleSort(arr)&#123;</span><br><span class="line">  for(let i = arr.length-1; i&gt;0; i--)&#123;</span><br><span class="line">    for(let j=0; j&lt;i; j++)&#123;</span><br><span class="line">      if(arr[j] &gt; arr[j+1])&#123;</span><br><span class="line">        [arr[j], arr[j+1]] = [arr[j+1], arr[j]]    // 利用es6解构语法进行swap</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 测试</span><br><span class="line">var arr = [3, 2, 4, 9, 1, 5, 7, 6, 8];</span><br><span class="line">var arrSorted = bubbleSort(arr);</span><br><span class="line">console.log(arrSorted);</span><br><span class="line">// 控制台将输出：[1, 2, 3, 4, 5, 6, 7, 8, 9]</span><br></pre></td></tr></table></figure>
+<h2 id="冒泡算法优化"><a href="#冒泡算法优化" class="headerlink" title="冒泡算法优化"></a>冒泡算法优化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function bubbleSort(arr)&#123;</span><br><span class="line">  let flag = true;</span><br><span class="line">  for(let i=arr.length-1; flag &amp;&amp; i&gt;0; i--)&#123;</span><br><span class="line">    flag = false;    //只要flag在下一次外循环条件检测的时候值为false，就说明已经排好序，不用继续循环 </span><br><span class="line">    for(let j=0; j&lt;i; j++)&#123;</span><br><span class="line">      if(arr[j] &gt; arr[j+1])&#123;</span><br><span class="line">        flag = true;    //如果有交换，就将标记变量赋true</span><br><span class="line">        [arr[j], arr[j+1]] = [arr[j+1], arr[j]]    // 利用es6解构语法进行swap</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 测试</span><br><span class="line">var arr = [3, 2, 4, 9, 1, 5, 7, 6, 8];</span><br><span class="line">var arrSorted = bubbleSort(arr);</span><br><span class="line">console.log(arrSorted);</span><br><span class="line">// 控制台将输出：[1, 2, 3, 4, 5, 6, 7, 8, 9]</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/test/">test</a>
+    <a class="article-category-link" href="/categories/Algorithm/">Algorithm</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TEST/">TEST</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Algorithm/">Algorithm</a></li></ul>
 
       
         <div id="donation_div"></div>
@@ -263,11 +262,11 @@ var a = new Donate({
     
 <nav id="article-nav">
   
-    <a href="/2018/03/29/hello/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/04/01/JSRegExp/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          hello
+          JS 的正则表达式
         
       </div>
     </a>
@@ -284,7 +283,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Tests"><span class="nav-number">1.</span> <span class="nav-text">Quick Tests</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#冒泡排序"><span class="nav-number">1.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法原理编辑"><span class="nav-number">2.</span> <span class="nav-text">算法原理编辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法描述"><span class="nav-number">3.</span> <span class="nav-text">算法描述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript"><span class="nav-number">3.1.</span> <span class="nav-text">JavaScript</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#冒泡算法优化"><span class="nav-number">4.</span> <span class="nav-text">冒泡算法优化</span></a></li></ol>
     
     </div>
   </aside>
