@@ -13,7 +13,7 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>排序算法之希尔排序 | GOYTH</title>
+  <title>排序算法之归并排序 | GOYTH</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta name="keywords" content="Sort" />
@@ -21,21 +21,21 @@
   
   
   
-  <meta name="description" content="常见的内部排序算法有：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序、基数排序等。这里主要介绍希尔排序 排序算法总览：  希尔排序 希尔排序(Shell’s Sort)也称递减增量排序算法，是插入排序的一种更高效的改进版本。但希尔排序是非稳定排序算法。希尔排序是基于插入排序的以下两点性质而提出改进方法的：  插入排序在对几乎已经排好序的数据操作时，效率高，即可以达到线性排序的效">
+  <meta name="description" content="常见的内部排序算法有：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序、基数排序等。这里主要介绍归并排序 排序算法总览：  归并排序归并排序（MERGE-SORT）是建立在归并操作上的一种有效的排序算法,该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表">
 <meta name="keywords" content="Sort">
 <meta property="og:type" content="article">
-<meta property="og:title" content="排序算法之希尔排序">
-<meta property="og:url" content="http://www.goyth.com/2018/02/08/shellSort/index.html">
+<meta property="og:title" content="排序算法之归并排序">
+<meta property="og:url" content="http://www.goyth.com/2018/03/09/mergeSort/index.html">
 <meta property="og:site_name" content="GOYTH">
-<meta property="og:description" content="常见的内部排序算法有：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序、基数排序等。这里主要介绍希尔排序 排序算法总览：  希尔排序 希尔排序(Shell’s Sort)也称递减增量排序算法，是插入排序的一种更高效的改进版本。但希尔排序是非稳定排序算法。希尔排序是基于插入排序的以下两点性质而提出改进方法的：  插入排序在对几乎已经排好序的数据操作时，效率高，即可以达到线性排序的效">
+<meta property="og:description" content="常见的内部排序算法有：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序、基数排序等。这里主要介绍归并排序 排序算法总览：  归并排序归并排序（MERGE-SORT）是建立在归并操作上的一种有效的排序算法,该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.goyth.com/2018/02/08/shellSort/sort.png">
-<meta property="og:image" content="http://www.goyth.com/2018/02/08/shellSort/shellSort.jpeg">
-<meta property="og:updated_time" content="2018-05-28T14:16:45.546Z">
+<meta property="og:image" content="http://www.goyth.com/2018/03/09/mergeSort/sort.png">
+<meta property="og:image" content="http://www.goyth.com/2018/03/09/mergeSort/mergesort.gif">
+<meta property="og:updated_time" content="2018-05-29T11:39:01.867Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="排序算法之希尔排序">
-<meta name="twitter:description" content="常见的内部排序算法有：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序、基数排序等。这里主要介绍希尔排序 排序算法总览：  希尔排序 希尔排序(Shell’s Sort)也称递减增量排序算法，是插入排序的一种更高效的改进版本。但希尔排序是非稳定排序算法。希尔排序是基于插入排序的以下两点性质而提出改进方法的：  插入排序在对几乎已经排好序的数据操作时，效率高，即可以达到线性排序的效">
-<meta name="twitter:image" content="http://www.goyth.com/2018/02/08/shellSort/sort.png">
+<meta name="twitter:title" content="排序算法之归并排序">
+<meta name="twitter:description" content="常见的内部排序算法有：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序、基数排序等。这里主要介绍归并排序 排序算法总览：  归并排序归并排序（MERGE-SORT）是建立在归并操作上的一种有效的排序算法,该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表">
+<meta name="twitter:image" content="http://www.goyth.com/2018/03/09/mergeSort/sort.png">
   
     <link rel="alternate" href="/atom.xml" title="GOYTH" type="application/atom+xml">
   
@@ -171,7 +171,7 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-shellSort" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-mergeSort" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -179,7 +179,7 @@ var themeMenus = {};
         
   
     <h1 class="thumb" class="article-title" itemprop="name">
-      排序算法之希尔排序
+      排序算法之归并排序
     </h1>
   
 
@@ -187,8 +187,8 @@ var themeMenus = {};
     
     <div class="article-meta">
       
-	Posted on <a href="/2018/02/08/shellSort/" class="article-date">
-	  <time datetime="2018-02-08T08:19:32.000Z" itemprop="datePublished">February 8, 2018</time>
+	Posted on <a href="/2018/03/09/mergeSort/" class="article-date">
+	  <time datetime="2018-03-09T08:05:22.000Z" itemprop="datePublished">March 9, 2018</time>
 	</a>
 
       
@@ -199,19 +199,25 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>常见的内部排序算法有：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序、基数排序等。这里主要介绍希尔排序</p>
+        <p>常见的内部排序算法有：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序、基数排序等。这里主要介绍归并排序</p>
 <p>排序算法总览：</p>
-<p><img src="/2018/02/08/shellSort/sort.png" alt=""></p>
-<h2 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h2><p><img src="/2018/02/08/shellSort/shellSort.jpeg" alt=""></p>
-<p>希尔排序(Shell’s Sort)也称递减增量排序算法，是插入排序的一种更高效的改进版本。但希尔排序是非稳定排序算法。<br>希尔排序是基于插入排序的以下两点性质而提出改进方法的：</p>
-<ul>
-<li>插入排序在对几乎已经排好序的数据操作时，效率高，即可以达到线性排序的效率；</li>
-<li>但插入排序一般来说是低效的，因为插入排序每次只能将数据移动一位；</li>
-</ul>
-<p>希尔排序的基本思想是：先将整个待排序的记录序列分割成为若干子序列分别进行直接插入排序，待整个序列中的记录基本有序时，再对全体记录进行依次直接插入排序。</p>
-<a id="more"></a>
-<h2 id="插入排序算法回顾"><a href="#插入排序算法回顾" class="headerlink" title="插入排序算法回顾"></a>插入排序算法回顾</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insertSort</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> len = arr.length;</span><br><span class="line">  <span class="keyword">var</span> temp;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>; i&lt;len<span class="number">-1</span>; i++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(arr[i<span class="number">-1</span>] &gt; arr[i])&#123;</span><br><span class="line">      temp = arr[i];</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">var</span> j = i<span class="number">-1</span>; j &gt;= <span class="number">0</span> &amp;&amp; arr[j] &gt; temp; j--)&#123;</span><br><span class="line">        arr[j+<span class="number">1</span>] = arr[j];</span><br><span class="line">      &#125;</span><br><span class="line">      arr[j+<span class="number">1</span>] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="希尔排序算法实现"><a href="#希尔排序算法实现" class="headerlink" title="希尔排序算法实现"></a>希尔排序算法实现</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shellSort</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> len = arr.length;</span><br><span class="line">  <span class="keyword">var</span> temp;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> gap = <span class="built_in">Math</span>.floor(len/<span class="number">2</span>); gap &gt; <span class="number">0</span>; gap = <span class="built_in">Math</span>.floor(gap/<span class="number">2</span>))&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=gap; i&lt;len; i++)&#123;</span><br><span class="line">      <span class="keyword">if</span>(arr[i-gap] &gt; arr[i])&#123;</span><br><span class="line">        temp = arr[i];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j = i-gap; j &gt;= <span class="number">0</span> &amp;&amp; arr[j] &gt; temp; j -= gap)&#123;</span><br><span class="line">          arr[j+gap] = arr[j];</span><br><span class="line">        &#125;</span><br><span class="line">        arr[j+gap] = temp;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试</span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">3</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">8</span>];</span><br><span class="line"><span class="keyword">var</span> arrSorted = shellSort(arr);</span><br><span class="line"><span class="built_in">console</span>.log(arrSorted);</span><br><span class="line"><span class="comment">// 控制台将输出：[1, 2, 3, 4, 5, 6, 7, 8, 9]</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2018/03/09/mergeSort/sort.png" alt=""></p>
+<h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><p><img src="/2018/03/09/mergeSort/mergesort.gif" alt=""><br>归并排序（MERGE-SORT）是建立在归并操作上的一种有效的排序算法,该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为二路归并。</p>
+<p>归并排序可以使用递归和迭代两种方式进行实现</p>
+<h3 id="递归法（Top-down）"><a href="#递归法（Top-down）" class="headerlink" title="递归法（Top-down）"></a>递归法（Top-down）</h3><ol>
+<li>申请空间，使其大小为两个已经排序序列之和，该空间用来存放合并后的序列</li>
+<li>设定两个指针，最初位置分别为两个已经排序序列的起始位置</li>
+<li>比较两个指针所指向的元素，选择相对小的元素放入到合并空间，并移动指针到下一位置</li>
+<li>重复步骤3直到某一指针到达序列尾</li>
+<li>将另一序列剩下的所有元素直接复制到合并序列尾</li>
+</ol>
+<h3 id="迭代法（Bottom-up）"><a href="#迭代法（Bottom-up）" class="headerlink" title="迭代法（Bottom-up）"></a>迭代法（Bottom-up）</h3><p>原理如下（假设序列共有n个元素）：</p>
+<ol>
+<li>将序列每相邻两个数字进行归并操作，形成 ceil(n/2)个序列，排序后每个序列包含两/一个元素</li>
+<li>若此时序列数不是1个则将上述序列再次归并，形成 ceil(n/4)个序列，每个序列包含四/三个元素</li>
+<li>重复步骤2，直到所有元素排序完毕，即序列数为1</li>
+</ol>
+<h3 id="JavaScrpt"><a href="#JavaScrpt" class="headerlink" title="JavaScrpt"></a>JavaScrpt</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mergeSort</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> len = arr.length;</span><br><span class="line">  <span class="keyword">if</span>(len &lt;= <span class="number">1</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> mid = <span class="built_in">Math</span>.floor(len/<span class="number">2</span>)</span><br><span class="line">  <span class="keyword">var</span> left = arr.slice(<span class="number">0</span>, mid);</span><br><span class="line">  <span class="keyword">var</span> right = arr.slice(mid);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> merge(mergeSort(left), mergeSort(right))</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">merge</span>(<span class="params">left, right</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> result = [];</span><br><span class="line">  <span class="keyword">while</span>(left.length &gt; <span class="number">0</span> &amp;&amp; right.length &gt; <span class="number">0</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(left[<span class="number">0</span>] &lt; right[<span class="number">0</span>])&#123;</span><br><span class="line">      result.push(left.shift())</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      result.push(right.shift())</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result.concat(left).concat(right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -269,19 +275,19 @@ var a = new Donate({
     
 <nav id="article-nav">
   
-    <a href="/2018/03/09/mergeSort/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/03/09/heapSort/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          排序算法之归并排序
+          排序算法之堆排序
         
       </div>
     </a>
   
   
-    <a href="/2018/02/08/straightInsertionSort/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/02/08/shellSort/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">排序算法之直接插入排序</div>
+      <div class="article-nav-title">排序算法之希尔排序</div>
     </a>
   
 </nav>
@@ -295,7 +301,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#希尔排序"><span class="nav-number">1.</span> <span class="nav-text">希尔排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入排序算法回顾"><span class="nav-number">2.</span> <span class="nav-text">插入排序算法回顾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#希尔排序算法实现"><span class="nav-number">3.</span> <span class="nav-text">希尔排序算法实现</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#归并排序"><span class="nav-number">1.</span> <span class="nav-text">归并排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#递归法（Top-down）"><span class="nav-number">1.1.</span> <span class="nav-text">递归法（Top-down）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代法（Bottom-up）"><span class="nav-number">1.2.</span> <span class="nav-text">迭代法（Bottom-up）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScrpt"><span class="nav-number">1.3.</span> <span class="nav-text">JavaScrpt</span></a></li></ol></li></ol>
     
     </div>
   </aside>
