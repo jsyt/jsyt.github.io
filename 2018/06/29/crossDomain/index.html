@@ -21,19 +21,19 @@
   
   
   
-  <meta name="description" content="跨域是由于浏览器同源策略导致的，所以跨域只存在于浏览器端，非浏览器端不存在跨域问题，浏览器对跨域的请求、应答都能正常发送接收，只是浏览器在接收跨域应答时，将应答拦截了，所以我们需要一些额外的处理或设置让浏览器将跨域的应答返回给我们。 常见的跨域处理方式有： jsonp CORS iframe + postMessage iframe + window.name iframe + location.">
+  <meta name="description" content="跨域是由于浏览器同源策略导致的，所以跨域只存在于浏览器端，非浏览器端不存在跨域问题，浏览器对跨域的请求、应答都能正常发送接收，只是浏览器在接收跨域应答时，将应答拦截了，所以我们需要一些额外的处理或设置让浏览器将跨域的应答返回给我们。">
 <meta name="keywords" content="cross-domain">
 <meta property="og:type" content="article">
 <meta property="og:title" content="常见跨域方式梳理">
 <meta property="og:url" content="http://www.goyth.com/2018/06/29/crossDomain/index.html">
 <meta property="og:site_name" content="GOYTH">
-<meta property="og:description" content="跨域是由于浏览器同源策略导致的，所以跨域只存在于浏览器端，非浏览器端不存在跨域问题，浏览器对跨域的请求、应答都能正常发送接收，只是浏览器在接收跨域应答时，将应答拦截了，所以我们需要一些额外的处理或设置让浏览器将跨域的应答返回给我们。 常见的跨域处理方式有： jsonp CORS iframe + postMessage iframe + window.name iframe + location.">
+<meta property="og:description" content="跨域是由于浏览器同源策略导致的，所以跨域只存在于浏览器端，非浏览器端不存在跨域问题，浏览器对跨域的请求、应答都能正常发送接收，只是浏览器在接收跨域应答时，将应答拦截了，所以我们需要一些额外的处理或设置让浏览器将跨域的应答返回给我们。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.goyth.com/2018/06/29/crossDomain/cors.png">
-<meta property="og:updated_time" content="2018-06-30T11:14:49.943Z">
+<meta property="og:updated_time" content="2018-06-30T11:16:00.675Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常见跨域方式梳理">
-<meta name="twitter:description" content="跨域是由于浏览器同源策略导致的，所以跨域只存在于浏览器端，非浏览器端不存在跨域问题，浏览器对跨域的请求、应答都能正常发送接收，只是浏览器在接收跨域应答时，将应答拦截了，所以我们需要一些额外的处理或设置让浏览器将跨域的应答返回给我们。 常见的跨域处理方式有： jsonp CORS iframe + postMessage iframe + window.name iframe + location.">
+<meta name="twitter:description" content="跨域是由于浏览器同源策略导致的，所以跨域只存在于浏览器端，非浏览器端不存在跨域问题，浏览器对跨域的请求、应答都能正常发送接收，只是浏览器在接收跨域应答时，将应答拦截了，所以我们需要一些额外的处理或设置让浏览器将跨域的应答返回给我们。">
 <meta name="twitter:image" content="http://www.goyth.com/2018/06/29/crossDomain/cors.png">
   
     <link rel="alternate" href="/atom.xml" title="GOYTH" type="application/atom+xml">
@@ -199,6 +199,7 @@ var themeMenus = {};
     <div class="article-entry" itemprop="articleBody">
       
         <p>跨域是由于<a href="http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html" target="_blank" rel="noopener">浏览器同源策略</a>导致的，所以跨域只存在于浏览器端，非浏览器端不存在跨域问题，浏览器对跨域的请求、应答都能正常发送接收，只是浏览器在接收跨域应答时，将应答拦截了，所以我们需要一些额外的处理或设置让浏览器将跨域的应答返回给我们。</p>
+<a id="more"></a>
 <h4 id="常见的跨域处理方式有："><a href="#常见的跨域处理方式有：" class="headerlink" title="常见的跨域处理方式有："></a>常见的跨域处理方式有：</h4><ul>
 <li>jsonp</li>
 <li>CORS</li>
