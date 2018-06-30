@@ -13,22 +13,28 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>GOYTH</title>
+  <title>常见跨域方式梳理 | GOYTH</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
+  <meta name="keywords" content="cross-domain" />
   
   
   
-  <meta name="description" content="I hear and I forget, I see and I remember, I do and I understand.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="GOYTH">
-<meta property="og:url" content="http://www.goyth.com/index.html">
+  
+  <meta name="description" content="跨域是由于浏览器同源策略导致的，所以跨域只存在于浏览器端，非浏览器端不存在跨域问题，浏览器对跨域的请求、应答都能正常发送接收，只是浏览器在接收跨域应答时，将应答拦截了，所以我们需要一些额外的处理或设置让浏览器将跨域的应答返回给我们。 常见的跨域处理方式有： jsonp CORS iframe + postMessage iframe + window.name iframe + location.">
+<meta name="keywords" content="cross-domain">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常见跨域方式梳理">
+<meta property="og:url" content="http://www.goyth.com/2018/06/29/crossDomain/index.html">
 <meta property="og:site_name" content="GOYTH">
-<meta property="og:description" content="I hear and I forget, I see and I remember, I do and I understand.">
+<meta property="og:description" content="跨域是由于浏览器同源策略导致的，所以跨域只存在于浏览器端，非浏览器端不存在跨域问题，浏览器对跨域的请求、应答都能正常发送接收，只是浏览器在接收跨域应答时，将应答拦截了，所以我们需要一些额外的处理或设置让浏览器将跨域的应答返回给我们。 常见的跨域处理方式有： jsonp CORS iframe + postMessage iframe + window.name iframe + location.">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.goyth.com/2018/06/29/crossDomain/cors.png">
+<meta property="og:updated_time" content="2018-06-30T11:14:49.943Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GOYTH">
-<meta name="twitter:description" content="I hear and I forget, I see and I remember, I do and I understand.">
+<meta name="twitter:title" content="常见跨域方式梳理">
+<meta name="twitter:description" content="跨域是由于浏览器同源策略导致的，所以跨域只存在于浏览器端，非浏览器端不存在跨域问题，浏览器对跨域的请求、应答都能正常发送接收，只是浏览器在接收跨域应答时，将应答拦截了，所以我们需要一些额外的处理或设置让浏览器将跨域的应答返回给我们。 常见的跨域处理方式有： jsonp CORS iframe + postMessage iframe + window.name iframe + location.">
+<meta name="twitter:image" content="http://www.goyth.com/2018/06/29/crossDomain/cors.png">
   
     <link rel="alternate" href="/atom.xml" title="GOYTH" type="application/atom+xml">
   
@@ -86,7 +92,7 @@ var themeMenus = {};
 </script>
 
 
-  <body>
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
   <header id="allheader" class="site-header" role="banner">
@@ -164,17 +170,15 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main">
-  
-    <article id="post-crossDomain"  class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-crossDomain" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
       <header class="article-header">
         
   
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/06/29/crossDomain/">常见跨域方式梳理</a>
+    <h1 class="thumb" class="article-title" itemprop="name">
+      常见跨域方式梳理
     </h1>
   
 
@@ -187,6 +191,10 @@ var themeMenus = {};
 	</a>
 
       
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
@@ -347,826 +355,73 @@ var themeMenus = {};
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cross-domain/">cross-domain</a></li></ul>
 
       
-            
-      
-    </footer>
-  </div>
-  
-</article>
+        <div id="donation_div"></div>
 
-<!-- Table of Contents -->
-
-  
-    <article id="post-applyAndCall"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/05/27/applyAndCall/">JavaScript之apply、call和bind的模拟实现</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/05/27/applyAndCall/" class="article-date">
-	  <time datetime="2018-05-27T09:25:50.000Z" itemprop="datePublished">May 27, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-thumbnail">
-              <a href="/2018/05/27/applyAndCall/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/9" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-            </div>
-            <div class="entry-summary">
-            apply()apply 方法传入两个参数：一个是作为函数上下文的对象，另外一个是作为函数参数所组成的数组。当第一个参数为 null 时，函数上下文为 window。
-123456789var obj = &#123;    name : 'luke'&#125;function func(age, gender)&#123;    console.log(this.name + ' ' +...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2018/05/27/applyAndCall/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-reflowAndRepaint"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/05/25/reflowAndRepaint/">浏览器渲染之回流（Reflow）与重绘（Repaint）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/05/25/reflowAndRepaint/" class="article-date">
-	  <time datetime="2018-05-25T10:39:42.000Z" itemprop="datePublished">May 25, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-thumbnail">
-              <a href="/2018/05/25/reflowAndRepaint/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/7" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-            </div>
-            <div class="entry-summary">
-            浏览器渲染流程浏览器渲染流程如下图所示：
-
-大概可以划分成以下几个步骤：
-
-通过HTML解析器解析HTML文本并构建DOM tree
-通过CSS解析器解析CSS样式表并构建CSSOM tree
-根据DOM tree 和 CSSOM tree 构建 Render tree
-Render tree 刚构建完后是没有元素节点坐标、尺寸大小等信息的，此时需要通过Reflow(Layout)进行布...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2018/05/25/reflowAndRepaint/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/Browser/">Browser</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reflow/">Reflow</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Repaint/">Repaint</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-nsum"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/05/25/nsum/">N-Sum 问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/05/25/nsum/" class="article-date">
-	  <time datetime="2018-05-25T09:26:18.000Z" itemprop="datePublished">May 25, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-thumbnail">
-              <a href="/2018/05/25/nsum/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/4" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-            </div>
-            <div class="entry-summary">
-            问题描述给定一个包含多个整数且排好序的数组 nums 和一个目标值 target，判断 nums 中是否存在 N(N&gt;1) 个元素，使得 N 个元素之和与 target 相等？找出所有满足条件且不重复的N元组。
-解题思路通过递归降幂将 N-Sum问题 降幂到 2-Sum 问题，然后采用两边加逼的办法求解
-
-JavaScript 版本123456789101112131415161718...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2018/05/25/nsum/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/Algorithm/">Algorithm</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sort/">Sort</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-browserRendering"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/05/23/browserRendering/">浏览器页面渲染流程梳理</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/05/23/browserRendering/" class="article-date">
-	  <time datetime="2018-05-23T09:14:52.000Z" itemprop="datePublished">May 23, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-thumbnail">
-              <a href="/2018/05/23/browserRendering/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/9" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-            </div>
-            <div class="entry-summary">
-            浏览器渲染基本流程浏览器渲染流程如下图所示：
-图片来源：https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/
-大概可以划分成以下几个步骤：
-
-通过HTML解析器解析HTML文本并构建DOM tree
-通过CSS解析器解析CSS样式表并构建CSSOM tree
-根据DOM tree 和 CSSOM tree 构建 ...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2018/05/23/browserRendering/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/Browser/">Browser</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Browser-rendering/">Browser rendering</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-debounceAndThrottle"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/05/10/debounceAndThrottle/">JavaScript之函数防抖与节流</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/05/10/debounceAndThrottle/" class="article-date">
-	  <time datetime="2018-05-10T08:31:07.000Z" itemprop="datePublished">May 10, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-thumbnail">
-              <a href="/2018/05/10/debounceAndThrottle/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/4" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-            </div>
-            <div class="entry-summary">
-            函数防抖（debounce)函数防抖是指在函数调用动作触发n秒后才开始执行，n秒内若再次触发，则重新开始计时，再次等待n秒后才开始执行。如果n秒内不断触发，那就不断重新开始计时，一直等到有一个n秒内没有触发，才开始执行此函数。
-根据描述，我们可以用setTimeout来实现一个简单版的防抖函数
-
-第一版1234567891011／*** @ fn 回调函数 * @ delay 延迟时间 *／...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2018/05/10/debounceAndThrottle/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Debounce/">Debounce</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Throttle/">Throttle</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-dockerDeploy"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/05/08/dockerDeploy/">基于 Docker 构建前端持续集成开发环境</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/05/08/dockerDeploy/" class="article-date">
-	  <time datetime="2018-05-08T09:24:13.000Z" itemprop="datePublished">May 8, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-thumbnail">
-              <a href="/2018/05/08/dockerDeploy/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/4" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-            </div>
-            <div class="entry-summary">
-            本文将以一个标准的 Vue 项目为例，完全抛弃传统的前端项目开发部署方式，基于 Docker 容器技术打造一个精简的前端持续集成的开发环境。
-前置知识：
-CI（持续集成）：阮一峰老师的关于 CI 的介绍
-
-Docker： Docker 快速入门
-
-
-目标：
-代码无需在本地构建
-
-只需将代码推上 Github ，自动构建 -&gt; 部署
-
-版本易管理，可轻松回退版本
-
-
-
-现在开始进入主题第...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2018/05/08/dockerDeploy/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/Docker/">Docker</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-prototypeAndExtend"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/04/23/prototypeAndExtend/">JavaScript 原型链与继承</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/04/23/prototypeAndExtend/" class="article-date">
-	  <time datetime="2018-04-23T04:23:43.000Z" itemprop="datePublished">April 23, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-thumbnail">
-              <a href="/2018/04/23/prototypeAndExtend/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/5" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-            </div>
-            <div class="entry-summary">
-            原型对象无论什么时候，只要创建一个新函数，就会根据一组特定的规则为该函数创建一个 prototype 属性，这个属性指向函数的原型对象。默认情况下，所有原型对象都会自动获得一个 constructor（构造函数）属性，这个属性指向 prototype 属性所在的函数。
-
-12function Person()&#123;&#125;
-
-当我们用构造函数创建一个实例时，也会为这个实例创建一个 ...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2018/04/23/prototypeAndExtend/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Extend/">Extend</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Prototype/">Prototype</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-JSRegExp"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/04/01/JSRegExp/">JS 的正则表达式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/04/01/JSRegExp/" class="article-date">
-	  <time datetime="2018-04-01T08:22:03.000Z" itemprop="datePublished">April 1, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-thumbnail">
-              <a href="/2018/04/01/JSRegExp/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/8" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-            </div>
-            <div class="entry-summary">
-            正则表达式一种几乎可以在所有的程序设计语言里和所有的计算机平台上使用的文字处理工具。它可以用来查找特定的信息（搜索），也可以用来查找并编辑特定的信息（替换）。核心是 匹配，匹配位置或者匹配字符
-
-先简单的介绍一下语法基本元字符
-.： 匹配除了换行符之外的任何单个字符
-\ ： 在非特殊字符之前的反斜杠表示下一个字符是特殊的，不能从字面上解释。例如，没有前\的&#39;b&#39;通常匹配小写&...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2018/04/01/JSRegExp/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RegExp/">RegExp</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-heapSort"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/02/09/heapSort/">排序算法之堆排序</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/02/09/heapSort/" class="article-date">
-	  <time datetime="2018-02-09T14:06:52.000Z" itemprop="datePublished">February 9, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-thumbnail">
-              <a href="/2018/02/09/heapSort/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/9" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-            </div>
-            <div class="entry-summary">
-            常见的内部排序算法有：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序、基数排序等。这里主要介绍堆排序
-排序算法总览：
-
-堆排序
-不得不说说二叉树要了解堆首先得了解一下二叉树，在计算机科学中，二叉树是每个节点最多有两个子树的树结构。通常子树被称作“左子树”（left subtree）和“右子树”（right subtree）。二叉树常被用于实现二叉查找树和二叉堆。
-二叉树的...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2018/02/09/heapSort/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/Algorithm/">Algorithm</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sort/">Sort</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next</a>
-  </nav>
-
-</section>
-          <aside id="sidebar">
-  
-    <div class="widget-wrap" style="margin: 20px 0;">
-	<div id="search-form-wrap">
-
-    <form class="search-form">
-        <label style="width: 75%;">
-            <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 42px;" placeholder=" Search…" value="" name="s" title="Search for:">
-        </label>
-        <input type="submit" class="search-form-submit" value="Search">
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
+<script src="/js/vdonate.js"></script>
 <script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://raw.githubusercontent.com/jsyt/jsyt.github.io/master/images/WeChat.JPG',
+  alipayImage: 'https://raw.githubusercontent.com/jsyt/jsyt.github.io/master/images/ALiPay.JPG'
+});
 </script>
-<script src="/js/insight.js"></script>
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
 
-</div>
-</div>
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
   
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Connect With Us</h3>
-    <div class="widget widget_athemes_social_icons">
-
-    	<ul class="clearfix widget-social-icons">   
-    	
-          
-     			  <li><a href="https://github.com/jsyt" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-            <li><a href="mailto:hyt577@gmail.com?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
-          
-   		
-   		</ul>
-
-
-   		<!--
-   		<ul class="clearfix widget-social-icons">   		
-   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
-		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
-			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
-			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
-			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
-			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
-		</ul> -->
-
-    </div>
-  </div>
-
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/27/applyAndCall/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JavaScript之apply、call和bind的模拟实现</div>
+    </a>
+  
+</nav>
 
   
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">7</span></li></ul>
-    </div>
-  </div>
-
-
-  
+      <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#常见的跨域处理方式有："><span class="nav-number">1.</span> <span class="nav-text">常见的跨域处理方式有：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jsonp-跨域"><span class="nav-number"></span> <span class="nav-text">jsonp 跨域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CORS-跨域资源共享"><span class="nav-number"></span> <span class="nav-text">CORS(跨域资源共享)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单请求"><span class="nav-number"></span> <span class="nav-text">简单请求</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本流程"><span class="nav-number">1.</span> <span class="nav-text">基本流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#withCredentials-属性"><span class="nav-number">2.</span> <span class="nav-text">withCredentials 属性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非简单请求"><span class="nav-number"></span> <span class="nav-text">非简单请求</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#预检请求"><span class="nav-number">1.</span> <span class="nav-text">预检请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#预检请求的回应"><span class="nav-number">2.</span> <span class="nav-text">预检请求的回应</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#浏览器的正常请求和回应"><span class="nav-number">3.</span> <span class="nav-text">浏览器的正常请求和回应</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与JSONP的比较"><span class="nav-number"></span> <span class="nav-text">与JSONP的比较</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iframe-postMessage"><span class="nav-number"></span> <span class="nav-text">iframe + postMessage</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#postMessage的使用方法："><span class="nav-number"></span> <span class="nav-text">postMessage的使用方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#message-的属性有"><span class="nav-number"></span> <span class="nav-text">message 的属性有:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iframe-window-name"><span class="nav-number"></span> <span class="nav-text">iframe + window.name</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iframe-location-hash"><span class="nav-number"></span> <span class="nav-text">iframe + location.hash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iframe-domain"><span class="nav-number"></span> <span class="nav-text">iframe + domain</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx代理跨域"><span class="nav-number"></span> <span class="nav-text">nginx代理跨域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx配置解决iconfont跨域"><span class="nav-number"></span> <span class="nav-text">nginx配置解决iconfont跨域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx反向代理接口跨域"><span class="nav-number"></span> <span class="nav-text">nginx反向代理接口跨域</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nodejs中间件代理跨域"><span class="nav-number"></span> <span class="nav-text">Nodejs中间件代理跨域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#非vue框架的跨域（2次跨域）"><span class="nav-number"></span> <span class="nav-text">非vue框架的跨域（2次跨域）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue框架的跨域（1次跨域）"><span class="nav-number"></span> <span class="nav-text">vue框架的跨域（1次跨域）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WebSocket协议跨域"><span class="nav-number"></span> <span class="nav-text">WebSocket协议跨域</span></a>
     
-  <div class="widget_athemes_tabs">
-    <ul id="widget-tab" class="clearfix widget-tab-nav">
-      <li class="active"><a>Recent Posts</a></li>
-    </ul>
-    <div class="widget">
-      <ul>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2018/06/29/crossDomain/">常见跨域方式梳理</a></h6>
-              <span>June 29, 2018</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2018/05/27/applyAndCall/">JavaScript之apply、call和bind的模拟实现</a></h6>
-              <span>May 27, 2018</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2018/05/25/reflowAndRepaint/">浏览器渲染之回流（Reflow）与重绘（Repaint）</a></h6>
-              <span>May 25, 2018</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2018/05/25/nsum/">N-Sum 问题</a></h6>
-              <span>May 25, 2018</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2018/05/23/browserRendering/">浏览器页面渲染流程梳理</a></h6>
-              <span>May 23, 2018</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2018/05/10/debounceAndThrottle/">JavaScript之函数防抖与节流</a></h6>
-              <span>May 10, 2018</span>
-            </div>
-
-          </li>
-        
-      </ul>
     </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Browser/">Browser</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">5</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Browser-rendering/">Browser rendering</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Debounce/">Debounce</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Extend/">Extend</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Prototype/">Prototype</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reflow/">Reflow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RegExp/">RegExp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Repaint/">Repaint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sort/">Sort</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Throttle/">Throttle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cross-domain/">cross-domain</a><span class="tag-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Browser-rendering/" style="font-size: 10px;">Browser rendering</a> <a href="/tags/Debounce/" style="font-size: 10px;">Debounce</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Extend/" style="font-size: 10px;">Extend</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Prototype/" style="font-size: 10px;">Prototype</a> <a href="/tags/Reflow/" style="font-size: 10px;">Reflow</a> <a href="/tags/RegExp/" style="font-size: 10px;">RegExp</a> <a href="/tags/Repaint/" style="font-size: 10px;">Repaint</a> <a href="/tags/Sort/" style="font-size: 20px;">Sort</a> <a href="/tags/Throttle/" style="font-size: 10px;">Throttle</a> <a href="/tags/cross-domain/" style="font-size: 10px;">cross-domain</a>
-    </div>
-  </div>
-
-  
-</aside>
+  </aside>
+</section>
         
       </div>
       <footer id="footer" class="site-footer">
