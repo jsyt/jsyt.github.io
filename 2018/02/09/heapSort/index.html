@@ -21,13 +21,13 @@
   
   
   
-  <meta name="description" content="常见的内部排序算法有：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序、基数排序等。这里主要介绍堆排序 排序算法总览：  堆排序 不得不说说二叉树要了解堆首先得了解一下二叉树，在计算机科学中，二叉树是每个节点最多有两个子树的树结构。通常子树被称作“左子树”（left subtree）和“右子树”（right subtree）。二叉树常被用于实现二叉查找树和二叉堆。 二叉树的每个结">
+  <meta name="description" content="常见的内部排序算法有：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序等。这里主要介绍快速排序 排序算法总览：  堆排序 不得不说说二叉树要了解堆首先得了解一下二叉树，在计算机科学中，二叉树是每个节点最多有两个子树的树结构。通常子树被称作“左子树”（left subtree）和“右子树”（right subtree）。二叉树常被用于实现二叉查找树和二叉堆。 二叉树的每个结点至多只">
 <meta name="keywords" content="Sort">
 <meta property="og:type" content="article">
 <meta property="og:title" content="排序算法之堆排序">
 <meta property="og:url" content="http://www.goyth.com/2018/02/09/heapSort/index.html">
 <meta property="og:site_name" content="GOYTH">
-<meta property="og:description" content="常见的内部排序算法有：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序、基数排序等。这里主要介绍堆排序 排序算法总览：  堆排序 不得不说说二叉树要了解堆首先得了解一下二叉树，在计算机科学中，二叉树是每个节点最多有两个子树的树结构。通常子树被称作“左子树”（left subtree）和“右子树”（right subtree）。二叉树常被用于实现二叉查找树和二叉堆。 二叉树的每个结">
+<meta property="og:description" content="常见的内部排序算法有：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序等。这里主要介绍快速排序 排序算法总览：  堆排序 不得不说说二叉树要了解堆首先得了解一下二叉树，在计算机科学中，二叉树是每个节点最多有两个子树的树结构。通常子树被称作“左子树”（left subtree）和“右子树”（right subtree）。二叉树常被用于实现二叉查找树和二叉堆。 二叉树的每个结点至多只">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.goyth.com/2018/02/09/heapSort/sort.png">
 <meta property="og:image" content="http://www.goyth.com/2018/02/09/heapSort/heapSort1.gif">
@@ -41,10 +41,10 @@
 <meta property="og:image" content="http://www.goyth.com/2018/02/09/heapSort/heapSort9.png">
 <meta property="og:image" content="http://www.goyth.com/2018/02/09/heapSort/heapSort10.png">
 <meta property="og:image" content="http://www.goyth.com/2018/02/09/heapSort/heapSort11.png">
-<meta property="og:updated_time" content="2018-05-30T10:49:37.770Z">
+<meta property="og:updated_time" content="2018-07-04T06:01:35.051Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序算法之堆排序">
-<meta name="twitter:description" content="常见的内部排序算法有：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序、基数排序等。这里主要介绍堆排序 排序算法总览：  堆排序 不得不说说二叉树要了解堆首先得了解一下二叉树，在计算机科学中，二叉树是每个节点最多有两个子树的树结构。通常子树被称作“左子树”（left subtree）和“右子树”（right subtree）。二叉树常被用于实现二叉查找树和二叉堆。 二叉树的每个结">
+<meta name="twitter:description" content="常见的内部排序算法有：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序等。这里主要介绍快速排序 排序算法总览：  堆排序 不得不说说二叉树要了解堆首先得了解一下二叉树，在计算机科学中，二叉树是每个节点最多有两个子树的树结构。通常子树被称作“左子树”（left subtree）和“右子树”（right subtree）。二叉树常被用于实现二叉查找树和二叉堆。 二叉树的每个结点至多只">
 <meta name="twitter:image" content="http://www.goyth.com/2018/02/09/heapSort/sort.png">
   
     <link rel="alternate" href="/atom.xml" title="GOYTH" type="application/atom+xml">
@@ -209,7 +209,7 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>常见的内部排序算法有：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序、基数排序等。这里主要介绍堆排序</p>
+        <p>常见的内部排序算法有：<a href="http://www.goyth.com/2018/02/08/bubbleSort/">冒泡排序</a>、<a href="http://www.goyth.com/2018/02/08/selectionSort/">选择排序</a>、<a href="http://www.goyth.com/2018/02/08/straightInsertionSort/">插入排序</a>、<a href="http://www.goyth.com/2018/02/08/shellSort/">希尔排序</a>、<a href="http://www.goyth.com/2018/02/09/mergeSort/">归并排序</a>、<a href="http://www.goyth.com/2018/02/09/quickSort/">快速排序</a>、<a href="http://www.goyth.com/2018/02/09/heapSort/">堆排序</a>等。这里主要介绍快速排序</p>
 <p>排序算法总览：</p>
 <p><img src="/2018/02/09/heapSort/sort.png" alt=""></p>
 <h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><p><img src="/2018/02/09/heapSort/heapSort1.gif" alt=""></p>

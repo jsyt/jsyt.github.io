@@ -21,20 +21,20 @@
   
   
   
-  <meta name="description" content="常见的内部排序算法有：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序、基数排序等。这里主要介绍选择排序 排序算法总览：  选择排序 选择排序（Selection sort）是一种简单直观的排序算法。它的工作原理是每一次从待排序的数据元素中选出最小（或最大）的一个元素，存放在序列的起始位置，直到全部待排序的数据元素排完。 选择排序是不稳定的排序方法（比如序列[5， 5， 3]第一">
+  <meta name="description" content="常见的内部排序算法有：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序等。这里主要介绍快速排序 排序算法总览：  选择排序 选择排序（Selection sort）是一种简单直观的排序算法。它的工作原理是每一次从待排序的数据元素中选出最小（或最大）的一个元素，存放在序列的起始位置，直到全部待排序的数据元素排完。 选择排序是不稳定的排序方法（比如序列[5， 5， 3]第一次就将第一">
 <meta name="keywords" content="Sort">
 <meta property="og:type" content="article">
 <meta property="og:title" content="排序算法之选择排序">
 <meta property="og:url" content="http://www.goyth.com/2018/02/08/selectionSort/index.html">
 <meta property="og:site_name" content="GOYTH">
-<meta property="og:description" content="常见的内部排序算法有：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序、基数排序等。这里主要介绍选择排序 排序算法总览：  选择排序 选择排序（Selection sort）是一种简单直观的排序算法。它的工作原理是每一次从待排序的数据元素中选出最小（或最大）的一个元素，存放在序列的起始位置，直到全部待排序的数据元素排完。 选择排序是不稳定的排序方法（比如序列[5， 5， 3]第一">
+<meta property="og:description" content="常见的内部排序算法有：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序等。这里主要介绍快速排序 排序算法总览：  选择排序 选择排序（Selection sort）是一种简单直观的排序算法。它的工作原理是每一次从待排序的数据元素中选出最小（或最大）的一个元素，存放在序列的起始位置，直到全部待排序的数据元素排完。 选择排序是不稳定的排序方法（比如序列[5， 5， 3]第一次就将第一">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.goyth.com/2018/02/08/selectionSort/sort.png">
 <meta property="og:image" content="http://www.goyth.com/2018/02/08/selectionSort/selectSort.png">
-<meta property="og:updated_time" content="2018-05-28T14:15:50.634Z">
+<meta property="og:updated_time" content="2018-07-04T06:01:16.748Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序算法之选择排序">
-<meta name="twitter:description" content="常见的内部排序算法有：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序、基数排序等。这里主要介绍选择排序 排序算法总览：  选择排序 选择排序（Selection sort）是一种简单直观的排序算法。它的工作原理是每一次从待排序的数据元素中选出最小（或最大）的一个元素，存放在序列的起始位置，直到全部待排序的数据元素排完。 选择排序是不稳定的排序方法（比如序列[5， 5， 3]第一">
+<meta name="twitter:description" content="常见的内部排序算法有：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序等。这里主要介绍快速排序 排序算法总览：  选择排序 选择排序（Selection sort）是一种简单直观的排序算法。它的工作原理是每一次从待排序的数据元素中选出最小（或最大）的一个元素，存放在序列的起始位置，直到全部待排序的数据元素排完。 选择排序是不稳定的排序方法（比如序列[5， 5， 3]第一次就将第一">
 <meta name="twitter:image" content="http://www.goyth.com/2018/02/08/selectionSort/sort.png">
   
     <link rel="alternate" href="/atom.xml" title="GOYTH" type="application/atom+xml">
@@ -199,7 +199,7 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>常见的内部排序算法有：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序、基数排序等。这里主要介绍选择排序</p>
+        <p>常见的内部排序算法有：<a href="http://www.goyth.com/2018/02/08/bubbleSort/">冒泡排序</a>、<a href="http://www.goyth.com/2018/02/08/selectionSort/">选择排序</a>、<a href="http://www.goyth.com/2018/02/08/straightInsertionSort/">插入排序</a>、<a href="http://www.goyth.com/2018/02/08/shellSort/">希尔排序</a>、<a href="http://www.goyth.com/2018/02/09/mergeSort/">归并排序</a>、<a href="http://www.goyth.com/2018/02/09/quickSort/">快速排序</a>、<a href="http://www.goyth.com/2018/02/09/heapSort/">堆排序</a>等。这里主要介绍快速排序</p>
 <p>排序算法总览：</p>
 <p><img src="/2018/02/08/selectionSort/sort.png" alt=""></p>
 <h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p><img src="/2018/02/08/selectionSort/selectSort.png" alt=""></p>
