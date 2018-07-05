@@ -44,7 +44,7 @@
 <meta property="og:image" content="http://www.goyth.com/2018/07/04/TcpIp/tcp13">
 <meta property="og:image" content="http://www.goyth.com/2018/07/04/TcpIp/tcp14">
 <meta property="og:image" content="http://www.goyth.com/2018/07/04/TcpIp/tcp15">
-<meta property="og:updated_time" content="2018-07-04T15:00:28.452Z">
+<meta property="og:updated_time" content="2018-07-05T13:16:57.385Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TCP&#x2F;IP 协议知识点梳理">
 <meta name="twitter:description" content="TCP/IP协议TCP/IP协议模型（Transmission Control Protocol/Internet Protocol），包含了一系列构成互联网基础的网络协议，是Internet的核心协议。 TCP/IP 协议分层模型基于TCP/IP的参考模型将协议分成四个层次，它们分别是链路层、网络层、传输层和应用层。下图表示TCP/IP模型与OSI模型各层的对照关系。">
@@ -293,7 +293,7 @@ var themeMenus = {};
 <p><img src="/2018/07/04/TcpIp/tcp12" alt=""></p>
 <p>无论在慢开始阶段还是在拥塞避免阶段，只要发送方判断网络出现拥塞（其根据就是没有收到确认），就要把慢开始门限ssthresh设置为出现拥塞时的发送 方窗口值的一半（但不能小于2）。然后把拥塞窗口cwnd重新设置为1，执行慢开始算法。<br>这样做的目的就是要迅速减少主机发送到网络中的分组数，使得发生 拥塞的路由器有足够时间把队列中积压的分组处理完毕。<br>如下图，用具体数值说明了上述拥塞控制的过程。现在发送窗口的大小和拥塞窗口一样大。</p>
 <p><img src="/2018/07/04/TcpIp/tcp13" alt=""></p>
-<p>拥塞控制的具体过程如下：<br>（1）TCP连接初始化，将拥塞窗口设置为1<br>（2）执行慢开始算法，cwnd按指数规律增长，直到cwnd=ssthresh时，开始执行拥塞避免算法，cwnd按线性规律增长<br>（3）当网络发生拥塞，把ssthresh值更新为拥塞前ssthresh值的一半，cwnd重新设置为1，按照步骤（2）执行</p>
+<p>拥塞控制的具体过程如下：<br>（1）TCP连接初始化，将拥塞窗口设置为1<br>（2）执行慢开始算法，cwnd按指数规律增长，直到cwnd=ssthresh时，开始执行拥塞避免算法，cwnd按线性规律增长<br>（3）当网络发生拥塞，把ssthresh值更新为拥塞前cwnd值的一半，cwnd重新设置为1，按照步骤（2）执行</p>
 <h3 id="快重传"><a href="#快重传" class="headerlink" title="快重传"></a>快重传</h3><p>快重传算法首先要求接收方每收到一个失序的报文段后就立即发出重复确认（为的是使发送方及早知道有报文段没有到达对方）而不要等到自己发送数据时才进行捎带确认。</p>
 <p><img src="/2018/07/04/TcpIp/tcp14" alt=""></p>
 <p>接收方收到了M1和M2后都分别发出了确认。现在假定接收方没有收到M3但接着收到了M4。<br>显然，接收方不能确认M4，因为M4是收到的失序报文段。根据 可靠传输原理，接收方可以什么都不做，也可以在适当时机发送一次对M2的确认。</p>
@@ -302,8 +302,8 @@ var themeMenus = {};
 <p>由于发送方尽早重传未被确认的报文段，因此采用快重传后可以使整个网络吞吐量提高约20%。</p>
 <h3 id="快恢复"><a href="#快恢复" class="headerlink" title="快恢复"></a>快恢复</h3><p>与快重传配合使用的还有快恢复算法，其过程有以下两个要点：</p>
 <ul>
-<li>当发送方连续收到三个重复确认，就执行“乘法减小”算法，把慢开始门限ssthresh减半。</li>
-<li>与慢开始不同之处是现在不执行慢开始算法（即拥塞窗口cwnd现在不设置为1），而是把cwnd值设置为 慢开始门限ssthresh减半后的数值，然后开始执行拥塞避免算法（“加法增大”），使拥塞窗口缓慢地线性增大。</li>
+<li>当发送方连续收到三个重复确认，就执行“乘法减小”算法，把慢开始门限ssthresh设置为cwnd值的一半。</li>
+<li>与慢开始不同之处是现在不执行慢开始算法（即拥塞窗口cwnd现在不设置为1），而是把cwnd值设置为ssthresh的数值，然后开始执行拥塞避免算法（“加法增大”），使拥塞窗口缓慢地线性增大。</li>
 </ul>
 <p><img src="/2018/07/04/TcpIp/tcp15" alt=""></p>
 <hr>
