@@ -21,13 +21,13 @@
   
   
   
-  <meta name="description" content="概述浏览器的缓存机制也就是我们说的HTTP缓存机制，其机制是根据HTTP报文的缓存标识进行的，所以在分析浏览器缓存机制之前，我们先使用图文简单介绍一下HTTP报文，HTTP报文分为两种：">
+  <meta name="description" content="我的博客  github博客主页    概述浏览器的缓存机制也就是我们说的HTTP缓存机制，其机制是根据HTTP报文的缓存标识进行的，所以在分析浏览器缓存机制之前，我们先使用图文简单介绍一下HTTP报文，HTTP报文分为两种：">
 <meta name="keywords" content="browserCache">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浏览器的缓存机制梳理">
 <meta property="og:url" content="http://www.goyth.com/2018/07/01/browseCache/index.html">
 <meta property="og:site_name" content="GOYTH">
-<meta property="og:description" content="概述浏览器的缓存机制也就是我们说的HTTP缓存机制，其机制是根据HTTP报文的缓存标识进行的，所以在分析浏览器缓存机制之前，我们先使用图文简单介绍一下HTTP报文，HTTP报文分为两种：">
+<meta property="og:description" content="我的博客  github博客主页    概述浏览器的缓存机制也就是我们说的HTTP缓存机制，其机制是根据HTTP报文的缓存标识进行的，所以在分析浏览器缓存机制之前，我们先使用图文简单介绍一下HTTP报文，HTTP报文分为两种：">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/1.webp">
 <meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/2.webp">
@@ -47,10 +47,10 @@
 <meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/16.webp">
 <meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/17.webp">
 <meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/18.webp">
-<meta property="og:updated_time" content="2018-07-01T03:44:57.884Z">
+<meta property="og:updated_time" content="2018-08-03T07:02:23.998Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浏览器的缓存机制梳理">
-<meta name="twitter:description" content="概述浏览器的缓存机制也就是我们说的HTTP缓存机制，其机制是根据HTTP报文的缓存标识进行的，所以在分析浏览器缓存机制之前，我们先使用图文简单介绍一下HTTP报文，HTTP报文分为两种：">
+<meta name="twitter:description" content="我的博客  github博客主页    概述浏览器的缓存机制也就是我们说的HTTP缓存机制，其机制是根据HTTP报文的缓存标识进行的，所以在分析浏览器缓存机制之前，我们先使用图文简单介绍一下HTTP报文，HTTP报文分为两种：">
 <meta name="twitter:image" content="http://www.goyth.com/2018/07/01/browseCache/1.webp">
   
     <link rel="alternate" href="/atom.xml" title="GOYTH" type="application/atom+xml">
@@ -215,7 +215,14 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>浏览器的缓存机制也就是我们说的HTTP缓存机制，其机制是根据HTTP报文的缓存标识进行的，所以在分析浏览器缓存机制之前，我们先使用图文简单介绍一下HTTP报文，HTTP报文分为两种：</p>
+        <ul>
+<li><p><a href="http://goyth.com/" target="_blank" rel="noopener">我的博客</a></p>
+</li>
+<li><p><a href="https://github.com/jsyt/jsyt.github.io" target="_blank" rel="noopener">github博客主页</a></p>
+</li>
+</ul>
+<hr>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>浏览器的缓存机制也就是我们说的HTTP缓存机制，其机制是根据HTTP报文的缓存标识进行的，所以在分析浏览器缓存机制之前，我们先使用图文简单介绍一下HTTP报文，HTTP报文分为两种：</p>
 <a id="more"></a>
 <p>HTTP请求(Request)报文，报文格式为：请求行 – HTTP头(通用信息头，请求头，实体头) – 请求报文主体(只有POST才有报文主体)，如下图</p>
 <p><img src="/2018/07/01/browseCache/1.webp" alt=""></p>

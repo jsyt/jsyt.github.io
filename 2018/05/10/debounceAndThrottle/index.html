@@ -21,18 +21,18 @@
   
   
   
-  <meta name="description" content="函数防抖（debounce)函数防抖是指在函数调用动作触发n秒后才开始执行，n秒内若再次触发，则重新开始计时，再次等待n秒后才开始执行。如果n秒内不断触发，那就不断重新开始计时，一直等到有一个n秒内没有触发，才开始执行此函数。 根据描述，我们可以用setTimeout来实现一个简单版的防抖函数">
+  <meta name="description" content="我的博客  github博客主页    函数防抖（debounce)函数防抖是指在函数调用动作触发n秒后才开始执行，n秒内若再次触发，则重新开始计时，再次等待n秒后才开始执行。如果n秒内不断触发，那就不断重新开始计时，一直等到有一个n秒内没有触发，才开始执行此函数。 根据描述，我们可以用setTimeout来实现一个简单版的防抖函数">
 <meta name="keywords" content="Debounce,Throttle">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript之函数防抖与节流">
 <meta property="og:url" content="http://www.goyth.com/2018/05/10/debounceAndThrottle/index.html">
 <meta property="og:site_name" content="GOYTH">
-<meta property="og:description" content="函数防抖（debounce)函数防抖是指在函数调用动作触发n秒后才开始执行，n秒内若再次触发，则重新开始计时，再次等待n秒后才开始执行。如果n秒内不断触发，那就不断重新开始计时，一直等到有一个n秒内没有触发，才开始执行此函数。 根据描述，我们可以用setTimeout来实现一个简单版的防抖函数">
+<meta property="og:description" content="我的博客  github博客主页    函数防抖（debounce)函数防抖是指在函数调用动作触发n秒后才开始执行，n秒内若再次触发，则重新开始计时，再次等待n秒后才开始执行。如果n秒内不断触发，那就不断重新开始计时，一直等到有一个n秒内没有触发，才开始执行此函数。 根据描述，我们可以用setTimeout来实现一个简单版的防抖函数">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-28T14:12:44.320Z">
+<meta property="og:updated_time" content="2018-08-03T07:02:59.998Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript之函数防抖与节流">
-<meta name="twitter:description" content="函数防抖（debounce)函数防抖是指在函数调用动作触发n秒后才开始执行，n秒内若再次触发，则重新开始计时，再次等待n秒后才开始执行。如果n秒内不断触发，那就不断重新开始计时，一直等到有一个n秒内没有触发，才开始执行此函数。 根据描述，我们可以用setTimeout来实现一个简单版的防抖函数">
+<meta name="twitter:description" content="我的博客  github博客主页    函数防抖（debounce)函数防抖是指在函数调用动作触发n秒后才开始执行，n秒内若再次触发，则重新开始计时，再次等待n秒后才开始执行。如果n秒内不断触发，那就不断重新开始计时，一直等到有一个n秒内没有触发，才开始执行此函数。 根据描述，我们可以用setTimeout来实现一个简单版的防抖函数">
   
     <link rel="alternate" href="/atom.xml" title="GOYTH" type="application/atom+xml">
   
@@ -196,7 +196,14 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="函数防抖（debounce"><a href="#函数防抖（debounce" class="headerlink" title="函数防抖（debounce)"></a>函数防抖（debounce)</h2><p>函数防抖是指在函数调用动作触发n秒后才开始执行，n秒内若再次触发，则重新开始计时，再次等待n秒后才开始执行。如果n秒内不断触发，那就不断重新开始计时，一直等到有一个n秒内没有触发，才开始执行此函数。</p>
+        <ul>
+<li><p><a href="http://goyth.com/" target="_blank" rel="noopener">我的博客</a></p>
+</li>
+<li><p><a href="https://github.com/jsyt/jsyt.github.io" target="_blank" rel="noopener">github博客主页</a></p>
+</li>
+</ul>
+<hr>
+<h2 id="函数防抖（debounce"><a href="#函数防抖（debounce" class="headerlink" title="函数防抖（debounce)"></a>函数防抖（debounce)</h2><p>函数防抖是指在函数调用动作触发n秒后才开始执行，n秒内若再次触发，则重新开始计时，再次等待n秒后才开始执行。如果n秒内不断触发，那就不断重新开始计时，一直等到有一个n秒内没有触发，才开始执行此函数。</p>
 <p>根据描述，我们可以用<code>setTimeout</code>来实现一个简单版的防抖函数</p>
 <a id="more"></a>
 <h3 id="第一版"><a href="#第一版" class="headerlink" title="第一版"></a>第一版</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">／**</span><br><span class="line">* @ fn 回调函数 </span><br><span class="line">* @ delay 延迟时间 </span><br><span class="line">*／</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">fn, delay</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> timer = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        clearTimeout(timer);</span><br><span class="line">        timer = setTimeout(fn, delay);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
