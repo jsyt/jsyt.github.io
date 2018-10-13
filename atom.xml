@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.goyth.com/"/>
-  <updated>2018-10-13T12:04:28.689Z</updated>
+  <updated>2018-10-13T15:05:08.609Z</updated>
   <id>http://www.goyth.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MongoDB 知识点梳理(二)</title>
+    <link href="http://www.goyth.com/2018/10/13/mongodb2/"/>
+    <id>http://www.goyth.com/2018/10/13/mongodb2/</id>
+    <published>2018-10-13T13:47:00.000Z</published>
+    <updated>2018-10-13T15:05:08.609Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="通过配置项启动数据库"><a href="#通过配置项启动数据库" class="headerlink" title="通过配置项启动数据库"></a>通过配置项启动数据库</h2><h3 id="启动服务器"><a href="#启动服务器" class="headerlink" title="启动服务器"></a>启动服务器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod --config mongo.conf</span><br></pre></td></tr></table></figure><h3 id="启动客户端"><a href="#启动客户端" class="headerlink" title="启动客户端"></a>启动客户端</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo --port 50000</span><br></pre></td></tr></table></figure><table><thead><tr><th style="text-align:center">参数</th><th style="text-align:center">含义</th></tr></thead><tbody><tr><td style="text-align:center">–dbpath</td><td style="text-align:center">指定数据库文件的目录</td></tr><tr><td style="text-align:center">–port</td><td style="text-align:center">端口 默认是27017 28017</td></tr><tr><td style="text-align:center">–fork</td><td style="text-align:center">以后台守护的方式进行启动</td></tr><tr><td style="text-align:center">–logpath</td><td style="text-align:center">指定日志文件输出路径</td></tr><tr><td style="text-align:center">–config</td><td style="text-align:center">指定一个配置文件</td></tr><tr><td style="text-align:center">–auth</td><td style="text-align:center">以安全方式启动数据库，默认不验证</td></tr></tbody></table><h3 id="mongo-conf"><a href="#mongo-conf" class="headerlink" title="mongo.conf"></a>mongo.conf</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dbpath=/Users/demon/coding/mongo/data</span><br><span class="line">logpath=/Users/demon/coding/mongo/<span class="built_in">log</span></span><br><span class="line">port=50000</span><br></pre></td></tr></table></figure><p>###导入导出数据<br>这命令是保存成了文件格式</p><ul><li>mongoimport 导出数据</li><li>mongoexport 导入数据</li></ul><table><thead><tr><th style="text-align:center">参数</th><th style="text-align:center">含义</th></tr></thead><tbody><tr><td style="text-align:center">-h</td><td style="text-align:center">[ –host ]    连接的数据库</td></tr><tr><td style="text-align:center">–port</td><td style="text-align:center">端口号</td></tr><tr><td style="text-align:center">-u</td><td style="text-align:center">用户名</td></tr><tr><td style="text-align:center">-p</td><td style="text-align:center">密码</td></tr><tr><td style="text-align:center">-d</td><td style="text-align:center">导出的数据库</td></tr><tr><td style="text-align:center">-d</td><td style="text-align:center">导出的数据库</td></tr><tr><td style="text-align:center">-c</td><td style="text-align:center">指定导出的集合</td></tr><tr><td style="text-align:center">-o</td><td style="text-align:center">导出的文件存储路径</td></tr><tr><td style="text-align:center">-q</td><td style="text-align:center">进行过滤</td></tr></tbody></table><p><strong>准备数据</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">use school;</span><br><span class="line"><span class="keyword">var</span> students = [];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;=<span class="number">10</span>;i++)&#123;</span><br><span class="line">    students.push(&#123;<span class="attr">name</span>:<span class="string">'luke'</span>+i,<span class="attr">age</span>:i&#125;);</span><br><span class="line">&#125;</span><br><span class="line">db.students.insert(students);</span><br><span class="line">db.students.find();</span><br></pre></td></tr></table></figure></p><p><strong>备份记录</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongoexport -h <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> --port <span class="number">50000</span>  -d school -c students -o stu.json</span><br></pre></td></tr></table></figure></p><p><strong>删除记录</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.students.remove(&#123;&#125;);</span><br><span class="line">WriteResult(&#123; <span class="string">"nRemoved"</span> : 10 &#125;)</span><br></pre></td></tr></table></figure></p><p><strong>导入记录</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mongoimport --port <span class="number">50000</span> --db school --collection students --file</span><br><span class="line">stu.json</span><br></pre></td></tr></table></figure></p><h3 id="备份与恢复"><a href="#备份与恢复" class="headerlink" title="备份与恢复"></a>备份与恢复</h3><h4 id="mongodump"><a href="#mongodump" class="headerlink" title="mongodump"></a>mongodump</h4><p>在Mongodb中我们使用mongodump命令来备份MongoDB数据。该命令可以导出所有数据到指定目录中。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongodump -h dbhost -d dbname -o dbdirectory</span><br></pre></td></tr></table></figure></p><ul><li>-h MongDB所在服务器地址，例如：127.0.0.1，当然也可以指定端口号：127.0.0.1:27017</li><li>-d 需要备份的数据库实例，例如：test</li><li>-o 备份的数据存放位置</li></ul><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongodump  -d school -o data.dmp</span><br></pre></td></tr></table></figure><h4 id="mongorestore"><a href="#mongorestore" class="headerlink" title="mongorestore"></a>mongorestore</h4><p><strong>mongodb</strong>使用 <strong>mongorestore</strong> 命令来恢复备份的数据。</p><ul><li>–host MongoDB所在服务器地址</li><li>–db -d 需要恢复的数据库实例</li><li>最后的一个参数，设置备份数据所在位置</li></ul><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mongorestore  data.dmp</span><br><span class="line">mongorestore -d school data.bmp/school</span><br></pre></td></tr></table></figure><blockquote><blockquote><blockquote><p>Mongodump可以backup整个数据库，而mongoexport要对每个collection进行操作，最主要的区别也是选择的标准是mongoexport输出的JSON比Mongodump的BSON可读性更高，进而可以直接对JSON文件进行操作然后还原数据（BSON转换JSON存在潜在兼容问题）。</p></blockquote></blockquote></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;通过配置项启动数据库&quot;&gt;&lt;a href=&quot;#通过配置项启动数据库&quot; class=&quot;headerlink&quot; title=&quot;通过配置项启动数据库&quot;&gt;&lt;/a&gt;通过配置项启动数据库&lt;/h2&gt;&lt;h3 id=&quot;启动服务器&quot;&gt;&lt;a href=&quot;#启动服务器&quot; class=&quot;he
+      
+    
+    </summary>
+    
+      <category term="Database" scheme="http://www.goyth.com/categories/Database/"/>
+    
+    
+      <category term="MongoDB" scheme="http://www.goyth.com/tags/MongoDB/"/>
+    
+  </entry>
   
   <entry>
     <title>MongoDB 知识点梳理（一）</title>
@@ -616,44 +641,6 @@
 &lt;p&gt;&lt;img src=&quot;/2018/02/09/mergeSort/sort.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;h2 id=&quot;归并排序&quot;&gt;&lt;a href=&quot;#归并排序&quot; class=&quot;headerlink&quot; title=&quot;归并排序&quot;&gt;&lt;/a&gt;归并排序&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/2018/02/09/mergeSort/mergesort.gif&quot; alt=&quot;&quot;&gt;&lt;br&gt;归并排序（MERGE-SORT）是建立在归并操作上的一种有效的排序算法,该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为二路归并。&lt;/p&gt;
 &lt;p&gt;归并排序可以使用递归和迭代两种方式进行实现&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Algorithm" scheme="http://www.goyth.com/categories/Algorithm/"/>
-    
-    
-      <category term="Sort" scheme="http://www.goyth.com/tags/Sort/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>排序算法之希尔排序</title>
-    <link href="http://www.goyth.com/2018/02/08/shellSort/"/>
-    <id>http://www.goyth.com/2018/02/08/shellSort/</id>
-    <published>2018-02-08T08:19:32.000Z</published>
-    <updated>2018-08-03T07:04:47.111Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li><p><a href="http://goyth.com/" target="_blank" rel="noopener">我的博客</a></p></li><li><p><a href="https://github.com/jsyt/jsyt.github.io" target="_blank" rel="noopener">github博客主页</a></p></li></ul><hr><p>常见的内部排序算法有：<a href="http://www.goyth.com/2018/02/08/bubbleSort/">冒泡排序</a>、<a href="http://www.goyth.com/2018/02/08/selectionSort/">选择排序</a>、<a href="http://www.goyth.com/2018/02/08/straightInsertionSort/">插入排序</a>、<a href="http://www.goyth.com/2018/02/08/shellSort/">希尔排序</a>、<a href="http://www.goyth.com/2018/02/09/mergeSort/">归并排序</a>、<a href="http://www.goyth.com/2018/02/09/quickSort/">快速排序</a>、<a href="http://www.goyth.com/2018/02/09/heapSort/">堆排序</a>等。这里主要介绍快速排序</p><p>排序算法总览：</p><p><img src="/2018/02/08/shellSort/sort.png" alt=""></p><h2 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h2><p><img src="/2018/02/08/shellSort/shellSort.jpeg" alt=""></p><p>希尔排序(Shell’s Sort)也称递减增量排序算法，是插入排序的一种更高效的改进版本。但希尔排序是非稳定排序算法。<br>希尔排序是基于插入排序的以下两点性质而提出改进方法的：</p><ul><li>插入排序在对几乎已经排好序的数据操作时，效率高，即可以达到线性排序的效率；</li><li>但插入排序一般来说是低效的，因为插入排序每次只能将数据移动一位；</li></ul><p>希尔排序的基本思想是：先将整个待排序的记录序列分割成为若干子序列分别进行直接插入排序，待整个序列中的记录基本有序时，再对全体记录进行依次直接插入排序。</p><a id="more"></a><h2 id="插入排序算法回顾"><a href="#插入排序算法回顾" class="headerlink" title="插入排序算法回顾"></a>插入排序算法回顾</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insertSort</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> len = arr.length;</span><br><span class="line">  <span class="keyword">var</span> temp;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>; i&lt;len<span class="number">-1</span>; i++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(arr[i<span class="number">-1</span>] &gt; arr[i])&#123;</span><br><span class="line">      temp = arr[i];</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">var</span> j = i<span class="number">-1</span>; j &gt;= <span class="number">0</span> &amp;&amp; arr[j] &gt; temp; j--)&#123;</span><br><span class="line">        arr[j+<span class="number">1</span>] = arr[j];</span><br><span class="line">      &#125;</span><br><span class="line">      arr[j+<span class="number">1</span>] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="希尔排序算法实现"><a href="#希尔排序算法实现" class="headerlink" title="希尔排序算法实现"></a>希尔排序算法实现</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shellSort</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> len = arr.length;</span><br><span class="line">  <span class="keyword">var</span> temp;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> gap = <span class="built_in">Math</span>.floor(len/<span class="number">2</span>); gap &gt; <span class="number">0</span>; gap = <span class="built_in">Math</span>.floor(gap/<span class="number">2</span>))&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=gap; i&lt;len; i++)&#123;</span><br><span class="line">      <span class="keyword">if</span>(arr[i-gap] &gt; arr[i])&#123;</span><br><span class="line">        temp = arr[i];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j = i-gap; j &gt;= <span class="number">0</span> &amp;&amp; arr[j] &gt; temp; j -= gap)&#123;</span><br><span class="line">          arr[j+gap] = arr[j];</span><br><span class="line">        &#125;</span><br><span class="line">        arr[j+gap] = temp;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试</span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">3</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">8</span>];</span><br><span class="line"><span class="keyword">var</span> arrSorted = shellSort(arr);</span><br><span class="line"><span class="built_in">console</span>.log(arrSorted);</span><br><span class="line"><span class="comment">// 控制台将输出：[1, 2, 3, 4, 5, 6, 7, 8, 9]</span></span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://goyth.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;我的博客&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/jsyt/jsyt.github.io&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;github博客主页&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;p&gt;常见的内部排序算法有：&lt;a href=&quot;http://www.goyth.com/2018/02/08/bubbleSort/&quot;&gt;冒泡排序&lt;/a&gt;、&lt;a href=&quot;http://www.goyth.com/2018/02/08/selectionSort/&quot;&gt;选择排序&lt;/a&gt;、&lt;a href=&quot;http://www.goyth.com/2018/02/08/straightInsertionSort/&quot;&gt;插入排序&lt;/a&gt;、&lt;a href=&quot;http://www.goyth.com/2018/02/08/shellSort/&quot;&gt;希尔排序&lt;/a&gt;、&lt;a href=&quot;http://www.goyth.com/2018/02/09/mergeSort/&quot;&gt;归并排序&lt;/a&gt;、&lt;a href=&quot;http://www.goyth.com/2018/02/09/quickSort/&quot;&gt;快速排序&lt;/a&gt;、&lt;a href=&quot;http://www.goyth.com/2018/02/09/heapSort/&quot;&gt;堆排序&lt;/a&gt;等。这里主要介绍快速排序&lt;/p&gt;
-&lt;p&gt;排序算法总览：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/2018/02/08/shellSort/sort.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;希尔排序&quot;&gt;&lt;a href=&quot;#希尔排序&quot; class=&quot;headerlink&quot; title=&quot;希尔排序&quot;&gt;&lt;/a&gt;希尔排序&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/2018/02/08/shellSort/shellSort.jpeg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;希尔排序(Shell’s Sort)也称递减增量排序算法，是插入排序的一种更高效的改进版本。但希尔排序是非稳定排序算法。&lt;br&gt;希尔排序是基于插入排序的以下两点性质而提出改进方法的：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;插入排序在对几乎已经排好序的数据操作时，效率高，即可以达到线性排序的效率；&lt;/li&gt;
-&lt;li&gt;但插入排序一般来说是低效的，因为插入排序每次只能将数据移动一位；&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;希尔排序的基本思想是：先将整个待排序的记录序列分割成为若干子序列分别进行直接插入排序，待整个序列中的记录基本有序时，再对全体记录进行依次直接插入排序。&lt;/p&gt;
     
     </summary>
     
