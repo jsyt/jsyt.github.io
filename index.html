@@ -190,120 +190,54 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="通过配置项启动数据库"><a href="#通过配置项启动数据库" class="headerlink" title="通过配置项启动数据库"></a>通过配置项启动数据库</h2><h3 id="启动服务器"><a href="#启动服务器" class="headerlink" title="启动服务器"></a>启动服务器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod --config mongo.conf</span><br></pre></td></tr></table></figure>
-<h3 id="启动客户端"><a href="#启动客户端" class="headerlink" title="启动客户端"></a>启动客户端</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo --port 50000</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">参数</th>
-<th style="text-align:center">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">–dbpath</td>
-<td style="text-align:center">指定数据库文件的目录</td>
-</tr>
-<tr>
-<td style="text-align:center">–port</td>
-<td style="text-align:center">端口 默认是27017 28017</td>
-</tr>
-<tr>
-<td style="text-align:center">–fork</td>
-<td style="text-align:center">以后台守护的方式进行启动</td>
-</tr>
-<tr>
-<td style="text-align:center">–logpath</td>
-<td style="text-align:center">指定日志文件输出路径</td>
-</tr>
-<tr>
-<td style="text-align:center">–config</td>
-<td style="text-align:center">指定一个配置文件</td>
-</tr>
-<tr>
-<td style="text-align:center">–auth</td>
-<td style="text-align:center">以安全方式启动数据库，默认不验证</td>
-</tr>
-</tbody>
-</table>
-<h3 id="mongo-conf"><a href="#mongo-conf" class="headerlink" title="mongo.conf"></a>mongo.conf</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dbpath=/Users/demon/coding/mongo/data</span><br><span class="line">logpath=/Users/demon/coding/mongo/<span class="built_in">log</span></span><br><span class="line">port=50000</span><br></pre></td></tr></table></figure>
-<p>###导入导出数据<br>这命令是保存成了文件格式</p>
-<ul>
-<li>mongoimport 导出数据</li>
-<li>mongoexport 导入数据</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">参数</th>
-<th style="text-align:center">含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">-h</td>
-<td style="text-align:center">[ –host ]    连接的数据库</td>
-</tr>
-<tr>
-<td style="text-align:center">–port</td>
-<td style="text-align:center">端口号</td>
-</tr>
-<tr>
-<td style="text-align:center">-u</td>
-<td style="text-align:center">用户名</td>
-</tr>
-<tr>
-<td style="text-align:center">-p</td>
-<td style="text-align:center">密码</td>
-</tr>
-<tr>
-<td style="text-align:center">-d</td>
-<td style="text-align:center">导出的数据库</td>
-</tr>
-<tr>
-<td style="text-align:center">-d</td>
-<td style="text-align:center">导出的数据库</td>
-</tr>
-<tr>
-<td style="text-align:center">-c</td>
-<td style="text-align:center">指定导出的集合</td>
-</tr>
-<tr>
-<td style="text-align:center">-o</td>
-<td style="text-align:center">导出的文件存储路径</td>
-</tr>
-<tr>
-<td style="text-align:center">-q</td>
-<td style="text-align:center">进行过滤</td>
-</tr>
-</tbody>
-</table>
-<p><strong>准备数据</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">use school;</span><br><span class="line"><span class="keyword">var</span> students = [];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;=<span class="number">10</span>;i++)&#123;</span><br><span class="line">    students.push(&#123;<span class="attr">name</span>:<span class="string">'luke'</span>+i,<span class="attr">age</span>:i&#125;);</span><br><span class="line">&#125;</span><br><span class="line">db.students.insert(students);</span><br><span class="line">db.students.find();</span><br></pre></td></tr></table></figure></p>
-<p><strong>备份记录</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongoexport -h <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> --port <span class="number">50000</span>  -d school -c students -o stu.json</span><br></pre></td></tr></table></figure></p>
-<p><strong>删除记录</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.students.remove(&#123;&#125;);</span><br><span class="line">WriteResult(&#123; <span class="string">"nRemoved"</span> : 10 &#125;)</span><br></pre></td></tr></table></figure></p>
-<p><strong>导入记录</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mongoimport --port <span class="number">50000</span> --db school --collection students --file</span><br><span class="line">stu.json</span><br></pre></td></tr></table></figure></p>
-<h3 id="备份与恢复"><a href="#备份与恢复" class="headerlink" title="备份与恢复"></a>备份与恢复</h3><h4 id="mongodump"><a href="#mongodump" class="headerlink" title="mongodump"></a>mongodump</h4><p>在Mongodb中我们使用mongodump命令来备份MongoDB数据。该命令可以导出所有数据到指定目录中。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongodump -h dbhost -d dbname -o dbdirectory</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>-h MongDB所在服务器地址，例如：127.0.0.1，当然也可以指定端口号：127.0.0.1:27017</li>
-<li>-d 需要备份的数据库实例，例如：test</li>
-<li>-o 备份的数据存放位置</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongodump  -d school -o data.dmp</span><br></pre></td></tr></table></figure>
-<h4 id="mongorestore"><a href="#mongorestore" class="headerlink" title="mongorestore"></a>mongorestore</h4><p><strong>mongodb</strong>使用 <strong>mongorestore</strong> 命令来恢复备份的数据。</p>
-<ul>
-<li>–host MongoDB所在服务器地址</li>
-<li>–db -d 需要恢复的数据库实例</li>
-<li>最后的一个参数，设置备份数据所在位置</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mongorestore  data.dmp</span><br><span class="line">mongorestore -d school data.bmp/school</span><br></pre></td></tr></table></figure>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>Mongodump可以backup整个数据库，而mongoexport要对每个collection进行操作，最主要的区别也是选择的标准是mongoexport输出的JSON比Mongodump的BSON可读性更高，进而可以直接对JSON文件进行操作然后还原数据（BSON转换JSON存在潜在兼容问题）。</p>
-</blockquote>
-</blockquote>
-</blockquote>
+        
 
+          
+            <div class="entry-thumbnail">
+              <a href="/2018/10/13/mongodb2/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/7" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+            </div>
+            <div class="entry-summary">
+            通过配置项启动数据库启动服务器1mongod --config mongo.conf
+启动客户端1mongo --port 50000
+
+
+
+
+参数
+含义
+
+
+
+
+–dbpath
+指定数据库文件的目录
+
+
+–port
+端口 默认是27017 28017
+
+
+–fork
+以后台守护的方式进行启动
+
+
+–logpath
+指定日志文件输出路径
+
+
+–config
+指定一个配置文件
+
+
+–auth
+...
+          
+
+        
+          <p class="article-more-link">
+            <a href="/2018/10/13/mongodb2/#more">Continue Reading →</a>
+          </p>
+        </div>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -354,7 +288,7 @@ var themeMenus = {};
 
           
             <div class="entry-thumbnail">
-              <a href="/2018/10/12/mongodb/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/3" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+              <a href="/2018/10/12/mongodb/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/5" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
             </div>
             <div class="entry-summary">
             什么是MongoDBMongoDB是一个基于分布式文件存储的开源数据库系统。在高负载的情况下，添加更多的节点，可以保证服务器性能。MongoDB 旨在为WEB应用提供可扩展的高性能数据存储解决方案。MongoDB 将数据存储为一个文档，数据结构由键值(key=&gt;value)对组成。MongoDB 文档类似于 JSON 对象。字段值可以包含其他文档，数组及文档数组。
@@ -417,7 +351,7 @@ MongoDB 基...
 
           
             <div class="entry-thumbnail">
-              <a href="/2018/08/03/promise/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/7" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+              <a href="/2018/08/03/promise/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/5" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
             </div>
             <div class="entry-summary">
             Promise模拟实现一个符合Promise A+规范的promise，仅供学习其实现原理
@@ -491,7 +425,7 @@ promise 函数的参数（executor）是一个函数，这个函数有两个参�
 
           
             <div class="entry-thumbnail">
-              <a href="/2018/07/11/http2/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/10" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+              <a href="/2018/07/11/http2/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/2" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
             </div>
             <div class="entry-summary">
             
@@ -561,7 +495,7 @@ HTTP/0.9 - 1991第一版的HTTP文档是1991年提出来的 HTTP/0.9。...
 
           
             <div class="entry-thumbnail">
-              <a href="/2018/07/09/webSocket/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/2" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+              <a href="/2018/07/09/webSocket/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/6" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
             </div>
             <div class="entry-summary">
             
@@ -630,7 +564,7 @@ WebSocket解决了什么问题WebSocket使得客户端和服务器之间的数�
 
           
             <div class="entry-thumbnail">
-              <a href="/2018/07/07/DNS/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/9" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+              <a href="/2018/07/07/DNS/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/8" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
             </div>
             <div class="entry-summary">
             
@@ -701,7 +635,7 @@ DNS 服务器DNS( Domain Name System)是“域名系统”的英文缩写，是�
 
           
             <div class="entry-thumbnail">
-              <a href="/2018/07/04/TcpIp/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/9" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+              <a href="/2018/07/04/TcpIp/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/5" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
             </div>
             <div class="entry-summary">
             
@@ -770,7 +704,7 @@ TCP/IP 协议分层模型基于TCP/IP的参考模型将协议分成四个层次�
 
           
             <div class="entry-thumbnail">
-              <a href="/2018/07/01/browseCache/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/1" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+              <a href="/2018/07/01/browseCache/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/5" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
             </div>
             <div class="entry-summary">
             
@@ -842,7 +776,7 @@ HT...
 
           
             <div class="entry-thumbnail">
-              <a href="/2018/06/29/crossDomain/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/10" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+              <a href="/2018/06/29/crossDomain/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/2" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
             </div>
             <div class="entry-summary">
             
@@ -916,7 +850,7 @@ iframe + windo...
 
           
             <div class="entry-thumbnail">
-              <a href="/2018/05/27/applyAndCall/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/2" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
+              <a href="/2018/05/27/applyAndCall/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/10" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
             </div>
             <div class="entry-summary">
             
