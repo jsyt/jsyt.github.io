@@ -21,19 +21,19 @@
   
   
   
-  <meta name="description" content="我的博客  github博客主页    浏览器渲染流程浏览器渲染流程如下图所示：  大概可以划分成以下几个步骤：  通过HTML解析器解析HTML文本并构建DOM tree 通过CSS解析器解析CSS样式表并构建CSSOM tree 根据DOM tree 和 CSSOM tree 构建 Render tree Render tree 刚构建完后是没有元素节点坐标、尺寸大小等信息的，此时需要通过">
+  <meta name="description" content="浏览器渲染流程浏览器渲染流程如下图所示：  大概可以划分成以下几个步骤：  通过HTML解析器解析HTML文本并构建DOM tree 通过CSS解析器解析CSS样式表并构建CSSOM tree 根据DOM tree 和 CSSOM tree 构建 Render tree Render tree 刚构建完后是没有元素节点坐标、尺寸大小等信息的，此时需要通过Reflow(Layout)进行布局处理">
 <meta name="keywords" content="Reflow,Repaint">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浏览器渲染之回流（Reflow）与重绘（Repaint）">
 <meta property="og:url" content="http://www.goyth.com/2018/05/25/reflowAndRepaint/index.html">
 <meta property="og:site_name" content="GOYTH">
-<meta property="og:description" content="我的博客  github博客主页    浏览器渲染流程浏览器渲染流程如下图所示：  大概可以划分成以下几个步骤：  通过HTML解析器解析HTML文本并构建DOM tree 通过CSS解析器解析CSS样式表并构建CSSOM tree 根据DOM tree 和 CSSOM tree 构建 Render tree Render tree 刚构建完后是没有元素节点坐标、尺寸大小等信息的，此时需要通过">
+<meta property="og:description" content="浏览器渲染流程浏览器渲染流程如下图所示：  大概可以划分成以下几个步骤：  通过HTML解析器解析HTML文本并构建DOM tree 通过CSS解析器解析CSS样式表并构建CSSOM tree 根据DOM tree 和 CSSOM tree 构建 Render tree Render tree 刚构建完后是没有元素节点坐标、尺寸大小等信息的，此时需要通过Reflow(Layout)进行布局处理">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.goyth.com/2018/05/25/reflowAndRepaint/webkitflow.png">
-<meta property="og:updated_time" content="2018-08-03T07:04:32.739Z">
+<meta property="og:updated_time" content="2018-12-02T08:40:00.117Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浏览器渲染之回流（Reflow）与重绘（Repaint）">
-<meta name="twitter:description" content="我的博客  github博客主页    浏览器渲染流程浏览器渲染流程如下图所示：  大概可以划分成以下几个步骤：  通过HTML解析器解析HTML文本并构建DOM tree 通过CSS解析器解析CSS样式表并构建CSSOM tree 根据DOM tree 和 CSSOM tree 构建 Render tree Render tree 刚构建完后是没有元素节点坐标、尺寸大小等信息的，此时需要通过">
+<meta name="twitter:description" content="浏览器渲染流程浏览器渲染流程如下图所示：  大概可以划分成以下几个步骤：  通过HTML解析器解析HTML文本并构建DOM tree 通过CSS解析器解析CSS样式表并构建CSSOM tree 根据DOM tree 和 CSSOM tree 构建 Render tree Render tree 刚构建完后是没有元素节点坐标、尺寸大小等信息的，此时需要通过Reflow(Layout)进行布局处理">
 <meta name="twitter:image" content="http://www.goyth.com/2018/05/25/reflowAndRepaint/webkitflow.png">
   
     <link rel="alternate" href="/atom.xml" title="GOYTH" type="application/atom+xml">
@@ -198,14 +198,7 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li><p><a href="http://goyth.com/" target="_blank" rel="noopener">我的博客</a></p>
-</li>
-<li><p><a href="https://github.com/jsyt/jsyt.github.io" target="_blank" rel="noopener">github博客主页</a></p>
-</li>
-</ul>
-<hr>
-<h2 id="浏览器渲染流程"><a href="#浏览器渲染流程" class="headerlink" title="浏览器渲染流程"></a>浏览器渲染流程</h2><p>浏览器渲染流程如下图所示：</p>
+        <h2 id="浏览器渲染流程"><a href="#浏览器渲染流程" class="headerlink" title="浏览器渲染流程"></a>浏览器渲染流程</h2><p>浏览器渲染流程如下图所示：</p>
 <p><img src="/2018/05/25/reflowAndRepaint/webkitflow.png" alt=""></p>
 <p>大概可以划分成以下几个步骤：</p>
 <ol>

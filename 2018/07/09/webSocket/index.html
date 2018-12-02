@@ -21,20 +21,20 @@
   
   
   
-  <meta name="description" content="我的博客  github博客主页    什么是WebSocketWebSocket是一种在单个TCP连接上进行全双工通讯的协议。它与HTTP协一样，同属于应用层协议。 WebSocket解决了什么问题WebSocket使得客户端和服务器之间的数据交换变得更加简单，允许服务端主动向客户端推送数据。在WebSocket API中，浏览器和服务器只需要完成一次握手，两者之间就直接可以创建持久性的连接，">
+  <meta name="description" content="什么是WebSocketWebSocket是一种在单个TCP连接上进行全双工通讯的协议。它与HTTP协一样，同属于应用层协议。 WebSocket解决了什么问题WebSocket使得客户端和服务器之间的数据交换变得更加简单，允许服务端主动向客户端推送数据。在WebSocket API中，浏览器和服务器只需要完成一次握手，两者之间就直接可以创建持久性的连接，并进行双向数据传输。简单说就是解决了浏览器">
 <meta name="keywords" content="webSocket">
 <meta property="og:type" content="article">
 <meta property="og:title" content="WebSocket知识点梳理">
 <meta property="og:url" content="http://www.goyth.com/2018/07/09/webSocket/index.html">
 <meta property="og:site_name" content="GOYTH">
-<meta property="og:description" content="我的博客  github博客主页    什么是WebSocketWebSocket是一种在单个TCP连接上进行全双工通讯的协议。它与HTTP协一样，同属于应用层协议。 WebSocket解决了什么问题WebSocket使得客户端和服务器之间的数据交换变得更加简单，允许服务端主动向客户端推送数据。在WebSocket API中，浏览器和服务器只需要完成一次握手，两者之间就直接可以创建持久性的连接，">
+<meta property="og:description" content="什么是WebSocketWebSocket是一种在单个TCP连接上进行全双工通讯的协议。它与HTTP协一样，同属于应用层协议。 WebSocket解决了什么问题WebSocket使得客户端和服务器之间的数据交换变得更加简单，允许服务端主动向客户端推送数据。在WebSocket API中，浏览器和服务器只需要完成一次握手，两者之间就直接可以创建持久性的连接，并进行双向数据传输。简单说就是解决了浏览器">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.goyth.com/2018/07/09/webSocket/ws01.png">
 <meta property="og:image" content="http://www.goyth.com/2018/07/09/webSocket/ws02">
-<meta property="og:updated_time" content="2018-08-03T07:05:58.204Z">
+<meta property="og:updated_time" content="2018-12-02T08:40:27.445Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WebSocket知识点梳理">
-<meta name="twitter:description" content="我的博客  github博客主页    什么是WebSocketWebSocket是一种在单个TCP连接上进行全双工通讯的协议。它与HTTP协一样，同属于应用层协议。 WebSocket解决了什么问题WebSocket使得客户端和服务器之间的数据交换变得更加简单，允许服务端主动向客户端推送数据。在WebSocket API中，浏览器和服务器只需要完成一次握手，两者之间就直接可以创建持久性的连接，">
+<meta name="twitter:description" content="什么是WebSocketWebSocket是一种在单个TCP连接上进行全双工通讯的协议。它与HTTP协一样，同属于应用层协议。 WebSocket解决了什么问题WebSocket使得客户端和服务器之间的数据交换变得更加简单，允许服务端主动向客户端推送数据。在WebSocket API中，浏览器和服务器只需要完成一次握手，两者之间就直接可以创建持久性的连接，并进行双向数据传输。简单说就是解决了浏览器">
 <meta name="twitter:image" content="http://www.goyth.com/2018/07/09/webSocket/ws01.png">
   
     <link rel="alternate" href="/atom.xml" title="GOYTH" type="application/atom+xml">
@@ -199,14 +199,7 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li><p><a href="http://goyth.com/" target="_blank" rel="noopener">我的博客</a></p>
-</li>
-<li><p><a href="https://github.com/jsyt/jsyt.github.io" target="_blank" rel="noopener">github博客主页</a></p>
-</li>
-</ul>
-<hr>
-<h2 id="什么是WebSocket"><a href="#什么是WebSocket" class="headerlink" title="什么是WebSocket"></a>什么是WebSocket</h2><p>WebSocket是一种在单个TCP连接上进行全双工通讯的协议。它与HTTP协一样，同属于应用层协议。</p>
+        <h2 id="什么是WebSocket"><a href="#什么是WebSocket" class="headerlink" title="什么是WebSocket"></a>什么是WebSocket</h2><p>WebSocket是一种在单个TCP连接上进行全双工通讯的协议。它与HTTP协一样，同属于应用层协议。</p>
 <h2 id="WebSocket解决了什么问题"><a href="#WebSocket解决了什么问题" class="headerlink" title="WebSocket解决了什么问题"></a>WebSocket解决了什么问题</h2><p>WebSocket使得客户端和服务器之间的数据交换变得更加简单，<strong>允许服务端主动向客户端推送数据</strong>。在WebSocket API中，浏览器和服务器只需要完成一次握手，两者之间就直接可以创建<strong>持久性的连接</strong>，并进行<strong>双向数据传输</strong>。<br>简单说就是解决了浏览器和服务器之间双向数据传输的问题。</p>
 <a id="more"></a>
 <h2 id="HTTP协议可以实现双向数据传输吗"><a href="#HTTP协议可以实现双向数据传输吗" class="headerlink" title="HTTP协议可以实现双向数据传输吗"></a>HTTP协议可以实现双向数据传输吗</h2><p>答案肯定是可以的，在HTTP协议中我们通常使用<strong>轮询</strong>来实现双向通信。<br>轮询是通过在特定的的时间间隔（如每1秒），由浏览器对服务器发出HTTP请求，然后由服务器返回最新的数据给客户端的浏览器。这种传统的模式带来很明显的缺点，即浏览器需要不断的向服务器发出请求，然而HTTP请求可能包含较长的头部，其中真正有效的数据可能只是很小的一部分，显然这样会浪费很多的带宽等资源。</p>

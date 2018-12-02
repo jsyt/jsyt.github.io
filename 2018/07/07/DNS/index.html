@@ -21,21 +21,21 @@
   
   
   
-  <meta name="description" content="我的博客  github博客主页    DNS 服务器DNS( Domain Name System)是“域名系统”的英文缩写，是一种组织成域层次结构的计算机和网络服务命名系统，它用于TCP/IP网络，它所提供的服务是用来将主机名和域名转换为IP地址的工作。DNS就是这样的一位“翻译官”，它的基本工作原理可用下图来表示。">
+  <meta name="description" content="DNS 服务器DNS( Domain Name System)是“域名系统”的英文缩写，是一种组织成域层次结构的计算机和网络服务命名系统，它用于TCP/IP网络，它所提供的服务是用来将主机名和域名转换为IP地址的工作。DNS就是这样的一位“翻译官”，它的基本工作原理可用下图来表示。">
 <meta name="keywords" content="DNS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DNS知识点梳理">
 <meta property="og:url" content="http://www.goyth.com/2018/07/07/DNS/index.html">
 <meta property="og:site_name" content="GOYTH">
-<meta property="og:description" content="我的博客  github博客主页    DNS 服务器DNS( Domain Name System)是“域名系统”的英文缩写，是一种组织成域层次结构的计算机和网络服务命名系统，它用于TCP/IP网络，它所提供的服务是用来将主机名和域名转换为IP地址的工作。DNS就是这样的一位“翻译官”，它的基本工作原理可用下图来表示。">
+<meta property="og:description" content="DNS 服务器DNS( Domain Name System)是“域名系统”的英文缩写，是一种组织成域层次结构的计算机和网络服务命名系统，它用于TCP/IP网络，它所提供的服务是用来将主机名和域名转换为IP地址的工作。DNS就是这样的一位“翻译官”，它的基本工作原理可用下图来表示。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.goyth.com/2018/07/07/DNS/dns02.png">
 <meta property="og:image" content="http://www.goyth.com/2018/07/07/DNS/dns01.jpg">
 <meta property="og:image" content="http://www.goyth.com/2018/07/07/DNS/dns03.jpg">
-<meta property="og:updated_time" content="2018-08-03T07:03:08.174Z">
+<meta property="og:updated_time" content="2018-12-02T08:38:53.220Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DNS知识点梳理">
-<meta name="twitter:description" content="我的博客  github博客主页    DNS 服务器DNS( Domain Name System)是“域名系统”的英文缩写，是一种组织成域层次结构的计算机和网络服务命名系统，它用于TCP/IP网络，它所提供的服务是用来将主机名和域名转换为IP地址的工作。DNS就是这样的一位“翻译官”，它的基本工作原理可用下图来表示。">
+<meta name="twitter:description" content="DNS 服务器DNS( Domain Name System)是“域名系统”的英文缩写，是一种组织成域层次结构的计算机和网络服务命名系统，它用于TCP/IP网络，它所提供的服务是用来将主机名和域名转换为IP地址的工作。DNS就是这样的一位“翻译官”，它的基本工作原理可用下图来表示。">
 <meta name="twitter:image" content="http://www.goyth.com/2018/07/07/DNS/dns02.png">
   
     <link rel="alternate" href="/atom.xml" title="GOYTH" type="application/atom+xml">
@@ -200,14 +200,7 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li><p><a href="http://goyth.com/" target="_blank" rel="noopener">我的博客</a></p>
-</li>
-<li><p><a href="https://github.com/jsyt/jsyt.github.io" target="_blank" rel="noopener">github博客主页</a></p>
-</li>
-</ul>
-<hr>
-<h2 id="DNS-服务器"><a href="#DNS-服务器" class="headerlink" title="DNS 服务器"></a>DNS 服务器</h2><p>DNS( Domain Name System)是“域名系统”的英文缩写，是一种组织成域层次结构的计算机和网络服务命名系统，它用于TCP/IP网络，它所提供的服务是用来将主机名和域名转换为IP地址的工作。DNS就是这样的一位“翻译官”，它的基本工作原理可用下图来表示。</p>
+        <h2 id="DNS-服务器"><a href="#DNS-服务器" class="headerlink" title="DNS 服务器"></a>DNS 服务器</h2><p>DNS( Domain Name System)是“域名系统”的英文缩写，是一种组织成域层次结构的计算机和网络服务命名系统，它用于TCP/IP网络，它所提供的服务是用来将主机名和域名转换为IP地址的工作。DNS就是这样的一位“翻译官”，它的基本工作原理可用下图来表示。</p>
 <a id="more"></a>
 <p><img src="/2018/07/07/DNS/dns02.png" alt=""></p>
 <p>全世界所有的人每天上网都会使用DNS服务器，如果大家都去同一个地方访问某一台服务器，时延将会非常大，所以DNS服务器的架构必须是分布式、高并发、高可用，如下图：</p>

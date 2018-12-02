@@ -21,13 +21,13 @@
   
   
   
-  <meta name="description" content="我的博客  github博客主页    HTTP/2是HTTP协议自1999年HTTP 1.1发布后的首个更新，主要基于SPDY协议。于2015年正式发布，HTTP/2解决了HTTP1.1线头阻塞、重复建立TCP连接等问题，充分利用TCP连接的高效传输，使得网络延迟大幅下降，网络传输速度大幅提升。">
+  <meta name="description" content="HTTP/2是HTTP协议自1999年HTTP 1.1发布后的首个更新，主要基于SPDY协议。于2015年正式发布，HTTP/2解决了HTTP1.1线头阻塞、重复建立TCP连接等问题，充分利用TCP连接的高效传输，使得网络延迟大幅下降，网络传输速度大幅提升。">
 <meta name="keywords" content="HTTP&#x2F;2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTTP知识点整理">
 <meta property="og:url" content="http://www.goyth.com/2018/07/11/http2/index.html">
 <meta property="og:site_name" content="GOYTH">
-<meta property="og:description" content="我的博客  github博客主页    HTTP/2是HTTP协议自1999年HTTP 1.1发布后的首个更新，主要基于SPDY协议。于2015年正式发布，HTTP/2解决了HTTP1.1线头阻塞、重复建立TCP连接等问题，充分利用TCP连接的高效传输，使得网络延迟大幅下降，网络传输速度大幅提升。">
+<meta property="og:description" content="HTTP/2是HTTP协议自1999年HTTP 1.1发布后的首个更新，主要基于SPDY协议。于2015年正式发布，HTTP/2解决了HTTP1.1线头阻塞、重复建立TCP连接等问题，充分利用TCP连接的高效传输，使得网络延迟大幅下降，网络传输速度大幅提升。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.goyth.com/2018/07/11/http2/http2/http01.svg">
 <meta property="og:image" content="http://www.goyth.com/2018/07/11/http2/http2/http02.svg">
@@ -35,10 +35,10 @@
 <meta property="og:image" content="http://www.goyth.com/2018/07/11/http2/http2/http05.svg">
 <meta property="og:image" content="http://www.goyth.com/2018/07/11/http2/http2/http04.svg">
 <meta property="og:image" content="http://www.goyth.com/2018/07/11/http2/http2/http06.svg">
-<meta property="og:updated_time" content="2018-08-03T07:03:32.824Z">
+<meta property="og:updated_time" content="2018-12-02T08:39:10.321Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP知识点整理">
-<meta name="twitter:description" content="我的博客  github博客主页    HTTP/2是HTTP协议自1999年HTTP 1.1发布后的首个更新，主要基于SPDY协议。于2015年正式发布，HTTP/2解决了HTTP1.1线头阻塞、重复建立TCP连接等问题，充分利用TCP连接的高效传输，使得网络延迟大幅下降，网络传输速度大幅提升。">
+<meta name="twitter:description" content="HTTP/2是HTTP协议自1999年HTTP 1.1发布后的首个更新，主要基于SPDY协议。于2015年正式发布，HTTP/2解决了HTTP1.1线头阻塞、重复建立TCP连接等问题，充分利用TCP连接的高效传输，使得网络延迟大幅下降，网络传输速度大幅提升。">
 <meta name="twitter:image" content="http://www.goyth.com/2018/07/11/http2/http2/http01.svg">
   
     <link rel="alternate" href="/atom.xml" title="GOYTH" type="application/atom+xml">
@@ -203,14 +203,7 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li><p><a href="http://goyth.com/" target="_blank" rel="noopener">我的博客</a></p>
-</li>
-<li><p><a href="https://github.com/jsyt/jsyt.github.io" target="_blank" rel="noopener">github博客主页</a></p>
-</li>
-</ul>
-<hr>
-<p>HTTP/2是HTTP协议自1999年HTTP 1.1发布后的首个更新，主要基于SPDY协议。于2015年正式发布，HTTP/2解决了HTTP1.1线头阻塞、重复建立TCP连接等问题，充分利用TCP连接的高效传输，使得网络延迟大幅下降，网络传输速度大幅提升。</p>
+        <p>HTTP/2是HTTP协议自1999年HTTP 1.1发布后的首个更新，主要基于SPDY协议。于2015年正式发布，HTTP/2解决了HTTP1.1线头阻塞、重复建立TCP连接等问题，充分利用TCP连接的高效传输，使得网络延迟大幅下降，网络传输速度大幅提升。</p>
 <a id="more"></a>
 <h2 id="HTTP-0-9-1991"><a href="#HTTP-0-9-1991" class="headerlink" title="HTTP/0.9 - 1991"></a>HTTP/0.9 - 1991</h2><p>第一版的HTTP文档是1991年提出来的 HTTP/0.9。这是有史以来最简单的协议；它仅有一个GET方法。如果客户端要访问服务器上的一些网页，它会作出如下的简单请求：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /index.html</span><br></pre></td></tr></table></figure></p>
 <p>并且来自服务器的响应内容如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(response body)</span><br><span class="line">(connection closed)</span><br></pre></td></tr></table></figure></p>

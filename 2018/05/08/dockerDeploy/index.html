@@ -21,13 +21,13 @@
   
   
   
-  <meta name="description" content="我的博客  github博客主页    本文将以一个标准的 Vue 项目为例，完全抛弃传统的前端项目开发部署方式，基于 Docker 容器技术打造一个精简的前端持续集成的开发环境。 前置知识： CI（持续集成）：阮一峰老师的关于 CI 的介绍  Docker： Docker 快速入门   目标： 代码无需在本地构建  只需将代码推上 Github ，自动构建 -&amp;gt; 部署  版本易管理，可轻">
+  <meta name="description" content="本文将以一个标准的 Vue 项目为例，完全抛弃传统的前端项目开发部署方式，基于 Docker 容器技术打造一个精简的前端持续集成的开发环境。 前置知识： CI（持续集成）：阮一峰老师的关于 CI 的介绍  Docker： Docker 快速入门   目标： 代码无需在本地构建  只需将代码推上 Github ，自动构建 -&amp;gt; 部署  版本易管理，可轻松回退版本">
 <meta name="keywords" content="Docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于 Docker 构建前端持续集成开发环境">
 <meta property="og:url" content="http://www.goyth.com/2018/05/08/dockerDeploy/index.html">
 <meta property="og:site_name" content="GOYTH">
-<meta property="og:description" content="我的博客  github博客主页    本文将以一个标准的 Vue 项目为例，完全抛弃传统的前端项目开发部署方式，基于 Docker 容器技术打造一个精简的前端持续集成的开发环境。 前置知识： CI（持续集成）：阮一峰老师的关于 CI 的介绍  Docker： Docker 快速入门   目标： 代码无需在本地构建  只需将代码推上 Github ，自动构建 -&amp;gt; 部署  版本易管理，可轻">
+<meta property="og:description" content="本文将以一个标准的 Vue 项目为例，完全抛弃传统的前端项目开发部署方式，基于 Docker 容器技术打造一个精简的前端持续集成的开发环境。 前置知识： CI（持续集成）：阮一峰老师的关于 CI 的介绍  Docker： Docker 快速入门   目标： 代码无需在本地构建  只需将代码推上 Github ，自动构建 -&amp;gt; 部署  版本易管理，可轻松回退版本">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.goyth.com/2018/05/08/dockerDeploy/vue-docker.png">
 <meta property="og:image" content="http://www.goyth.com/2018/05/08/dockerDeploy/github.png">
@@ -55,10 +55,10 @@
 <meta property="og:image" content="http://www.goyth.com/2018/05/08/dockerDeploy/daocloud33.png">
 <meta property="og:image" content="http://www.goyth.com/2018/05/08/dockerDeploy/daoloud23.png">
 <meta property="og:image" content="http://www.goyth.com/2018/05/08/dockerDeploy/daocloud34.png">
-<meta property="og:updated_time" content="2018-08-03T07:03:16.647Z">
+<meta property="og:updated_time" content="2018-12-02T08:39:00.112Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于 Docker 构建前端持续集成开发环境">
-<meta name="twitter:description" content="我的博客  github博客主页    本文将以一个标准的 Vue 项目为例，完全抛弃传统的前端项目开发部署方式，基于 Docker 容器技术打造一个精简的前端持续集成的开发环境。 前置知识： CI（持续集成）：阮一峰老师的关于 CI 的介绍  Docker： Docker 快速入门   目标： 代码无需在本地构建  只需将代码推上 Github ，自动构建 -&amp;gt; 部署  版本易管理，可轻">
+<meta name="twitter:description" content="本文将以一个标准的 Vue 项目为例，完全抛弃传统的前端项目开发部署方式，基于 Docker 容器技术打造一个精简的前端持续集成的开发环境。 前置知识： CI（持续集成）：阮一峰老师的关于 CI 的介绍  Docker： Docker 快速入门   目标： 代码无需在本地构建  只需将代码推上 Github ，自动构建 -&amp;gt; 部署  版本易管理，可轻松回退版本">
 <meta name="twitter:image" content="http://www.goyth.com/2018/05/08/dockerDeploy/vue-docker.png">
   
     <link rel="alternate" href="/atom.xml" title="GOYTH" type="application/atom+xml">
@@ -223,14 +223,7 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li><p><a href="http://goyth.com/" target="_blank" rel="noopener">我的博客</a></p>
-</li>
-<li><p><a href="https://github.com/jsyt/jsyt.github.io" target="_blank" rel="noopener">github博客主页</a></p>
-</li>
-</ul>
-<hr>
-<p>本文将以一个标准的 Vue 项目为例，完全抛弃传统的前端项目开发部署方式，基于 Docker 容器技术打造一个精简的前端持续集成的开发环境。</p>
+        <p>本文将以一个标准的 Vue 项目为例，完全抛弃传统的前端项目开发部署方式，基于 Docker 容器技术打造一个精简的前端持续集成的开发环境。</p>
 <h4 id="前置知识："><a href="#前置知识：" class="headerlink" title="前置知识："></a>前置知识：</h4><ol>
 <li><p>CI（持续集成）：<a href="http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html" title="CI 介绍" target="_blank" rel="noopener">阮一峰老师的关于 CI 的介绍</a></p>
 </li>

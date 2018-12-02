@@ -21,18 +21,18 @@
   
   
   
-  <meta name="description" content="我的博客  github博客主页    apply()apply 方法传入两个参数：一个是作为函数上下文的对象，另外一个是作为函数参数所组成的数组。当第一个参数为 null 时，函数上下文为 window。 123456789var obj = &amp;#123;    name : &apos;luke&apos;&amp;#125;function func(age, gender)&amp;#123;    console.log">
+  <meta name="description" content="apply()apply 方法传入两个参数：一个是作为函数上下文的对象，另外一个是作为函数参数所组成的数组。当第一个参数为 null 时，函数上下文为 window。 123456789var obj = &amp;#123;    name : &apos;luke&apos;&amp;#125;function func(age, gender)&amp;#123;    console.log(this.name + &apos; &apos; + ag">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript之apply、call和bind的模拟实现">
 <meta property="og:url" content="http://www.goyth.com/2018/05/27/applyAndCall/index.html">
 <meta property="og:site_name" content="GOYTH">
-<meta property="og:description" content="我的博客  github博客主页    apply()apply 方法传入两个参数：一个是作为函数上下文的对象，另外一个是作为函数参数所组成的数组。当第一个参数为 null 时，函数上下文为 window。 123456789var obj = &amp;#123;    name : &apos;luke&apos;&amp;#125;function func(age, gender)&amp;#123;    console.log">
+<meta property="og:description" content="apply()apply 方法传入两个参数：一个是作为函数上下文的对象，另外一个是作为函数参数所组成的数组。当第一个参数为 null 时，函数上下文为 window。 123456789var obj = &amp;#123;    name : &apos;luke&apos;&amp;#125;function func(age, gender)&amp;#123;    console.log(this.name + &apos; &apos; + ag">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-03T07:02:07.276Z">
+<meta property="og:updated_time" content="2018-12-02T08:38:24.458Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript之apply、call和bind的模拟实现">
-<meta name="twitter:description" content="我的博客  github博客主页    apply()apply 方法传入两个参数：一个是作为函数上下文的对象，另外一个是作为函数参数所组成的数组。当第一个参数为 null 时，函数上下文为 window。 123456789var obj = &amp;#123;    name : &apos;luke&apos;&amp;#125;function func(age, gender)&amp;#123;    console.log">
+<meta name="twitter:description" content="apply()apply 方法传入两个参数：一个是作为函数上下文的对象，另外一个是作为函数参数所组成的数组。当第一个参数为 null 时，函数上下文为 window。 123456789var obj = &amp;#123;    name : &apos;luke&apos;&amp;#125;function func(age, gender)&amp;#123;    console.log(this.name + &apos; &apos; + ag">
   
     <link rel="alternate" href="/atom.xml" title="GOYTH" type="application/atom+xml">
   
@@ -196,14 +196,7 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li><p><a href="http://goyth.com/" target="_blank" rel="noopener">我的博客</a></p>
-</li>
-<li><p><a href="https://github.com/jsyt/jsyt.github.io" target="_blank" rel="noopener">github博客主页</a></p>
-</li>
-</ul>
-<hr>
-<h2 id="apply"><a href="#apply" class="headerlink" title="apply()"></a>apply()</h2><p>apply 方法传入两个参数：一个是作为函数上下文的对象，另外一个是作为函数参数所组成的数组。当第一个参数为 <code>null</code> 时，函数上下文为 <code>window</code>。</p>
+        <h2 id="apply"><a href="#apply" class="headerlink" title="apply()"></a>apply()</h2><p>apply 方法传入两个参数：一个是作为函数上下文的对象，另外一个是作为函数参数所组成的数组。当第一个参数为 <code>null</code> 时，函数上下文为 <code>window</code>。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name : <span class="string">'luke'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params">age, gender</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">' '</span> + age + <span class="string">' '</span> + gender);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func.apply(obj, [<span class="number">18</span>, <span class="string">'male'</span>]);    <span class="comment">// luke 18 male</span></span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <h2 id="apply模拟实现"><a href="#apply模拟实现" class="headerlink" title="apply模拟实现"></a>apply模拟实现</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.apply2 = <span class="function"><span class="keyword">function</span>(<span class="params">context, arrArgs</span>)</span>&#123;</span><br><span class="line">  context = context || <span class="built_in">window</span>;</span><br><span class="line">  context.fn = <span class="keyword">this</span>;</span><br><span class="line">  <span class="keyword">let</span> args = [];</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>, len=arrArgs.length; i&lt;len; i++)&#123;</span><br><span class="line">    args.push(<span class="string">'arrArgs['</span>+i+<span class="string">']'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> result = <span class="built_in">eval</span>(<span class="string">'context.fn('</span>+args+<span class="string">')'</span>);</span><br><span class="line">  <span class="keyword">delete</span> context.fn;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试一下</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name : <span class="string">'luke'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params">age, gender</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">' '</span> + age + <span class="string">' '</span> + gender);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func.apply2(obj, [<span class="number">18</span>, <span class="string">'male'</span>]);    <span class="comment">// luke 18 male</span></span><br></pre></td></tr></table></figure>
