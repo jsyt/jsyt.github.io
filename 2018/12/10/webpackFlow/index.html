@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <!-- PACE Progress Bar START -->
+  
+    <script src="/js/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>webpack 打包构建流程分析 | GOYTH</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="webpack" />
+  
+  
+  
+  
+  <meta name="description" content="如何调试 webpackrequire(加载) node_modules/webpack-cli/bin 目录下的cli.js，预先设置debugger（断点），然后开启调试模式。 debugger.js12var webpackPath=require(&apos;path&apos;).resolve(__dirname,&apos;node_modules&apos;, &apos;webpack-cli&apos;, &apos;bin&apos;, &apos;cli.js&apos;">
+<meta name="keywords" content="webpack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack 打包构建流程分析">
+<meta property="og:url" content="http://www.goyth.com/2018/12/10/webpackFlow/index.html">
+<meta property="og:site_name" content="GOYTH">
+<meta property="og:description" content="如何调试 webpackrequire(加载) node_modules/webpack-cli/bin 目录下的cli.js，预先设置debugger（断点），然后开启调试模式。 debugger.js12var webpackPath=require(&apos;path&apos;).resolve(__dirname,&apos;node_modules&apos;, &apos;webpack-cli&apos;, &apos;bin&apos;, &apos;cli.js&apos;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.goyth.com/2018/12/10/webpackFlow/webpack2.svg">
+<meta property="og:updated_time" content="2018-12-10T15:27:33.461Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="webpack 打包构建流程分析">
+<meta name="twitter:description" content="如何调试 webpackrequire(加载) node_modules/webpack-cli/bin 目录下的cli.js，预先设置debugger（断点），然后开启调试模式。 debugger.js12var webpackPath=require(&apos;path&apos;).resolve(__dirname,&apos;node_modules&apos;, &apos;webpack-cli&apos;, &apos;bin&apos;, &apos;cli.js&apos;">
+<meta name="twitter:image" content="http://www.goyth.com/2018/12/10/webpackFlow/webpack2.svg">
+  
+    <link rel="alternate" href="/atom.xml" title="GOYTH" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
+  <!-- Google Adsense -->
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-0123456789ABCDEF",
+          enable_page_level_ads: true
+      });
+  </script>
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/categories"] = "Categories"; 
+
+  themeMenus["/tags"] = "Tags"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="GOYTH" rel="home"> GOYTH </a>
+            
+          </h1>
+
+          
+            <div class="site-description">I hear and I forget, I see and I remember, I do and I understand.</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  }
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-webpackFlow" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      webpack 打包构建流程分析
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2018/12/10/webpackFlow/" class="article-date">
+	  <time datetime="2018-12-10T13:22:43.000Z" itemprop="datePublished">December 10, 2018</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="如何调试-webpack"><a href="#如何调试-webpack" class="headerlink" title="如何调试 webpack"></a>如何调试 webpack</h2><p>require(加载) node_modules/webpack-cli/bin 目录下的cli.js，预先设置debugger（断点），然后开启调试模式。</p>
+<h3 id="debugger-js"><a href="#debugger-js" class="headerlink" title="debugger.js"></a>debugger.js</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> webpackPath=<span class="built_in">require</span>(<span class="string">'path'</span>).resolve(__dirname,<span class="string">'node_modules'</span>, <span class="string">'webpack-cli'</span>, <span class="string">'bin'</span>, <span class="string">'cli.js'</span>);</span><br><span class="line"><span class="built_in">require</span>(webpackPath);</span><br></pre></td></tr></table></figure>
+<h3 id="webpack-config-js"><a href="#webpack-config-js" class="headerlink" title="webpack.config.js"></a>webpack.config.js</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path=<span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="built_in">module</span>.exports=&#123;</span><br><span class="line">    mode:<span class="string">"development"</span>,</span><br><span class="line">    entry: <span class="string">'./src/index.js'</span>,</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: path.resolve(__dirname,<span class="string">'dist'</span>),</span><br><span class="line">        filename:<span class="string">'bundle.js'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="webpack-主要工作流程"><a href="#webpack-主要工作流程" class="headerlink" title="webpack 主要工作流程"></a>webpack 主要工作流程</h2><p>Webpack 的运行流程是一个串行的过程，从启动到结束会依次执行以下流程：</p>
+<ul>
+<li><strong>初始化参数</strong>：从配置文件和 Shell 语句中读取与合并参数，得出最终的参数；</li>
+<li><strong>开始编译</strong>：用上一步得到的参数初始化 Compiler 对象，加载所有配置的插件，执行对象的run方法开始执行编译； 确定入口：根据配置中的 entry 找出所有的入口文件</li>
+<li><strong>编译模块</strong>：从入口文件出发，调用所有配置的 Loader 对模块进行编译，再找出该模块依赖的模块，再递归本步骤直到所有入口依赖的文件都经过了本步骤的处理；</li>
+<li><strong>完成模块编译</strong>：在经过第4步使用 Loader 翻译完所有模块后，得到了每个模块被翻译后的最终内容以及它们之间的依赖关系；</li>
+<li><strong>输出资源</strong>：根据入口和模块之间的依赖关系，组装成一个个包含多个模块的 Chunk，再把每个 Chunk 转换成一个单独的文件加入到输出列表，这步是可以修改输出内容的最后机会；</li>
+<li><strong>输出完成</strong>：在确定好输出内容后，根据配置确定输出的路径和文件名，把文件内容写入到文件系统。</li>
+</ul>
+<p>在以上过程中，Webpack 会在特定的时间点广播出特定的事件，插件在监听到感兴趣的事件后会执行特定的逻辑，并且插件可以调用 Webpack 提供的 API 改变 Webpack 的运行结果。</p>
+<a id="more"></a>
+<h2 id="webpack打包流程图"><a href="#webpack打包流程图" class="headerlink" title="webpack打包流程图"></a>webpack打包流程图</h2><p><img src="/2018/12/10/webpackFlow/webpack2.svg" alt=""></p>
+<h2 id="流程详解"><a href="#流程详解" class="headerlink" title="流程详解"></a>流程详解</h2><h3 id="初始化阶段"><a href="#初始化阶段" class="headerlink" title="初始化阶段"></a>初始化阶段</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">事件名</th>
+<th style="text-align:left">解释</th>
+<th style="text-align:left">代码位置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">读取命令行参数&ensp;</td>
+<td style="text-align:left">从命令行中读取用户输入的参数</td>
+<td style="text-align:left">require(“./convert-argv”)(argv)</td>
+</tr>
+<tr>
+<td style="text-align:left">实例化 Compiler</td>
+<td style="text-align:left">1.用上一步得到的参数初始Compiler 实例 <br>2.Compiler 负责文件监听和启动编译 <br>3.Compiler 实例中包含了完整的<br> Webpack 配置，全局只有一个 Compiler 实例。</td>
+<td style="text-align:left">compiler = webpack(options);</td>
+</tr>
+<tr>
+<td style="text-align:left">加载插件</td>
+<td style="text-align:left">1.依次调用插件的 apply 方法，<br>让插件可以监听后续的所有事件节点。<br>同时给插件传入 compiler 实例的引用，<br>以方便插件通过 compiler 调用 <br>Webpack 提供的 API。</td>
+<td style="text-align:left">plugin.apply(compiler)</td>
+</tr>
+<tr>
+<td style="text-align:left">处理入口</td>
+<td style="text-align:left">读取配置的 Entrys，为每个 Entry 实例化<br>一个对应的 EntryPlugin，为后面该 <br>Entry 的递归解析工作做准备</td>
+<td style="text-align:left">new EntryOptionPlugin().apply(compiler) <br>new SingleEntryPlugin(context, item, name) <br>compiler.hooks.make.tapAsync</td>
+</tr>
+</tbody>
+</table>
+<h3 id="编译阶段"><a href="#编译阶段" class="headerlink" title="编译阶段"></a>编译阶段</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">事件名</th>
+<th style="text-align:left">解释</th>
+<th style="text-align:left">代码位置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">run</td>
+<td style="text-align:left">启动一次新的编译</td>
+<td style="text-align:left">this.hooks.run.callAsync</td>
+</tr>
+<tr>
+<td style="text-align:left">compile</td>
+<td style="text-align:left">该事件是为了告诉插件一次新的编译将要启动，同时会给插件传入compiler 对象。</td>
+<td style="text-align:left">compile(callback)</td>
+</tr>
+<tr>
+<td style="text-align:left">compilation</td>
+<td style="text-align:left">当 Webpack 以开发模式运行时，每当检测到文件变化，一次新的 Compilation 将被创建。一个 Compilation 对象包含了当前的模块资源、编译生成资源、变化的文件等。Compilation 对象也提供了很多事件回调供插件做扩展。</td>
+<td style="text-align:left">newCompilation(params)</td>
+</tr>
+<tr>
+<td style="text-align:left">make</td>
+<td style="text-align:left">一个新的 Compilation 创建完毕主开始编译</td>
+<td style="text-align:left">this.hooks.make.callAsync</td>
+</tr>
+<tr>
+<td style="text-align:left">addEntry</td>
+<td style="text-align:left">即将从 Entry 开始读取文件</td>
+<td style="text-align:left">compilation.addEntry <br> this._addModuleChain</td>
+</tr>
+<tr>
+<td style="text-align:left">moduleFactory</td>
+<td style="text-align:left">创建模块工厂</td>
+<td style="text-align:left">const moduleFactory = this.dependencyFactories.get(Dep)</td>
+</tr>
+<tr>
+<td style="text-align:left">create</td>
+<td style="text-align:left">创建模块</td>
+<td style="text-align:left">moduleFactory.create</td>
+</tr>
+<tr>
+<td style="text-align:left">factory</td>
+<td style="text-align:left">开始创建模块</td>
+<td style="text-align:left">factory(result, (err, module) <br> resolver(result) this.hooks.resolver.tap(“NormalModuleFactory”)</td>
+</tr>
+<tr>
+<td style="text-align:left">resolveRequestArray</td>
+<td style="text-align:left">解析loader路径</td>
+<td style="text-align:left">resolveRequestArray</td>
+</tr>
+<tr>
+<td style="text-align:left">resolve</td>
+<td style="text-align:left">解析资源文件路径</td>
+<td style="text-align:left">resolve</td>
+</tr>
+<tr>
+<td style="text-align:left">userRequest</td>
+<td style="text-align:left">得到包括loader在内的资源文件的绝对路径用!拼起来的字符串</td>
+<td style="text-align:left">userRequest</td>
+</tr>
+<tr>
+<td style="text-align:left">ruleSet.exec</td>
+<td style="text-align:left">它可以根据模块路径名，匹配出模块所需的loader</td>
+<td style="text-align:left">this.ruleSet.exec</td>
+</tr>
+<tr>
+<td style="text-align:left">_run</td>
+<td style="text-align:left">它可以根据模块路径名，匹配出模块所需的loader</td>
+<td style="text-align:left">_run</td>
+</tr>
+<tr>
+<td style="text-align:left">loaders</td>
+<td style="text-align:left">得到所有的loader数组</td>
+<td style="text-align:left">results[0].concat(loaders, results[1], results[2])</td>
+</tr>
+<tr>
+<td style="text-align:left">getParser</td>
+<td style="text-align:left">获取AST解析器</td>
+<td style="text-align:left">this.getParser(type, settings.parser)</td>
+</tr>
+<tr>
+<td style="text-align:left">buildModule</td>
+<td style="text-align:left">开始编译模块</td>
+<td style="text-align:left">this.buildModule(module) <br>buildModule(module, optional, origin,dependencies, thisCallback)</td>
+</tr>
+<tr>
+<td style="text-align:left">build</td>
+<td style="text-align:left">开始真正编译入口模块</td>
+<td style="text-align:left">build(options)</td>
+</tr>
+<tr>
+<td style="text-align:left">doBuild</td>
+<td style="text-align:left">开始真正编译入口模块</td>
+<td style="text-align:left">doBuild</td>
+</tr>
+<tr>
+<td style="text-align:left">执行loader</td>
+<td style="text-align:left">使用loader进行转换</td>
+<td style="text-align:left">runLoaders <br> runLoaders</td>
+</tr>
+<tr>
+<td style="text-align:left">iteratePitchingLoaders</td>
+<td style="text-align:left">开始递归执行pitch loader</td>
+<td style="text-align:left">iteratePitchingLoaders</td>
+</tr>
+<tr>
+<td style="text-align:left">loadLoader</td>
+<td style="text-align:left">加载loader</td>
+<td style="text-align:left">loadLoader</td>
+</tr>
+<tr>
+<td style="text-align:left">runSyncOrAsync</td>
+<td style="text-align:left">执行pitchLoader</td>
+<td style="text-align:left">runSyncOrAsync</td>
+</tr>
+<tr>
+<td style="text-align:left">processResource</td>
+<td style="text-align:left">开始处理资源</td>
+<td style="text-align:left">processResource<br>options.readResource<br>iterateNormalLoaders<br>iterateNormalLoaders</td>
+</tr>
+<tr>
+<td style="text-align:left">createSource</td>
+<td style="text-align:left">创建源代码对象</td>
+<td style="text-align:left">this.createSource</td>
+</tr>
+<tr>
+<td style="text-align:left">parse</td>
+<td style="text-align:left">使用parser转换抽象语法树</td>
+<td style="text-align:left">this.parser.parse</td>
+</tr>
+<tr>
+<td style="text-align:left">parse</td>
+<td style="text-align:left">解析抽象语法树</td>
+<td style="text-align:left">parse(source, initialState)</td>
+</tr>
+<tr>
+<td style="text-align:left">acorn.parse</td>
+<td style="text-align:left">解析语法树</td>
+<td style="text-align:left">acorn.parse(code, parserOptions)</td>
+</tr>
+<tr>
+<td style="text-align:left">ImportDependency</td>
+<td style="text-align:left">遍历并添加添加依赖</td>
+<td style="text-align:left">parser.state.module.addDependency(clearDep)</td>
+</tr>
+<tr>
+<td style="text-align:left">succeedModule</td>
+<td style="text-align:left">生成语法树后就表示一个模块编译完成</td>
+<td style="text-align:left">this.hooks.succeedModule.call(module)</td>
+</tr>
+<tr>
+<td style="text-align:left">processModuleDependencies</td>
+<td style="text-align:left">递归编译依赖的模块    this.processModuleDependencies(module)<br>processModuleDependencies(module, callback)<br>this.addModuleDependencies<br>buildModule</td>
+</tr>
+<tr>
+<td style="text-align:left">make后</td>
+<td style="text-align:left">结束make</td>
+<td style="text-align:left">this.hooks.make.callAsync(compilation, err =&gt; {}</td>
+</tr>
+<tr>
+<td style="text-align:left">finish</td>
+<td style="text-align:left">编译完成</td>
+<td style="text-align:left">compilation.finish();</td>
+</tr>
+</tbody>
+</table>
+<h3 id="结束阶段"><a href="#结束阶段" class="headerlink" title="结束阶段"></a>结束阶段</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">事件名</th>
+<th style="text-align:left">解释</th>
+<th style="text-align:left">代码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">seal</td>
+<td style="text-align:left">封装</td>
+<td style="text-align:left">compilation.seal <br> seal(callback)</td>
+</tr>
+<tr>
+<td style="text-align:left">addChunk</td>
+<td style="text-align:left">生成资源</td>
+<td style="text-align:left">addChunk(name)</td>
+</tr>
+<tr>
+<td style="text-align:left">createChunkAssets</td>
+<td style="text-align:left">创建资源</td>
+<td style="text-align:left">this.createChunkAssets()</td>
+</tr>
+<tr>
+<td style="text-align:left">getRenderManifest</td>
+<td style="text-align:left">获得要渲染的描述文件</td>
+<td style="text-align:left">getRenderManifest(options)</td>
+</tr>
+<tr>
+<td style="text-align:left">render</td>
+<td style="text-align:left">渲染源码</td>
+<td style="text-align:left">source = fileManifest.render();</td>
+</tr>
+<tr>
+<td style="text-align:left">afterCompile</td>
+<td style="text-align:left">编译结束</td>
+<td style="text-align:left">this.hooks.afterCompile</td>
+</tr>
+<tr>
+<td style="text-align:left">shouldEmit</td>
+<td style="text-align:left">所有需要输出的文件已经生成好，询问插件哪些文件需要输出，哪些不需要。</td>
+<td style="text-align:left">this.hooks.shouldEmit</td>
+</tr>
+<tr>
+<td style="text-align:left">emit</td>
+<td style="text-align:left">确定好要输出哪些文件后，执行文件输出，可以在这里获取和修改输出内容。</td>
+<td style="text-align:left">this.emitAssets(compilation) <br>this.hooks.emit.callAsync <br>const emitFiles = err<br>this.outputFileSystem.writeFile</td>
+</tr>
+<tr>
+<td style="text-align:left">this.emitRecords</td>
+<td style="text-align:left">写入记录</td>
+<td style="text-align:left">this.emitRecords</td>
+</tr>
+<tr>
+<td style="text-align:left">done</td>
+<td style="text-align:left">全部完成</td>
+<td style="text-align:left">this.hooks.done.callAsync</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/webpack/">webpack</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://raw.githubusercontent.com/jsyt/jsyt.github.io/master/images/WeChat.JPG',
+  alipayImage: 'https://raw.githubusercontent.com/jsyt/jsyt.github.io/master/images/ALiPay.JPG'
+});
+</script>
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/12/02/V8GC/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JavaScript垃圾回收机制与内存泄漏</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#如何调试-webpack"><span class="nav-number">1.</span> <span class="nav-text">如何调试 webpack</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#debugger-js"><span class="nav-number">1.1.</span> <span class="nav-text">debugger.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#webpack-config-js"><span class="nav-number">1.2.</span> <span class="nav-text">webpack.config.js</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack-主要工作流程"><span class="nav-number">2.</span> <span class="nav-text">webpack 主要工作流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack打包流程图"><span class="nav-number">3.</span> <span class="nav-text">webpack打包流程图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流程详解"><span class="nav-number">4.</span> <span class="nav-text">流程详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化阶段"><span class="nav-number">4.1.</span> <span class="nav-text">初始化阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编译阶段"><span class="nav-number">4.2.</span> <span class="nav-text">编译阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结束阶段"><span class="nav-number">4.3.</span> <span class="nav-text">结束阶段</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2018 GOYTH All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
