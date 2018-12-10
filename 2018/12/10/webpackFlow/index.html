@@ -30,7 +30,7 @@
 <meta property="og:description" content="如何调试 webpackrequire(加载) node_modules/webpack-cli/bin 目录下的cli.js，预先设置debugger（断点），然后开启调试模式。 debugger.js12var webpackPath=require(&apos;path&apos;).resolve(__dirname,&apos;node_modules&apos;, &apos;webpack-cli&apos;, &apos;bin&apos;, &apos;cli.js&apos;">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.goyth.com/2018/12/10/webpackFlow/webpack2.svg">
-<meta property="og:updated_time" content="2018-12-10T15:27:33.461Z">
+<meta property="og:updated_time" content="2018-12-10T15:31:51.567Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack 打包构建流程分析">
 <meta name="twitter:description" content="如何调试 webpackrequire(加载) node_modules/webpack-cli/bin 目录下的cli.js，预先设置debugger（断点），然后开启调试模式。 debugger.js12var webpackPath=require(&apos;path&apos;).resolve(__dirname,&apos;node_modules&apos;, &apos;webpack-cli&apos;, &apos;bin&apos;, &apos;cli.js&apos;">
@@ -400,7 +400,8 @@ var themeMenus = {};
 </tr>
 <tr>
 <td style="text-align:left">processModuleDependencies</td>
-<td style="text-align:left">递归编译依赖的模块    this.processModuleDependencies(module)<br>processModuleDependencies(module, callback)<br>this.addModuleDependencies<br>buildModule</td>
+<td style="text-align:left">递归编译依赖的模块</td>
+<td style="text-align:left">this.processModuleDependencies(module)<br>processModuleDependencies(module, callback)<br>this.addModuleDependencies<br>buildModule</td>
 </tr>
 <tr>
 <td style="text-align:left">make后</td>
