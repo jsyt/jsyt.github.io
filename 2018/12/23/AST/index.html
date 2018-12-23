@@ -13,22 +13,26 @@
   <!-- PACE Progress Bar START -->
 
   
-  <title>GOYTH</title>
+  <title>聊聊ast | GOYTH</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
+  <meta name="keywords" content="AST" />
   
   
   
-  <meta name="description" content="I hear and I forget, I see and I remember, I do and I understand.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="GOYTH">
-<meta property="og:url" content="http://www.goyth.com/index.html">
+  
+  <meta name="description" content="为什么谈 AST很简单如果你想了解 js 编译执行的原理，那么你就得了解 AST，目前前端常用的一些插件或者工具，比如说javascript转译、代码压缩、css预处理器、elint、pretiier等功能的实现，都是建立在 AST 的基础之上。 JavaScript 编译执行流程js执行的第一步是读取 js 文件中的字符流，然后通过词法分析生成token，之后再通过语法分析生成 AST（Abst">
+<meta name="keywords" content="AST">
+<meta property="og:type" content="article">
+<meta property="og:title" content="聊聊AST">
+<meta property="og:url" content="http://www.goyth.com/2018/12/23/AST/index.html">
 <meta property="og:site_name" content="GOYTH">
-<meta property="og:description" content="I hear and I forget, I see and I remember, I do and I understand.">
+<meta property="og:description" content="为什么谈 AST很简单如果你想了解 js 编译执行的原理，那么你就得了解 AST，目前前端常用的一些插件或者工具，比如说javascript转译、代码压缩、css预处理器、elint、pretiier等功能的实现，都是建立在 AST 的基础之上。 JavaScript 编译执行流程js执行的第一步是读取 js 文件中的字符流，然后通过词法分析生成token，之后再通过语法分析生成 AST（Abst">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-23T15:40:48.245Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GOYTH">
-<meta name="twitter:description" content="I hear and I forget, I see and I remember, I do and I understand.">
+<meta name="twitter:title" content="聊聊AST">
+<meta name="twitter:description" content="为什么谈 AST很简单如果你想了解 js 编译执行的原理，那么你就得了解 AST，目前前端常用的一些插件或者工具，比如说javascript转译、代码压缩、css预处理器、elint、pretiier等功能的实现，都是建立在 AST 的基础之上。 JavaScript 编译执行流程js执行的第一步是读取 js 文件中的字符流，然后通过词法分析生成token，之后再通过语法分析生成 AST（Abst">
   
     <link rel="alternate" href="/atom.xml" title="GOYTH" type="application/atom+xml">
   
@@ -86,7 +90,7 @@ var themeMenus = {};
 </script>
 
 
-  <body>
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
   <header id="allheader" class="site-header" role="banner">
@@ -164,17 +168,15 @@ var themeMenus = {};
             
       <div id="content" class="outer">
         
-          <section id="main">
-  
-    <article id="post-AST"  class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-AST" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
       <header class="article-header">
         
   
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/12/23/AST/">聊聊AST</a>
+    <h1 class="thumb" class="article-title" itemprop="name">
+      聊聊AST
     </h1>
   
 
@@ -187,6 +189,10 @@ var themeMenus = {};
 	</a>
 
       
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
@@ -288,838 +294,73 @@ var themeMenus = {};
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AST/">AST</a></li></ul>
 
       
-            
-      
-    </footer>
-  </div>
-  
-</article>
+        <div id="donation_div"></div>
 
-<!-- Table of Contents -->
-
-  
-    <article id="post-webpackFlow"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/12/10/webpackFlow/">webpack 打包构建流程分析整理</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/12/10/webpackFlow/" class="article-date">
-	  <time datetime="2018-12-10T13:22:43.000Z" itemprop="datePublished">December 10, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-thumbnail">
-              <a href="/2018/12/10/webpackFlow/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/10" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-            </div>
-            <div class="entry-summary">
-            如何调试 webpackrequire(加载) node_modules/webpack-cli/bin 目录下的cli.js，预先设置debugger（断点），然后开启调试模式。
-debugger.js12var webpackPath=require('path').resolve(__dirname,'node_modules', 'webpack-cli', 'bin', 'cli....
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2018/12/10/webpackFlow/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/webpack/">webpack</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-V8GC"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/12/02/V8GC/">JavaScript垃圾回收机制与内存泄漏</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/12/02/V8GC/" class="article-date">
-	  <time datetime="2018-12-02T05:46:27.000Z" itemprop="datePublished">December 2, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-thumbnail">
-              <a href="/2018/12/02/V8GC/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/3" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-            </div>
-            <div class="entry-summary">
-            JavaScript 垃圾收集
-程序的运行需要分配内存，内存资源是有限的，当程序运行结束后，就应该回收其内存资源。JavaScript使用自动内存管理，也称为垃圾回收机制（garbage collector）
-自动垃圾回收的优点是可以简化开发，不用时刻惦记着回收不再使用的变量，降低内存泄漏的可能性；缺点是无法完全的掌握内存的分配以及回收的具体过程。
-
-V8引擎垃圾回收机制自动垃圾回收算法的演...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2018/12/02/V8GC/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/内存泄漏/">内存泄漏</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/垃圾回收/">垃圾回收</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-webpackConfig"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/11/17/webpackConfig/">webpack 配置详解</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/11/17/webpackConfig/" class="article-date">
-	  <time datetime="2018-11-17T09:05:47.000Z" itemprop="datePublished">November 17, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-thumbnail">
-              <a href="/2018/11/17/webpackConfig/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/3" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-            </div>
-            <div class="entry-summary">
-            什么是WebPackWebPack可以看做是模块打包机：它做的事情是，分析你的项目结构，找到JavaScript模块以及其它的一些浏览器不能直接运行的拓展语言（Scss，TypeScript等），并将其打包为合适的格式以供浏览器使用。
-
-构建就是把源代码转换成发布到线上的可执行 JavaScrip、CSS、HTML 代码，包括如下内容。
-
-代码转换：TypeScript 编译成 JavaSc...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2018/11/17/webpackConfig/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/webpack/">webpack</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-mongodb2"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/10/13/mongodb2/">MongoDB 知识点梳理(二)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/10/13/mongodb2/" class="article-date">
-	  <time datetime="2018-10-13T13:47:00.000Z" itemprop="datePublished">October 13, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-thumbnail">
-              <a href="/2018/10/13/mongodb2/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/9" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-            </div>
-            <div class="entry-summary">
-            MongoDB通过配置项启动数据库启动服务器1mongod --config mongo.conf
-启动客户端1mongo --port 50000
-
-
-
-
-参数
-含义
-
-
-
-
-–dbpath
-指定数据库文件的目录
-
-
-–port
-端口 默认是27017 28017
-
-
-–fork
-以后台守护的方式进行启动
-
-
-–logpath
-指定日志文件输出路径
-
-
-–config
-指定一个配置文件
-
-...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2018/10/13/mongodb2/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/Database/">Database</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MongoDB/">MongoDB</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-mongodb"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/10/12/mongodb/">MongoDB 知识点梳理（一）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/10/12/mongodb/" class="article-date">
-	  <time datetime="2018-10-12T13:12:45.000Z" itemprop="datePublished">October 12, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-thumbnail">
-              <a href="/2018/10/12/mongodb/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/2" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-            </div>
-            <div class="entry-summary">
-            什么是MongoDBMongoDB是一个基于分布式文件存储的开源数据库系统。在高负载的情况下，添加更多的节点，可以保证服务器性能。MongoDB 旨在为WEB应用提供可扩展的高性能数据存储解决方案。MongoDB 将数据存储为一个文档，数据结构由键值(key=&gt;value)对组成。MongoDB 文档类似于 JSON 对象。字段值可以包含其他文档，数组及文档数组。
-
-MongoDB 基...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2018/10/12/mongodb/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/Database/">Database</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MongoDB/">MongoDB</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-promise"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/08/03/promise/">实现一个符合Promise A+规范的Promise</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/08/03/promise/" class="article-date">
-	  <time datetime="2018-08-03T03:43:09.000Z" itemprop="datePublished">August 3, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-thumbnail">
-              <a href="/2018/08/03/promise/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/10" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-            </div>
-            <div class="entry-summary">
-            Promise模拟实现一个符合Promise A+规范的promise，仅供学习其实现原理
-
-源码地址链接
-
-我的博客
-
-github博客主页
-
-
-Promise的详细使用方法可参考阮一峰老师的文章
-
-Promise A+规范概述promise雏形简单点说
-
-promise 函数的参数（executor）是一个函数，这个函数有两个参数resolve和reject，这两个参数也都是函数，分别在...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2018/08/03/promise/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Promise/">Promise</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-http2"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/07/11/http2/">HTTP知识点整理</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/07/11/http2/" class="article-date">
-	  <time datetime="2018-07-11T12:25:51.000Z" itemprop="datePublished">July 11, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-thumbnail">
-              <a href="/2018/07/11/http2/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/10" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-            </div>
-            <div class="entry-summary">
-            HTTP/2是HTTP协议自1999年HTTP 1.1发布后的首个更新，主要基于SPDY协议。于2015年正式发布，HTTP/2解决了HTTP1.1线头阻塞、重复建立TCP连接等问题，充分利用TCP连接的高效传输，使得网络延迟大幅下降，网络传输速度大幅提升。
-
-HTTP/0.9 - 1991第一版的HTTP文档是1991年提出来的 HTTP/0.9。这是有史以来最简单的协议；它仅有一个GET...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2018/07/11/http2/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/Network-Protocol/">Network Protocol</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP-2/">HTTP/2</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-webSocket"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/07/09/webSocket/">WebSocket知识点梳理</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/07/09/webSocket/" class="article-date">
-	  <time datetime="2018-07-09T11:53:01.000Z" itemprop="datePublished">July 9, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-thumbnail">
-              <a href="/2018/07/09/webSocket/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/2" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-            </div>
-            <div class="entry-summary">
-            什么是WebSocketWebSocket是一种在单个TCP连接上进行全双工通讯的协议。它与HTTP协一样，同属于应用层协议。
-WebSocket解决了什么问题WebSocket使得客户端和服务器之间的数据交换变得更加简单，允许服务端主动向客户端推送数据。在WebSocket API中，浏览器和服务器只需要完成一次握手，两者之间就直接可以创建持久性的连接，并进行双向数据传输。简单说就是解决了...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2018/07/09/webSocket/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/Network-Protocol/">Network Protocol</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webSocket/">webSocket</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-DNS"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/07/07/DNS/">DNS知识点梳理</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	Posted on <a href="/2018/07/07/DNS/" class="article-date">
-	  <time datetime="2018-07-07T10:29:09.000Z" itemprop="datePublished">July 7, 2018</time>
-	</a>
-
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-          
-            <div class="entry-thumbnail">
-              <a href="/2018/07/07/DNS/"><img width="250" height="175" src="http://lorempixel.com/500/350/city/2" class="attachment-thumb-featured size-thumb-featured wp-post-image" alt=""></a>
-            </div>
-            <div class="entry-summary">
-            DNS 服务器DNS( Domain Name System)是“域名系统”的英文缩写，是一种组织成域层次结构的计算机和网络服务命名系统，它用于TCP/IP网络，它所提供的服务是用来将主机名和域名转换为IP地址的工作。DNS就是这样的一位“翻译官”，它的基本工作原理可用下图来表示。
-
-
-全世界所有的人每天上网都会使用DNS服务器，如果大家都去同一个地方访问某一台服务器，时延将会非常大，所以D...
-          
-
-        
-          <p class="article-more-link">
-            <a href="/2018/07/07/DNS/#more">Continue Reading →</a>
-          </p>
-        </div>
-      
-    </div>
-    <footer class="entry-meta entry-footer">
-      
-	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/Network-Protocol/">Network Protocol</a>
-
-      
-  <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DNS/">DNS</a></li></ul>
-
-      
-            
-      
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next</a>
-  </nav>
-
-</section>
-          <aside id="sidebar">
-  
-    <div class="widget-wrap" style="margin: 20px 0;">
-	<div id="search-form-wrap">
-
-    <form class="search-form">
-        <label style="width: 75%;">
-            <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 42px;" placeholder=" Search…" value="" name="s" title="Search for:">
-        </label>
-        <input type="submit" class="search-form-submit" value="Search">
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
+<script src="/js/vdonate.js"></script>
 <script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://raw.githubusercontent.com/jsyt/jsyt.github.io/master/images/WeChat.JPG',
+  alipayImage: 'https://raw.githubusercontent.com/jsyt/jsyt.github.io/master/images/ALiPay.JPG'
+});
 </script>
-<script src="/js/insight.js"></script>
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
 
-</div>
-</div>
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
   
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Connect With Us</h3>
-    <div class="widget widget_athemes_social_icons">
-
-    	<ul class="clearfix widget-social-icons">   
-    	
-          
-     			  <li><a href="https://github.com/jsyt" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-            <li><a href="mailto:hyt577@gmail.com?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
-          
-   		
-   		</ul>
-
-
-   		<!--
-   		<ul class="clearfix widget-social-icons">   		
-   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
-		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
-			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
-			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
-			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
-			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
-		</ul> -->
-
-    </div>
-  </div>
-
+<nav id="article-nav">
+  
+  
+    <a href="/2018/12/10/webpackFlow/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">webpack 打包构建流程分析整理</div>
+    </a>
+  
+</nav>
 
   
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">7</span></li></ul>
-    </div>
-  </div>
-
-
-  
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么谈-AST"><span class="nav-number">1.</span> <span class="nav-text">为什么谈 AST</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript-编译执行流程"><span class="nav-number">2.</span> <span class="nav-text">JavaScript 编译执行流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#词法分析"><span class="nav-number">2.1.</span> <span class="nav-text">词法分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语法分析"><span class="nav-number">2.2.</span> <span class="nav-text">语法分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是AST（抽象语法树）"><span class="nav-number">2.3.</span> <span class="nav-text">什么是AST（抽象语法树）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AST-节点介绍"><span class="nav-number">2.4.</span> <span class="nav-text">AST 节点介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Identifier"><span class="nav-number">2.4.1.</span> <span class="nav-text">Identifier</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Literal"><span class="nav-number">2.4.2.</span> <span class="nav-text">Literal</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RegExpLiteral"><span class="nav-number">2.4.3.</span> <span class="nav-text">RegExpLiteral</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Programs"><span class="nav-number">2.4.4.</span> <span class="nav-text">Programs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Functions"><span class="nav-number">2.4.5.</span> <span class="nav-text">Functions</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Statement"><span class="nav-number">2.4.6.</span> <span class="nav-text">Statement</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ExpressionStatement"><span class="nav-number">2.4.7.</span> <span class="nav-text">ExpressionStatement</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BlockStatement"><span class="nav-number">2.4.8.</span> <span class="nav-text">BlockStatement</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EmptyStatement"><span class="nav-number">2.4.9.</span> <span class="nav-text">EmptyStatement</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DebuggerStatement"><span class="nav-number">2.4.10.</span> <span class="nav-text">DebuggerStatement</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#WithStatement"><span class="nav-number">2.4.11.</span> <span class="nav-text">WithStatement</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ReturnStatement"><span class="nav-number">2.4.12.</span> <span class="nav-text">ReturnStatement</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LabeledStatement"><span class="nav-number">2.4.13.</span> <span class="nav-text">LabeledStatement</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BreakStatement"><span class="nav-number">2.4.14.</span> <span class="nav-text">BreakStatement</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ContinueStatement"><span class="nav-number">2.4.15.</span> <span class="nav-text">ContinueStatement</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IfStatement"><span class="nav-number">2.4.16.</span> <span class="nav-text">IfStatement</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SwitchStatement"><span class="nav-number">2.4.17.</span> <span class="nav-text">SwitchStatement</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SwitchCase"><span class="nav-number">2.4.18.</span> <span class="nav-text">SwitchCase</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ThrowStatement"><span class="nav-number">2.4.19.</span> <span class="nav-text">ThrowStatement</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TryStatement"><span class="nav-number">2.4.20.</span> <span class="nav-text">TryStatement</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CatchClause"><span class="nav-number">2.4.21.</span> <span class="nav-text">CatchClause</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#WhileStatement"><span class="nav-number">2.4.22.</span> <span class="nav-text">WhileStatement</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DoWhileStatement"><span class="nav-number">2.4.23.</span> <span class="nav-text">DoWhileStatement</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ForStatement"><span class="nav-number">2.4.24.</span> <span class="nav-text">ForStatement</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ForInStatement"><span class="nav-number">2.4.25.</span> <span class="nav-text">ForInStatement</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Declarations"><span class="nav-number">2.4.26.</span> <span class="nav-text">Declarations</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#VariableDeclaration"><span class="nav-number">2.4.27.</span> <span class="nav-text">VariableDeclaration</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#VariableDeclarator"><span class="nav-number">2.4.28.</span> <span class="nav-text">VariableDeclarator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Expressions"><span class="nav-number">2.4.29.</span> <span class="nav-text">Expressions</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ThisExpression"><span class="nav-number">2.4.30.</span> <span class="nav-text">ThisExpression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ArrayExpression"><span class="nav-number">2.4.31.</span> <span class="nav-text">ArrayExpression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ObjectExpression"><span class="nav-number">2.4.32.</span> <span class="nav-text">ObjectExpression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Property"><span class="nav-number">2.4.33.</span> <span class="nav-text">Property</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FunctionExpression"><span class="nav-number">2.4.34.</span> <span class="nav-text">FunctionExpression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UnaryExpression"><span class="nav-number">2.4.35.</span> <span class="nav-text">UnaryExpression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UnaryOperator"><span class="nav-number">2.4.36.</span> <span class="nav-text">UnaryOperator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UpdateExpression"><span class="nav-number">2.4.37.</span> <span class="nav-text">UpdateExpression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UpdateOperator"><span class="nav-number">2.4.38.</span> <span class="nav-text">UpdateOperator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BinaryExpression"><span class="nav-number">2.4.39.</span> <span class="nav-text">BinaryExpression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BinaryOperator"><span class="nav-number">2.4.40.</span> <span class="nav-text">BinaryOperator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AssignmentExpression"><span class="nav-number">2.4.41.</span> <span class="nav-text">AssignmentExpression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AssignmentOperator"><span class="nav-number">2.4.42.</span> <span class="nav-text">AssignmentOperator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LogicalExpression"><span class="nav-number">2.4.43.</span> <span class="nav-text">LogicalExpression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LogicalOperator"><span class="nav-number">2.4.44.</span> <span class="nav-text">LogicalOperator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MemberExpression"><span class="nav-number">2.4.45.</span> <span class="nav-text">MemberExpression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ConditionalExpression"><span class="nav-number">2.4.46.</span> <span class="nav-text">ConditionalExpression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CallExpression"><span class="nav-number">2.4.47.</span> <span class="nav-text">CallExpression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NewExpression"><span class="nav-number">2.4.48.</span> <span class="nav-text">NewExpression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SequenceExpression"><span class="nav-number">2.4.49.</span> <span class="nav-text">SequenceExpression</span></a></li></ol></li></ol></li></ol>
     
-  <div class="widget_athemes_tabs">
-    <ul id="widget-tab" class="clearfix widget-tab-nav">
-      <li class="active"><a>Recent Posts</a></li>
-    </ul>
-    <div class="widget">
-      <ul>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2018/12/23/AST/">聊聊AST</a></h6>
-              <span>December 23, 2018</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2018/12/10/webpackFlow/">webpack 打包构建流程分析整理</a></h6>
-              <span>December 10, 2018</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2018/12/02/V8GC/">JavaScript垃圾回收机制与内存泄漏</a></h6>
-              <span>December 2, 2018</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2018/11/17/webpackConfig/">webpack 配置详解</a></h6>
-              <span>November 17, 2018</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2018/10/13/mongodb2/">MongoDB 知识点梳理(二)</a></h6>
-              <span>October 13, 2018</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2018/10/12/mongodb/">MongoDB 知识点梳理（一）</a></h6>
-              <span>October 12, 2018</span>
-            </div>
-
-          </li>
-        
-      </ul>
     </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AST/">AST</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Browser/">Browser</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Database/">Database</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Network-Protocol/">Network Protocol</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/webpack/">webpack</a><span class="category-list-count">2</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AST/">AST</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Browser-rendering/">Browser rendering</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DNS/">DNS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Debounce/">Debounce</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/">Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Extend/">Extend</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP-2/">HTTP/2</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Promise/">Promise</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Prototype/">Prototype</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reflow/">Reflow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RegExp/">RegExp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Repaint/">Repaint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sort/">Sort</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP-IP/">TCP/IP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Throttle/">Throttle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/browserCache/">browserCache</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cross-domain/">cross-domain</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webSocket/">webSocket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内存泄漏/">内存泄漏</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/垃圾回收/">垃圾回收</a><span class="tag-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/AST/" style="font-size: 10px;">AST</a> <a href="/tags/Browser-rendering/" style="font-size: 10px;">Browser rendering</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/Debounce/" style="font-size: 10px;">Debounce</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Extend/" style="font-size: 10px;">Extend</a> <a href="/tags/HTTP-2/" style="font-size: 10px;">HTTP/2</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/MongoDB/" style="font-size: 15px;">MongoDB</a> <a href="/tags/Promise/" style="font-size: 10px;">Promise</a> <a href="/tags/Prototype/" style="font-size: 10px;">Prototype</a> <a href="/tags/Reflow/" style="font-size: 10px;">Reflow</a> <a href="/tags/RegExp/" style="font-size: 10px;">RegExp</a> <a href="/tags/Repaint/" style="font-size: 10px;">Repaint</a> <a href="/tags/Sort/" style="font-size: 20px;">Sort</a> <a href="/tags/TCP-IP/" style="font-size: 10px;">TCP/IP</a> <a href="/tags/Throttle/" style="font-size: 10px;">Throttle</a> <a href="/tags/browserCache/" style="font-size: 10px;">browserCache</a> <a href="/tags/cross-domain/" style="font-size: 10px;">cross-domain</a> <a href="/tags/webSocket/" style="font-size: 10px;">webSocket</a> <a href="/tags/webpack/" style="font-size: 15px;">webpack</a> <a href="/tags/内存泄漏/" style="font-size: 10px;">内存泄漏</a> <a href="/tags/垃圾回收/" style="font-size: 10px;">垃圾回收</a>
-    </div>
-  </div>
-
-  
-</aside>
+  </aside>
+</section>
         
       </div>
       <footer id="footer" class="site-footer">
