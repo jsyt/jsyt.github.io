@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <!-- PACE Progress Bar START -->
+  
+    <script src="/js/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>babel 核心模块介绍 | GOYTH</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Babel" />
+  
+  
+  
+  
+  <meta name="description" content="Babel 介绍Babel 是一个通用的多用途 JavaScript 编译器。通过 Babel 你可以使用（并创建）下一代的 JavaScript，以及下一代的 JavaScript 工具。Babel 把用最新标准编写的 JavaScript 代码向下编译成可以在今天随处可用的版本。 这一过程叫做“源码到源码”编译， 也被称为转换编译（transpiling，是一个自造合成词，即转换＋编译。以下也">
+<meta name="keywords" content="Babel">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Babel 核心模块介绍">
+<meta property="og:url" content="http://www.goyth.com/2019/01/05/babel/index.html">
+<meta property="og:site_name" content="GOYTH">
+<meta property="og:description" content="Babel 介绍Babel 是一个通用的多用途 JavaScript 编译器。通过 Babel 你可以使用（并创建）下一代的 JavaScript，以及下一代的 JavaScript 工具。Babel 把用最新标准编写的 JavaScript 代码向下编译成可以在今天随处可用的版本。 这一过程叫做“源码到源码”编译， 也被称为转换编译（transpiling，是一个自造合成词，即转换＋编译。以下也">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-05T14:38:12.846Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Babel 核心模块介绍">
+<meta name="twitter:description" content="Babel 介绍Babel 是一个通用的多用途 JavaScript 编译器。通过 Babel 你可以使用（并创建）下一代的 JavaScript，以及下一代的 JavaScript 工具。Babel 把用最新标准编写的 JavaScript 代码向下编译成可以在今天随处可用的版本。 这一过程叫做“源码到源码”编译， 也被称为转换编译（transpiling，是一个自造合成词，即转换＋编译。以下也">
+  
+    <link rel="alternate" href="/atom.xml" title="GOYTH" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
+  <!-- Google Adsense -->
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-0123456789ABCDEF",
+          enable_page_level_ads: true
+      });
+  </script>
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/categories"] = "Catégories"; 
+
+  themeMenus["/tags"] = "Mot-clés"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="GOYTH" rel="home"> GOYTH </a>
+            
+          </h1>
+
+          
+            <div class="site-description">I hear and I forget, I see and I remember, I do and I understand.</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Catégories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Mot-clés</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  }
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-babel" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Babel 核心模块介绍
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2019/01/05/babel/" class="article-date">
+	  <time datetime="2019-01-05T14:35:55.000Z" itemprop="datePublished">January 5, 2019</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Babel-介绍"><a href="#Babel-介绍" class="headerlink" title="Babel 介绍"></a>Babel 介绍</h2><p>Babel 是一个通用的多用途 JavaScript 编译器。通过 Babel 你可以使用（并创建）下一代的 JavaScript，以及下一代的 JavaScript 工具。<br>Babel 把用最新标准编写的 JavaScript 代码向下编译成可以在今天随处可用的版本。 这一过程叫做“源码到源码”编译， 也被称为转换编译（transpiling，是一个自造合成词，即转换＋编译。以下也简称为转译）。</p>
+<a id="more"></a>
+<p>例如，Babel 能够将新的 ES2015 箭头函数语法：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> square = <span class="function"><span class="params">n</span> =&gt;</span> n * n;</span><br></pre></td></tr></table></figure></p>
+<p>转译为：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> square = <span class="function"><span class="keyword">function</span> <span class="title">square</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> n * n;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Babel核心模块介绍"><a href="#Babel核心模块介绍" class="headerlink" title="Babel核心模块介绍"></a>Babel核心模块介绍</h2><h3 id="Babel-core"><a href="#Babel-core" class="headerlink" title="Babel-core"></a>Babel-core</h3><p>可以看做 babel 的编译器。babel 的核心 api 都在这里面。它可以把 js 代码，抽象成 AST，然后修改 AST ，再根据AST生成新的js代码，这就是Babel 转译的过程。但是如何转译、转译哪些内容，着需要我们事先设置好的 plugin，plugin 就是如何转译的规则。</p>
+<h3 id="babel-register"><a href="#babel-register" class="headerlink" title="babel-register"></a>babel-register</h3><p>它在底层改写了node的require方法，引入babel-register之后所有require并以.es6, .es, .jsx 和 .js为后缀的模块都会经过babel的转译。</p>
+<h3 id="babel-polyfill"><a href="#babel-polyfill" class="headerlink" title="babel-polyfill"></a>babel-polyfill</h3><p>它同样是引用了 <code>core-js</code> 和 <code>regenerator</code>，垫片支持是一样的。<code>babel-polyfill</code> 是为了模拟一个完整的ES2015 +环境，旨在用于应用程序而不是库/工具。<br>它会让我们程序的执行环境，模拟成完美支持 es6+ 的环境，毕竟无论是浏览器环境还是 node 环境对 <code>es6+</code> 的支持都不一样。它是以重载全局变量 （E.g: <code>Promise</code>）,还有原型和类上的静态方法（E.g：<code>Array.prototype.reduce/Array.form</code>），从而达到对 <code>es6+</code> 的支持。不同于 <code>babel-runtime</code> 的是，<code>babel-polyfill</code> 是一次性引入你的项目中的，就像是 React 包一样，同项目代码一起编译到生产环境。</p>
+<h2 id="plugins"><a href="#plugins" class="headerlink" title="plugins"></a>plugins</h2><p>要说 plugins 就不得不提 babel 编译的过程。babel 编译分为三步：</p>
+<ol>
+<li>parser：通过 babylon 解析成 AST。</li>
+<li>transform[s]：All the plugins/presets ，进一步的做语法等自定义的转译，仍然是 AST。</li>
+<li>generator： 最后通过 babel-generator 生成  output string。</li>
+</ol>
+<p>所以 plugins 是在第二步加强转译的，所以假如我们自己写个 plugin，应该就是对 ast 结构做一个遍历，操作。</p>
+<h3 id="babel-runtime"><a href="#babel-runtime" class="headerlink" title="babel-runtime"></a>babel-runtime</h3><p>这个包引用了 <code>core-js</code> 和 <code>regenerator</code>，那么什么是 core-js 和 regenerator 呢。<br>首先我们要知道上面提到的 babel-core 是对语法进行 transform 的，但是它不支持 build-ints（Eg: <code>promise</code>，<code>Set</code>，<code>Map</code>），prototype function（Eg: <code>array.reduce</code>,<code>string.trim</code>），<code>class</code> <code>static function</code> （Eg：<code>Array.form</code>，<code>Object.assgin</code>），regenerator （Eg：<code>generator</code>，<code>async</code>）等等拓展的编译。所以才要用到 core-js 和 regenerator。</p>
+<h4 id="core-js"><a href="#core-js" class="headerlink" title="core-js"></a>core-js</h4><p>core-js 是用于 JavaScript 的组合式标准化库，它包含 es5 （e.g: object.freeze）, es6的 promise，symbols, collections, iterators, typed arrays， es7+提案等等的 polyfills 实现。也就是说，它几乎包含了所有 JavaScript 最新标准的垫片。但是不包含 generator。 </p>
+<h4 id="regenerator"><a href="#regenerator" class="headerlink" title="regenerator"></a>regenerator</h4><p>regenerator 实现了 generator/yeild， async/await。</p>
+<h3 id="babel-plugin-transform-runtime"><a href="#babel-plugin-transform-runtime" class="headerlink" title="babel-plugin-transform-runtime"></a>babel-plugin-transform-runtime</h3><p>transform-runtime 是为了方便使用 babel-runtime 的，它会分析我们的 AST 中，是否有引用 babel-rumtime 中的垫片（通过映射关系），如果有，就会在当前模块顶部插入我们需要的垫片。</p>
+<h2 id="transform-runtime-对比-babel-polyfill"><a href="#transform-runtime-对比-babel-polyfill" class="headerlink" title="transform-runtime 对比 babel-polyfill"></a>transform-runtime 对比 babel-polyfill</h2><p>其实通过上面的介绍我们已经了解他们是干什么的了，这里再稍微总结区分一下吧。我在这里把 babel-runtime 和 babel-plugin-transform-runtime 统称为 transform-runtime，因为一起用才比较好。</p>
+<p>babel-polyfill 是当前环境注入这些 es6+ 标准的垫片，好处是引用一次，不再担心兼容，而且它就是全局下的包，代码的任何地方都可以使用。缺点也很明显，它可能会污染原生的一些方法而把原生的方法重写。如果当前项目已经有一个 polyfill 的包了，那你只能保留其一。而且一次性引入这么一个包，会大大增加体积。如果你只是用几个特性，就没必要了，如果你是开发较大的应用，而且会频繁使用新特性并考虑兼容，那就直接引入吧。<br>transform-runtime 是利用 plugin 自动识别并替换代码中的新特性，你不需要再引入，只需要装好 babel-runtime 和 配好 plugin 就可以了。好处是按需替换，检测到你需要哪个，就引入哪个 polyfill，如果只用了一部分，打包完的文件体积对比 babel-polyfill 会小很多。而且 transform-runtime 不会污染原生的对象，方法，也不会对其他 polyfill 产生影响。所以 transform-runtime 的方式更适合开发工具包，库，一方面是体积够小，另一方面是用户（开发者）不会因为引用了我们的工具，包而污染了全局的原生方法，产生副作用，还是应该留给用户自己去选择。缺点是随着应用的增大，相同的 polyfill 每个模块都要做重复的工作（检测，替换），虽然 polyfill 只是引用，编译效率不够高效。</p>
+<h2 id="presets"><a href="#presets" class="headerlink" title="presets"></a>presets</h2><p>显然这样一个一个配置插件会非常的麻烦，为了方便，babel为我们提供了一个配置项叫做persets（预设）。</p>
+<p>预设就是一系列插件的集合，</p>
+<h3 id="babel-preset-env"><a href="#babel-preset-env" class="headerlink" title="babel-preset-env"></a>babel-preset-env</h3><p>它能根据当前的运行环境，自动确定你需要的 plugins 和 polyfills。通过各个 es标准 feature 在不同浏览器以及 node 版本的支持情况，再去维护一个 feature 跟 plugins 之间的映射关系，最终确定需要的 plugins。</p>
+<h4 id="preset-env-配置"><a href="#preset-env-配置" class="headerlink" title="preset-env 配置"></a>preset-env 配置</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"presets"</span>: [</span><br><span class="line">    [</span><br><span class="line">      <span class="string">"env"</span>,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">"targets"</span>: &#123; <span class="comment">// 配支持的环境</span></span><br><span class="line">          <span class="string">"browsers"</span>: [ <span class="comment">// 浏览器</span></span><br><span class="line">            <span class="string">"last 2 versions"</span>,</span><br><span class="line">            <span class="string">"safari &gt;= 7"</span></span><br><span class="line">          ],</span><br><span class="line">          <span class="string">"node"</span>: <span class="string">"current"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">"modules"</span>: <span class="literal">true</span>,  <span class="comment">//设置ES6 模块转译的模块格式 默认是 commonjs</span></span><br><span class="line">        <span class="string">"debug"</span>: <span class="literal">true</span>, <span class="comment">// debug，编译的时候 console</span></span><br><span class="line">        <span class="string">"useBuiltIns"</span>: <span class="literal">false</span>, <span class="comment">// 是否开启自动支持 polyfill</span></span><br><span class="line">        <span class="string">"include"</span>: [], <span class="comment">// 总是启用哪些 plugins</span></span><br><span class="line">        <span class="string">"exclude"</span>: []  <span class="comment">// 强制不启用哪些 plugins，用来防止某些插件被启用</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  ],</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="string">"transform-react-jsx"</span> <span class="comment">//如果是需要支持 jsx 这个东西要单独装一下。</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>参考链接：</em><br><em><a href="https://github.com/jamiebuilds/babel-handbook/blob/master/translations/zh-Hans/user-handbook.md" target="_blank" rel="noopener">https://github.com/jamiebuilds/babel-handbook/blob/master/translations/zh-Hans/user-handbook.md</a></em><br><em><a href="https://juejin.im/post/59ec657ef265da431b6c5b03#heading-4" target="_blank" rel="noopener">https://juejin.im/post/59ec657ef265da431b6c5b03#heading-4</a></em><br><em><a href="https://juejin.im/post/59b9ffa8f265da06710d8e89#heading-9" target="_blank" rel="noopener">https://juejin.im/post/59b9ffa8f265da06710d8e89#heading-9</a></em></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Babel/">Babel</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Babel/">Babel</a></li></ul>
+
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://raw.githubusercontent.com/jsyt/jsyt.github.io/master/images/WeChat.JPG',
+  alipayImage: 'https://raw.githubusercontent.com/jsyt/jsyt.github.io/master/images/ALiPay.JPG'
+});
+</script>
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/12/24/babelPlugin/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">babelPlugin</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Babel-介绍"><span class="nav-number">1.</span> <span class="nav-text">Babel 介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Babel核心模块介绍"><span class="nav-number">2.</span> <span class="nav-text">Babel核心模块介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Babel-core"><span class="nav-number">2.1.</span> <span class="nav-text">Babel-core</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#babel-register"><span class="nav-number">2.2.</span> <span class="nav-text">babel-register</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#babel-polyfill"><span class="nav-number">2.3.</span> <span class="nav-text">babel-polyfill</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#plugins"><span class="nav-number">3.</span> <span class="nav-text">plugins</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#babel-runtime"><span class="nav-number">3.1.</span> <span class="nav-text">babel-runtime</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#core-js"><span class="nav-number">3.1.1.</span> <span class="nav-text">core-js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#regenerator"><span class="nav-number">3.1.2.</span> <span class="nav-text">regenerator</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#babel-plugin-transform-runtime"><span class="nav-number">3.2.</span> <span class="nav-text">babel-plugin-transform-runtime</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#transform-runtime-对比-babel-polyfill"><span class="nav-number">4.</span> <span class="nav-text">transform-runtime 对比 babel-polyfill</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#presets"><span class="nav-number">5.</span> <span class="nav-text">presets</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#babel-preset-env"><span class="nav-number">5.1.</span> <span class="nav-text">babel-preset-env</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#preset-env-配置"><span class="nav-number">5.1.1.</span> <span class="nav-text">preset-env 配置</span></a></li></ol></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2019 GOYTH All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
