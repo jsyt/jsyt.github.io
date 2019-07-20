@@ -21,18 +21,18 @@
   
   
   
-  <meta name="description" content="Express 中间件Express 路由与中间件具体用法参考官网 API Express 中间件通常用来一些公用的逻辑，并可以将处理的结果挂载在 req、res 上，以供后面的中间件函数，或路由函数使用。因此通常情况下中间件函数会放在路由的前面">
+  <meta name="description" content="Express 中间件Express 路由与中间件具体用法参考官网 API Express 路由原理见 Express路由与中间件原理（路由篇） Express 中间件通常用来一些公用的逻辑，并可以将处理的结果挂载在 req、res 上，以供后面的中间件函数，或路由函数使用。因此通常情况下中间件函数会放在路由的前面">
 <meta name="keywords" content="Express,Nodejs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Express路由与中间件原理（中间件篇）">
 <meta property="og:url" content="http://www.goyth.com/2019/07/20/expressMiddleware/index.html">
 <meta property="og:site_name" content="GOYTH">
-<meta property="og:description" content="Express 中间件Express 路由与中间件具体用法参考官网 API Express 中间件通常用来一些公用的逻辑，并可以将处理的结果挂载在 req、res 上，以供后面的中间件函数，或路由函数使用。因此通常情况下中间件函数会放在路由的前面">
+<meta property="og:description" content="Express 中间件Express 路由与中间件具体用法参考官网 API Express 路由原理见 Express路由与中间件原理（路由篇） Express 中间件通常用来一些公用的逻辑，并可以将处理的结果挂载在 req、res 上，以供后面的中间件函数，或路由函数使用。因此通常情况下中间件函数会放在路由的前面">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-20T10:31:14.980Z">
+<meta property="og:updated_time" content="2019-07-20T10:33:41.283Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Express路由与中间件原理（中间件篇）">
-<meta name="twitter:description" content="Express 中间件Express 路由与中间件具体用法参考官网 API Express 中间件通常用来一些公用的逻辑，并可以将处理的结果挂载在 req、res 上，以供后面的中间件函数，或路由函数使用。因此通常情况下中间件函数会放在路由的前面">
+<meta name="twitter:description" content="Express 中间件Express 路由与中间件具体用法参考官网 API Express 路由原理见 Express路由与中间件原理（路由篇） Express 中间件通常用来一些公用的逻辑，并可以将处理的结果挂载在 req、res 上，以供后面的中间件函数，或路由函数使用。因此通常情况下中间件函数会放在路由的前面">
   
     <link rel="alternate" href="/atom.xml" title="GOYTH" type="application/atom+xml">
   
@@ -197,6 +197,7 @@ var themeMenus = {};
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="Express-中间件"><a href="#Express-中间件" class="headerlink" title="Express 中间件"></a>Express 中间件</h2><p><code>Express</code> 路由与中间件具体用法参考<a href="https://expressjs.com/zh-cn/4x/api.html" target="_blank" rel="noopener">官网 API</a></p>
+<p><code>Express</code> 路由原理见 <a href="http://www.goyth.com/2019/07/20/expressRouter/">Express路由与中间件原理（路由篇）</a></p>
 <p><code>Express</code> 中间件通常用来一些公用的逻辑，并可以将处理的结果挂载在 <code>req</code>、<code>res</code> 上，以供后面的中间件函数，或路由函数使用。因此通常情况下中间件函数会放在路由的前面</p>
 <a id="more"></a>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="comment">// let express = require('./express')</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> app = express();</span><br><span class="line"></span><br><span class="line">app.use(<span class="string">'/'</span>, (req, res, next) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">  next()</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(<span class="string">'/'</span>, (req, res, next) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">3</span>)</span><br><span class="line">  next()</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">4</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(<span class="string">'/user'</span>, (req, res, next) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">5</span>)</span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(<span class="string">'/user'</span>, (req, res, next) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">6</span>)</span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
