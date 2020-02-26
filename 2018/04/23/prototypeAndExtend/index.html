@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
 
   <!-- PACE Progress Bar START -->
@@ -16,7 +16,7 @@
   <title>javascript 原型链与继承 | GOYTH</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="PrototypeExtend" />
+  <meta name="keywords" content="PrototypeExtend">
   
   
   
@@ -29,12 +29,12 @@
 <meta property="og:site_name" content="GOYTH">
 <meta property="og:description" content="原型对象无论什么时候，只要创建一个新函数，就会根据一组特定的规则为该函数创建一个 prototype 属性，这个属性指向函数的原型对象。默认情况下，所有原型对象都会自动获得一个 constructor（构造函数）属性，这个属性指向 prototype 属性所在的函数。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.goyth.com/2018/04/23/prototypeAndExtend/Person.png">
+<meta property="og:image" content="http://www.goyth.com/2018/04/23/prototypeAndExtend/prototypeAndExtend/Person.png">
 <meta property="og:updated_time" content="2018-12-02T08:39:53.395Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript 原型链与继承">
 <meta name="twitter:description" content="原型对象无论什么时候，只要创建一个新函数，就会根据一组特定的规则为该函数创建一个 prototype 属性，这个属性指向函数的原型对象。默认情况下，所有原型对象都会自动获得一个 constructor（构造函数）属性，这个属性指向 prototype 属性所在的函数。">
-<meta name="twitter:image" content="http://www.goyth.com/2018/04/23/prototypeAndExtend/Person.png">
+<meta name="twitter:image" content="http://www.goyth.com/2018/04/23/prototypeAndExtend/prototypeAndExtend/Person.png">
   
     <link rel="alternate" href="/atom.xml" title="GOYTH" type="application/atom+xml">
   
@@ -57,11 +57,11 @@
   <script src="/js/jquery-3.1.1.min.js"></script>
 
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/hiero.css" >
-  <link rel="stylesheet" href="/css/glyphs.css" >
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
   
-    <link rel="stylesheet" href="/css/vdonate.css" >
+    <link rel="stylesheet" href="/css/vdonate.css">
   
 
   <!-- Custom CSS -->
@@ -75,7 +75,7 @@
       });
   </script>
 </head>
-
+</html>
 <script>
 var themeMenus = {};
 
@@ -201,7 +201,7 @@ var themeMenus = {};
         <h3 id="原型对象"><a href="#原型对象" class="headerlink" title="原型对象"></a>原型对象</h3><p>无论什么时候，只要创建一个新函数，就会根据一组特定的规则为该函数创建一个 <code>prototype</code> 属性，这个属性指向函数的原型对象。默认情况下，所有原型对象都会自动获得一个 <code>constructor</code>（构造函数）属性，这个属性指向 <code>prototype</code> 属性所在的函数。</p>
 <a id="more"></a>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2018/04/23/prototypeAndExtend/Person.png" alt=""></p>
+<p><img src="prototypeAndExtend/Person.png" alt></p>
 <p>当我们用构造函数创建一个实例时，也会为这个实例创建一个 <code>__proto__</code> 属性，这个<code>__proto__</code> 属性是一个指针指向构造函数的原型对象</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> person = <span class="keyword">new</span> Person();</span><br><span class="line">person.__proto__ === Person.prototype    <span class="comment">// true</span></span><br><span class="line"><span class="keyword">let</span> person1 = <span class="keyword">new</span> Person();</span><br><span class="line">person1.__proto__ === Person.prototype    <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 <p>由于同一个构造函数创建的所有实例对象的<code>__proto__</code> 属性都指向这个构造函数的原型对象，因此所有的实例对象都会共享构造函数的原型对象上所有的属性和方法，一旦原型对象上的属性或方法发生改变，所有的实例对象都会受到影响。</p>

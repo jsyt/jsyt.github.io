@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
 
   <!-- PACE Progress Bar START -->
@@ -16,7 +16,7 @@
   <title>编写一个 babel 插件 | GOYTH</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="Babel" />
+  <meta name="keywords" content="Babel">
   
   
   
@@ -29,15 +29,15 @@
 <meta property="og:site_name" content="GOYTH">
 <meta property="og:description" content="Babel转译流程Babel 对源码进行转译时，主要有三个步骤  首先通过Babylon 将源码转化成 AST  然后再通过babel-traverse遍历 AST，找到需要更改的 AST 节点，对其进行修改 根据修改后的 AST，通过babel-generator将修改后的 AST重新生成源码Babel插件主要是处理第二步。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.goyth.com/2019/01/06/babelPlugin/babel">
-<meta property="og:image" content="http://www.goyth.com/2019/01/06/babelPlugin/ast01.png">
-<meta property="og:image" content="http://www.goyth.com/2019/01/06/babelPlugin/ast02.png">
-<meta property="og:image" content="http://www.goyth.com/2019/01/06/babelPlugin/fe.png">
+<meta property="og:image" content="http://www.goyth.com/2019/01/06/babelPlugin/babelPlugin/babel">
+<meta property="og:image" content="http://www.goyth.com/2019/01/06/babelPlugin/babelPlugin/ast01.png">
+<meta property="og:image" content="http://www.goyth.com/2019/01/06/babelPlugin/babelPlugin/ast02.png">
+<meta property="og:image" content="http://www.goyth.com/2019/01/06/babelPlugin/babelPlugin/fe.png">
 <meta property="og:updated_time" content="2019-01-12T02:35:46.140Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="编写一个 Babel 插件">
 <meta name="twitter:description" content="Babel转译流程Babel 对源码进行转译时，主要有三个步骤  首先通过Babylon 将源码转化成 AST  然后再通过babel-traverse遍历 AST，找到需要更改的 AST 节点，对其进行修改 根据修改后的 AST，通过babel-generator将修改后的 AST重新生成源码Babel插件主要是处理第二步。">
-<meta name="twitter:image" content="http://www.goyth.com/2019/01/06/babelPlugin/babel">
+<meta name="twitter:image" content="http://www.goyth.com/2019/01/06/babelPlugin/babelPlugin/babel">
   
     <link rel="alternate" href="/atom.xml" title="GOYTH" type="application/atom+xml">
   
@@ -60,11 +60,11 @@
   <script src="/js/jquery-3.1.1.min.js"></script>
 
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/hiero.css" >
-  <link rel="stylesheet" href="/css/glyphs.css" >
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
   
-    <link rel="stylesheet" href="/css/vdonate.css" >
+    <link rel="stylesheet" href="/css/vdonate.css">
   
 
   <!-- Custom CSS -->
@@ -78,7 +78,7 @@
       });
   </script>
 </head>
-
+</html>
 <script>
 var themeMenus = {};
 
@@ -201,7 +201,7 @@ var themeMenus = {};
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Babel转译流程"><a href="#Babel转译流程" class="headerlink" title="Babel转译流程"></a>Babel转译流程</h2><p>Babel 对源码进行转译时，主要有三个步骤<br><img src="/2019/01/06/babelPlugin/babel" alt=""></p>
+        <h2 id="Babel转译流程"><a href="#Babel转译流程" class="headerlink" title="Babel转译流程"></a>Babel转译流程</h2><p>Babel 对源码进行转译时，主要有三个步骤<br><img src="babelPlugin/babel" alt></p>
 <ol>
 <li>首先通过<code>Babylon</code> 将源码转化成 AST </li>
 <li>然后再通过<code>babel-traverse</code>遍历 AST，找到需要更改的 AST 节点，对其进行修改</li>
@@ -231,10 +231,10 @@ var themeMenus = {};
 </ol>
 <h3 id="箭头函数插件"><a href="#箭头函数插件" class="headerlink" title="箭头函数插件"></a>箭头函数插件</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> square = <span class="function"><span class="params">n</span> =&gt;</span> n * n;</span><br></pre></td></tr></table></figure>
 <p>我们写一个插件将上面的箭头函数转化成下面的普通函数<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> square = <span class="function"><span class="keyword">function</span> (<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> n * n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>Babel 插件主要是对 AST 进行转换<br>首先我们可以通过<a href="https://astexplorer.net/" target="_blank" rel="noopener">astexplorer.net</a>来观察一下，转换前和转换后的 AST 的差异。<br>转换前：<br><img src="/2019/01/06/babelPlugin/ast01.png" alt=""></p>
-<p>转换后：<br><img src="/2019/01/06/babelPlugin/ast02.png" alt=""></p>
+<p>Babel 插件主要是对 AST 进行转换<br>首先我们可以通过<a href="https://astexplorer.net/" target="_blank" rel="noopener">astexplorer.net</a>来观察一下，转换前和转换后的 AST 的差异。<br>转换前：<br><img src="babelPlugin/ast01.png" alt></p>
+<p>转换后：<br><img src="babelPlugin/ast02.png" alt></p>
 <p>比较两个AST 后，我们知道要将ArrowFunctionExpression替换成FunctionExpression，BinaryExpression替换成BlockStatement，那我们就要构建一个FunctionExpression节点，如何构建FunctionExpression节点呢，我们可以在<a href="https://babeljs.io/docs/en/next/babel-types.html" target="_blank" rel="noopener">babel-types</a>查找构建方法</p>
-<p><img src="/2019/01/06/babelPlugin/fe.png" alt=""></p>
+<p><img src="babelPlugin/fe.png" alt></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> babel = <span class="built_in">require</span>(<span class="string">'@babel/core'</span>)</span><br><span class="line"><span class="keyword">let</span> t = <span class="built_in">require</span>(<span class="string">'babel-types'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> transformArrayFunctions = &#123;</span><br><span class="line">  visitor: &#123;</span><br><span class="line">    ArrowFunctionExpression: <span class="function">(<span class="params">path, state</span>)=&gt;</span>&#123;</span><br><span class="line">      <span class="keyword">let</span> node = path.node;</span><br><span class="line">      <span class="keyword">let</span> id = path.parent.id;</span><br><span class="line">      <span class="keyword">let</span> params = node.params;</span><br><span class="line">      <span class="keyword">let</span> body = t.blockStatement([t.returnStatement(node.body)])</span><br><span class="line">      <span class="keyword">let</span> functionExpression = t.functionExpression(id,params,body,<span class="literal">false</span>,<span class="literal">false</span>);</span><br><span class="line">      path.replaceWith(functionExpression);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> result = babel.transform(code, &#123;</span><br><span class="line">    plugins: [transformArrowFunctions]</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(result.code);</span><br></pre></td></tr></table></figure>
 <p><em>参考链接：</em><br><em><a href="https://github.com/jamiebuilds/babel-handbook/blob/master/translations/zh-Hans/plugin-handbook.md" target="_blank" rel="noopener">https://github.com/jamiebuilds/babel-handbook/blob/master/translations/zh-Hans/plugin-handbook.md</a></em><br><em><a href="https://babeljs.io/docs/en/next/babel-types.html" target="_blank" rel="noopener">https://babeljs.io/docs/en/next/babel-types.html</a></em><br><em><a href="https://www.npmjs.com/package/babel-plugin-transform-es2015-arrow-functions" target="_blank" rel="noopener">https://www.npmjs.com/package/babel-plugin-transform-es2015-arrow-functions</a></em></p>
 

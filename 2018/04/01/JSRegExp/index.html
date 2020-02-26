@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
 
   <!-- PACE Progress Bar START -->
@@ -16,7 +16,7 @@
   <title>js 的正则表达式 | GOYTH</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="RegExp" />
+  <meta name="keywords" content="RegExp">
   
   
   
@@ -29,14 +29,14 @@
 <meta property="og:site_name" content="GOYTH">
 <meta property="og:description" content="正则表达式一种几乎可以在所有的程序设计语言里和所有的计算机平台上使用的文字处理工具。它可以用来查找特定的信息（搜索），也可以用来查找并编辑特定的信息（替换）。核心是 匹配，匹配位置或者匹配字符">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.goyth.com/2018/04/01/JSRegExp/regwz">
-<meta property="og:image" content="http://www.goyth.com/2018/04/01/JSRegExp/huisu">
-<meta property="og:image" content="http://www.goyth.com/2018/04/01/JSRegExp/reglc">
+<meta property="og:image" content="http://www.goyth.com/2018/04/01/JSRegExp/JSRegExp/regwz">
+<meta property="og:image" content="http://www.goyth.com/2018/04/01/JSRegExp/JSRegExp/huisu">
+<meta property="og:image" content="http://www.goyth.com/2018/04/01/JSRegExp/JSRegExp/reglc">
 <meta property="og:updated_time" content="2018-12-02T08:39:15.759Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS 的正则表达式">
 <meta name="twitter:description" content="正则表达式一种几乎可以在所有的程序设计语言里和所有的计算机平台上使用的文字处理工具。它可以用来查找特定的信息（搜索），也可以用来查找并编辑特定的信息（替换）。核心是 匹配，匹配位置或者匹配字符">
-<meta name="twitter:image" content="http://www.goyth.com/2018/04/01/JSRegExp/regwz">
+<meta name="twitter:image" content="http://www.goyth.com/2018/04/01/JSRegExp/JSRegExp/regwz">
   
     <link rel="alternate" href="/atom.xml" title="GOYTH" type="application/atom+xml">
   
@@ -59,11 +59,11 @@
   <script src="/js/jquery-3.1.1.min.js"></script>
 
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/hiero.css" >
-  <link rel="stylesheet" href="/css/glyphs.css" >
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
   
-    <link rel="stylesheet" href="/css/vdonate.css" >
+    <link rel="stylesheet" href="/css/vdonate.css">
   
 
   <!-- Custom CSS -->
@@ -77,7 +77,7 @@
       });
   </script>
 </head>
-
+</html>
 <script>
 var themeMenus = {};
 
@@ -329,7 +329,7 @@ var themeMenus = {};
 <li>身份证<br><code>/^(\d{15}|\d{17}([xX]|\d))$/</code></li>
 </ol>
 <h4 id="位置匹配"><a href="#位置匹配" class="headerlink" title="位置匹配"></a>位置匹配</h4><h5 id="什么是位置"><a href="#什么是位置" class="headerlink" title="什么是位置"></a>什么是位置</h5><p>位置是相邻字符之间的，比如，有一个字符串 <code>hello</code> ，这个字符串一共有6个位置 <code>*h*e*l*l*o*</code> ， <code>*</code>代表位置</p>
-<p><img src="/2018/04/01/JSRegExp/regwz" alt="" title="位置"></p>
+<p><img src="JSRegExp/regwz" alt title="位置"></p>
 <p>上面说到了 6 种位置元字符</p>
 <ol>
 <li><code>^</code>，<code>$</code> 匹配字符的开头和结尾，比如<code>/^hello$/</code> 匹配一个字符串，要符合这样的条件，字符串开头的位置，紧接着是 <code>h</code> 然后是 <code>e</code>,<code>l</code>,<code>l</code>,<code>o</code> 最后是字符串结尾的位置位置还可以被替换成字符串，比如<code>&#39;hello&#39;.replace(/^|$/g, &#39;#&#39;)</code> 结果是 <code>#hello#</code></li>
@@ -371,7 +371,7 @@ var themeMenus = {};
 </ol>
 <p>这里首先是把一个数字变成1组成的字符串，比如11就是 ‘1111111111’ 11个1  然后正则分两部分，第一部分是匹配空字符串或者1,第二部分是先匹配两个或者多个1，非贪婪模式，那么先会匹配两个1，然后将匹配的两个1分组，后面就是匹配一个或者多个’2个1’，就相当于整除2，如果匹配成功就证明不是质数，如果不成功就会匹配3个1，然后匹配多个3个1，相当于整除3，这样一直下去会一直整除到自己本身。如果还是不行就证明这个数字是质数。</p>
 <h4 id="回溯"><a href="#回溯" class="headerlink" title="回溯"></a>回溯</h4><h5 id="正则是怎么匹配的"><a href="#正则是怎么匹配的" class="headerlink" title="正则是怎么匹配的"></a>正则是怎么匹配的</h5><p>有这么一个字符串 <code>&#39;abbbc&#39;</code> 和这么一个正则 <code>/ab{1,3}bbc/
-/ab{1,3}bbc/.test(&#39;abbbc&#39;)</code> 我们一眼可以看出来是 true，但是 JavaScript 是怎么匹配的呢<br><img src="/2018/04/01/JSRegExp/huisu" alt="回溯" title="回溯"></p>
+/ab{1,3}bbc/.test(&#39;abbbc&#39;)</code> 我们一眼可以看出来是 true，但是 JavaScript 是怎么匹配的呢<br><img src="JSRegExp/huisu" alt="回溯" title="回溯"></p>
 <h5 id="回溯-1"><a href="#回溯-1" class="headerlink" title="回溯"></a>回溯</h5><p>例如我们上面的例子，回溯的思想是，从问题的某一种状态（初始状态）出发，搜索从这种状态出发所能达到的所有“状态”，当一条路走到“尽头”的时候（不能再前进），再后退一步或若干步，从另一种可能“状态”出发，继续搜索，直到所有的“路径”（状态）都试探过。这种不断“前进”、不断“回溯”寻找解的方法，就称作“回溯法”<br>贪婪和非贪婪的匹配都会产生回溯，不同的是贪婪的是先尽量多的匹配，如果不行就吐出一个然后继续匹配，再不行就再吐出一个，非贪婪的是先尽量少的匹配。如果不行就再多匹配一个，再不行就再来一个分支结构也会产生回溯，比如<code>/^(test|te)sts$/.test(&#39;tests&#39;)</code>前面括号里面的匹配过程是先匹配到 test 然后继续往后匹配匹配到字符 <code>s</code> 的时候还是成功的，匹配到 <code>st</code> 的时候发现不能匹配， 所以会回到前面的分支结构的其他分支继续匹配，如果不行的话再换其他分支。</p>
 <h5 id="读正则"><a href="#读正则" class="headerlink" title="读正则"></a>读正则</h5><p>读懂其他人写的正则也是一个很重要的方面。</p>
 <h5 id="结构和操作符"><a href="#结构和操作符" class="headerlink" title="结构和操作符"></a>结构和操作符</h5><p>结构：<code>字符字面量、字符组、量词、锚字符、分组、选择分支、反向引用</code>。</p>
@@ -390,7 +390,7 @@ var themeMenus = {};
 <li>同理分析括号里面的<code>c|de* =&gt; c</code>和<code>d</code>, <code>e*</code></li>
 <li>综上，这个正则描述的是</li>
 </ol>
-<p><img src="/2018/04/01/JSRegExp/reglc" alt=""></p>
+<p><img src="JSRegExp/reglc" alt></p>
 <p>以这种模式来分析，再复杂的正则都可以看懂。有一个可视化的<a href="https://jex.im/regulex/" target="_blank" rel="noopener">正则分析网站</a></p>
 <p><em>转载自<a href="https://juejin.im/post/59b5e50f51882519777c4815" target="_blank" rel="noopener">网易考拉前端团队</a></em></p>
 

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
 
   <!-- PACE Progress Bar START -->
@@ -16,7 +16,7 @@
   <title>排序算法之归并排序 | GOYTH</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="Sort" />
+  <meta name="keywords" content="Sort">
   
   
   
@@ -29,13 +29,13 @@
 <meta property="og:site_name" content="GOYTH">
 <meta property="og:description" content="常见的内部排序算法有：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序等。这里主要介绍快速排序 排序算法总览：  归并排序归并排序（MERGE-SORT）是建立在归并操作上的一种有效的排序算法,该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.goyth.com/2018/02/09/mergeSort/sort.png">
-<meta property="og:image" content="http://www.goyth.com/2018/02/09/mergeSort/mergesort.gif">
+<meta property="og:image" content="http://www.goyth.com/2018/02/09/mergeSort/mergeSort/sort.png">
+<meta property="og:image" content="http://www.goyth.com/2018/02/09/mergeSort/mergeSort/mergesort.gif">
 <meta property="og:updated_time" content="2018-12-02T08:39:21.396Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序算法之归并排序">
 <meta name="twitter:description" content="常见的内部排序算法有：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序等。这里主要介绍快速排序 排序算法总览：  归并排序归并排序（MERGE-SORT）是建立在归并操作上的一种有效的排序算法,该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个">
-<meta name="twitter:image" content="http://www.goyth.com/2018/02/09/mergeSort/sort.png">
+<meta name="twitter:image" content="http://www.goyth.com/2018/02/09/mergeSort/mergeSort/sort.png">
   
     <link rel="alternate" href="/atom.xml" title="GOYTH" type="application/atom+xml">
   
@@ -58,11 +58,11 @@
   <script src="/js/jquery-3.1.1.min.js"></script>
 
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/hiero.css" >
-  <link rel="stylesheet" href="/css/glyphs.css" >
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
   
-    <link rel="stylesheet" href="/css/vdonate.css" >
+    <link rel="stylesheet" href="/css/vdonate.css">
   
 
   <!-- Custom CSS -->
@@ -76,7 +76,7 @@
       });
   </script>
 </head>
-
+</html>
 <script>
 var themeMenus = {};
 
@@ -201,8 +201,8 @@ var themeMenus = {};
       
         <p>常见的内部排序算法有：<a href="http://www.goyth.com/2018/02/08/bubbleSort/">冒泡排序</a>、<a href="http://www.goyth.com/2018/02/08/selectionSort/">选择排序</a>、<a href="http://www.goyth.com/2018/02/08/straightInsertionSort/">插入排序</a>、<a href="http://www.goyth.com/2018/02/08/shellSort/">希尔排序</a>、<a href="http://www.goyth.com/2018/02/09/mergeSort/">归并排序</a>、<a href="http://www.goyth.com/2018/02/09/quickSort/">快速排序</a>、<a href="http://www.goyth.com/2018/02/09/heapSort/">堆排序</a>等。这里主要介绍快速排序</p>
 <p>排序算法总览：</p>
-<p><img src="/2018/02/09/mergeSort/sort.png" alt=""></p>
-<h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><p><img src="/2018/02/09/mergeSort/mergesort.gif" alt=""><br>归并排序（MERGE-SORT）是建立在归并操作上的一种有效的排序算法,该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为二路归并。</p>
+<p><img src="mergeSort/sort.png" alt></p>
+<h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><p><img src="mergeSort/mergesort.gif" alt><br>归并排序（MERGE-SORT）是建立在归并操作上的一种有效的排序算法,该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为二路归并。</p>
 <p>归并排序可以使用递归和迭代两种方式进行实现</p>
 <a id="more"></a>
 <h3 id="递归法（Top-down）"><a href="#递归法（Top-down）" class="headerlink" title="递归法（Top-down）"></a>递归法（Top-down）</h3><ol>

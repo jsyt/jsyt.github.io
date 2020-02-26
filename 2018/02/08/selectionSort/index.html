@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
 
   <!-- PACE Progress Bar START -->
@@ -16,7 +16,7 @@
   <title>排序算法之选择排序 | GOYTH</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="Sort" />
+  <meta name="keywords" content="Sort">
   
   
   
@@ -29,13 +29,13 @@
 <meta property="og:site_name" content="GOYTH">
 <meta property="og:description" content="常见的内部排序算法有：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序等。这里主要介绍快速排序 排序算法总览：  选择排序 选择排序（Selection sort）是一种简单直观的排序算法。它的工作原理是每一次从待排序的数据元素中选出最小（或最大）的一个元素，存放在序列的起始位置，直到全部待排序的数据元素排完。 选择排序是不稳定的排序方法（比如序列[5， 5， 3]第一次就将第一">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.goyth.com/2018/02/08/selectionSort/sort.png">
-<meta property="og:image" content="http://www.goyth.com/2018/02/08/selectionSort/selectSort.png">
+<meta property="og:image" content="http://www.goyth.com/2018/02/08/selectionSort/selectionSort/sort.png">
+<meta property="og:image" content="http://www.goyth.com/2018/02/08/selectionSort/selectionSort/selectSort.png">
 <meta property="og:updated_time" content="2018-12-02T08:40:04.869Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序算法之选择排序">
 <meta name="twitter:description" content="常见的内部排序算法有：冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序等。这里主要介绍快速排序 排序算法总览：  选择排序 选择排序（Selection sort）是一种简单直观的排序算法。它的工作原理是每一次从待排序的数据元素中选出最小（或最大）的一个元素，存放在序列的起始位置，直到全部待排序的数据元素排完。 选择排序是不稳定的排序方法（比如序列[5， 5， 3]第一次就将第一">
-<meta name="twitter:image" content="http://www.goyth.com/2018/02/08/selectionSort/sort.png">
+<meta name="twitter:image" content="http://www.goyth.com/2018/02/08/selectionSort/selectionSort/sort.png">
   
     <link rel="alternate" href="/atom.xml" title="GOYTH" type="application/atom+xml">
   
@@ -58,11 +58,11 @@
   <script src="/js/jquery-3.1.1.min.js"></script>
 
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/hiero.css" >
-  <link rel="stylesheet" href="/css/glyphs.css" >
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
   
-    <link rel="stylesheet" href="/css/vdonate.css" >
+    <link rel="stylesheet" href="/css/vdonate.css">
   
 
   <!-- Custom CSS -->
@@ -76,7 +76,7 @@
       });
   </script>
 </head>
-
+</html>
 <script>
 var themeMenus = {};
 
@@ -201,8 +201,8 @@ var themeMenus = {};
       
         <p>常见的内部排序算法有：<a href="http://www.goyth.com/2018/02/08/bubbleSort/">冒泡排序</a>、<a href="http://www.goyth.com/2018/02/08/selectionSort/">选择排序</a>、<a href="http://www.goyth.com/2018/02/08/straightInsertionSort/">插入排序</a>、<a href="http://www.goyth.com/2018/02/08/shellSort/">希尔排序</a>、<a href="http://www.goyth.com/2018/02/09/mergeSort/">归并排序</a>、<a href="http://www.goyth.com/2018/02/09/quickSort/">快速排序</a>、<a href="http://www.goyth.com/2018/02/09/heapSort/">堆排序</a>等。这里主要介绍快速排序</p>
 <p>排序算法总览：</p>
-<p><img src="/2018/02/08/selectionSort/sort.png" alt=""></p>
-<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p><img src="/2018/02/08/selectionSort/selectSort.png" alt=""></p>
+<p><img src="selectionSort/sort.png" alt></p>
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p><img src="selectionSort/selectSort.png" alt></p>
 <p>选择排序（Selection sort）是一种简单直观的排序算法。它的工作原理是每一次从待排序的数据元素中选出最小（或最大）的一个元素，存放在序列的起始位置，直到全部待排序的数据元素排完。 选择排序是不稳定的排序方法（比如序列[5， 5， 3]第一次就将第一个[5]与[3]交换，导致第一个5挪动到第二个5后面）。</p>
 <a id="more"></a>
 <h2 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">selectionSort</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> len = arr.length,</span><br><span class="line">      minIndex = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; len<span class="number">-1</span>; i++)&#123;</span><br><span class="line">    minIndex = i;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> j = i + <span class="number">1</span>; j &lt; len; j++)&#123;</span><br><span class="line">      <span class="keyword">if</span>(arr[j] &lt; arr[minIndex])&#123;</span><br><span class="line">        minIndex = j;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(minIndex != i)&#123;</span><br><span class="line">      [arr[minIndex], arr[i]] = [arr[i], arr[minIndex]]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试</span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">3</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">8</span>];</span><br><span class="line"><span class="keyword">var</span> arrSorted = selectionSort(arr);</span><br><span class="line"><span class="built_in">console</span>.log(arrSorted);</span><br><span class="line"><span class="comment">// 控制台将输出：[1, 2, 3, 4, 5, 6, 7, 8, 9]</span></span><br></pre></td></tr></table></figure>

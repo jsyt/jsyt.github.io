@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
 
   <!-- PACE Progress Bar START -->
@@ -16,7 +16,7 @@
   <title>dns知识点梳理 | GOYTH</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="DNS" />
+  <meta name="keywords" content="DNS">
   
   
   
@@ -29,14 +29,14 @@
 <meta property="og:site_name" content="GOYTH">
 <meta property="og:description" content="DNS 服务器DNS( Domain Name System)是“域名系统”的英文缩写，是一种组织成域层次结构的计算机和网络服务命名系统，它用于TCP/IP网络，它所提供的服务是用来将主机名和域名转换为IP地址的工作。DNS就是这样的一位“翻译官”，它的基本工作原理可用下图来表示。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.goyth.com/2018/07/07/DNS/dns02.png">
-<meta property="og:image" content="http://www.goyth.com/2018/07/07/DNS/dns01.jpg">
-<meta property="og:image" content="http://www.goyth.com/2018/07/07/DNS/dns03.jpg">
+<meta property="og:image" content="http://www.goyth.com/2018/07/07/DNS/DNS/dns02.png">
+<meta property="og:image" content="http://www.goyth.com/2018/07/07/DNS/DNS/dns01.jpg">
+<meta property="og:image" content="http://www.goyth.com/2018/07/07/DNS/DNS/dns03.jpg">
 <meta property="og:updated_time" content="2018-12-02T08:38:53.220Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DNS知识点梳理">
 <meta name="twitter:description" content="DNS 服务器DNS( Domain Name System)是“域名系统”的英文缩写，是一种组织成域层次结构的计算机和网络服务命名系统，它用于TCP/IP网络，它所提供的服务是用来将主机名和域名转换为IP地址的工作。DNS就是这样的一位“翻译官”，它的基本工作原理可用下图来表示。">
-<meta name="twitter:image" content="http://www.goyth.com/2018/07/07/DNS/dns02.png">
+<meta name="twitter:image" content="http://www.goyth.com/2018/07/07/DNS/DNS/dns02.png">
   
     <link rel="alternate" href="/atom.xml" title="GOYTH" type="application/atom+xml">
   
@@ -59,11 +59,11 @@
   <script src="/js/jquery-3.1.1.min.js"></script>
 
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/hiero.css" >
-  <link rel="stylesheet" href="/css/glyphs.css" >
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
   
-    <link rel="stylesheet" href="/css/vdonate.css" >
+    <link rel="stylesheet" href="/css/vdonate.css">
   
 
   <!-- Custom CSS -->
@@ -77,7 +77,7 @@
       });
   </script>
 </head>
-
+</html>
 <script>
 var themeMenus = {};
 
@@ -202,9 +202,9 @@ var themeMenus = {};
       
         <h2 id="DNS-服务器"><a href="#DNS-服务器" class="headerlink" title="DNS 服务器"></a>DNS 服务器</h2><p>DNS( Domain Name System)是“域名系统”的英文缩写，是一种组织成域层次结构的计算机和网络服务命名系统，它用于TCP/IP网络，它所提供的服务是用来将主机名和域名转换为IP地址的工作。DNS就是这样的一位“翻译官”，它的基本工作原理可用下图来表示。</p>
 <a id="more"></a>
-<p><img src="/2018/07/07/DNS/dns02.png" alt=""></p>
+<p><img src="DNS/dns02.png" alt></p>
 <p>全世界所有的人每天上网都会使用DNS服务器，如果大家都去同一个地方访问某一台服务器，时延将会非常大，所以DNS服务器的架构必须是分布式、高并发、高可用，如下图：</p>
-<p><img src="/2018/07/07/DNS/dns01.jpg" alt=""></p>
+<p><img src="DNS/dns01.jpg" alt></p>
 <ul>
 <li>根 DNS 服务器 ：返回顶级域 DNS 服务器的 IP 地址</li>
 <li>顶级域 DNS 服务器：返回权威 DNS 服务器的 IP 地址</li>
@@ -216,7 +216,7 @@ var themeMenus = {};
 <h4 id="2、系统（OS）DNS缓存"><a href="#2、系统（OS）DNS缓存" class="headerlink" title="2、系统（OS）DNS缓存"></a>2、系统（OS）DNS缓存</h4><p>如果用户浏览器缓存中没有数据，浏览器会查找操作系统缓存中是否有这个域名对应的DNS解析结果。其实操作系统也有一个域名解析的过程，在Windows中可以通过C:\Windows\System32\drivers\etc\hosts文件来设置，在Linux中可以通过/etc/hosts文件来设置，用户可以将任何域名解析到任何能够访问的IP地址。例如，我们在测试时可以将一个域名解析到一台测试服务器上，这样不用修改任何代码就能测试到单独服务器上的代码的业务逻辑是否正确。正是因为有这种本地DNS解析的规程，所以有黑客就可能通过修改用户的域名来把特定的域名解析到他指定的IP地址上，导致这些域名被劫持。</p>
 <h3 id="第二步查找ISP-DNS缓存"><a href="#第二步查找ISP-DNS缓存" class="headerlink" title="第二步查找ISP DNS缓存"></a>第二步查找ISP DNS缓存</h3><p>如果本地DNS缓存没有对应的记录，就要用到我们网络配置中的”DNS服务器地址”了。操作系统会把这个域名发送给这个ISP，也就是本地区的域名服务器。这个DNS通常都提供给用户本地互联网接入的一个DNS解析服务，例如用户是在学校接入互联网，那么用户的DNS服务器肯定在学校；如果用户是在小区接入互联网，那么用户的DNS就是再提供接入互联网的应用提供商，即电信或联通，也就是通常说的SPA，那么这个DNS通常也会在用户所在城市的某个角落，不会很远。Windows环境下通过命令行输入ipconfig，Linux环境下通过cat /etc/resolv.conf就可以查询配置的DNS服务器了。这个专门的域名解析服务器性能都会很好，它们一般都会缓存域名解析结果，当然缓存时间是受到域名的失效时间控制的。大约80%的域名解析到这里就结束了，所以ISP主要承担了域名的解析工作。</p>
 <h3 id="递归搜索"><a href="#递归搜索" class="headerlink" title="递归搜索"></a>递归搜索</h3><p>在前面都没有办法命中的DNS缓存的情况下,(1)本地 DNS服务器即将该请求转发到互联网上的根DNS（即一个完整域名最后面的那个点，通常省略不写）。(2)根DNS将所要查询域名中的顶级域（假设要查询<a href="http://www.abc.com，该域名的顶级域就是.com）的服务器IP地址返回到本地DNS。(3)" target="_blank" rel="noopener">www.abc.com，该域名的顶级域就是.com）的服务器IP地址返回到本地DNS。(3)</a> 本地DNS根据返回的IP地址，再向顶级域（就是.com域）发送请求。(4) .com域服务器再将域名中的权威域名服务器（abc.com）的IP地址返回给本地DNS。(5) 本地DNS再向权威域名服务器（abc.com）发送请求进行查询。(6) 权威DNS查询到对应的IP后，就将IP返回给本地DNS服务器，本地 DNS 再将 IP 地址返回客户端。</p>
-<p><img src="/2018/07/07/DNS/dns03.jpg" alt=""></p>
+<p><img src="DNS/dns03.jpg" alt></p>
 <h2 id="DNS有关的网络性能优化"><a href="#DNS有关的网络性能优化" class="headerlink" title="DNS有关的网络性能优化"></a>DNS有关的网络性能优化</h2><p>1、减少DNS查找，避免重定向，浏览器DNS缓存 、计算机DNS缓存、 服务器DNS缓存、使用Keep-Alive特性 来减少DNS查找。考虑影响DNS缓存的因素：</p>
 <ul>
 <li>服务器可以设置TTL值表示DNS记录的存活时间。本机DNS缓存将根据这个TTL值判断DNS记录什么时候被抛弃，这个TTL值一般都不会设置很大，主要是考虑到快速故障转移的问题。</li>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
 
   <!-- PACE Progress Bar START -->
@@ -16,7 +16,7 @@
   <title>浏览器的缓存机制梳理 | GOYTH</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="browserCache" />
+  <meta name="keywords" content="browserCache">
   
   
   
@@ -29,29 +29,29 @@
 <meta property="og:site_name" content="GOYTH">
 <meta property="og:description" content="概述浏览器的缓存机制也就是我们说的HTTP缓存机制，其机制是根据HTTP报文的缓存标识进行的，所以在分析浏览器缓存机制之前，我们先使用图文简单介绍一下HTTP报文，HTTP报文分为两种：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/1.webp">
-<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/2.webp">
-<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/3.webp">
-<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/4.webp">
-<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/5.webp">
-<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/6.webp">
-<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/7.png">
-<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/8.webp">
-<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/9.webp">
-<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/10.jpeg">
-<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/11.webp">
-<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/12.webp">
-<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/13.webp">
-<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/14.webp">
-<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/15.webp">
-<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/16.webp">
-<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/17.webp">
-<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/18.webp">
+<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/browseCache/1.webp">
+<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/browseCache/2.webp">
+<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/browseCache/3.webp">
+<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/browseCache/4.webp">
+<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/browseCache/5.webp">
+<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/browseCache/6.webp">
+<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/browseCache/7.png">
+<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/browseCache/8.webp">
+<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/browseCache/9.webp">
+<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/browseCache/10.jpeg">
+<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/browseCache/11.webp">
+<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/browseCache/12.webp">
+<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/browseCache/13.webp">
+<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/browseCache/14.webp">
+<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/browseCache/15.webp">
+<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/browseCache/16.webp">
+<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/browseCache/17.webp">
+<meta property="og:image" content="http://www.goyth.com/2018/07/01/browseCache/browseCache/18.webp">
 <meta property="og:updated_time" content="2018-12-02T08:38:29.108Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浏览器的缓存机制梳理">
 <meta name="twitter:description" content="概述浏览器的缓存机制也就是我们说的HTTP缓存机制，其机制是根据HTTP报文的缓存标识进行的，所以在分析浏览器缓存机制之前，我们先使用图文简单介绍一下HTTP报文，HTTP报文分为两种：">
-<meta name="twitter:image" content="http://www.goyth.com/2018/07/01/browseCache/1.webp">
+<meta name="twitter:image" content="http://www.goyth.com/2018/07/01/browseCache/browseCache/1.webp">
   
     <link rel="alternate" href="/atom.xml" title="GOYTH" type="application/atom+xml">
   
@@ -74,11 +74,11 @@
   <script src="/js/jquery-3.1.1.min.js"></script>
 
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/hiero.css" >
-  <link rel="stylesheet" href="/css/glyphs.css" >
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
   
-    <link rel="stylesheet" href="/css/vdonate.css" >
+    <link rel="stylesheet" href="/css/vdonate.css">
   
 
   <!-- Custom CSS -->
@@ -92,7 +92,7 @@
       });
   </script>
 </head>
-
+</html>
 <script>
 var themeMenus = {};
 
@@ -218,13 +218,13 @@ var themeMenus = {};
         <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>浏览器的缓存机制也就是我们说的HTTP缓存机制，其机制是根据HTTP报文的缓存标识进行的，所以在分析浏览器缓存机制之前，我们先使用图文简单介绍一下HTTP报文，HTTP报文分为两种：</p>
 <a id="more"></a>
 <p>HTTP请求(Request)报文，报文格式为：请求行 – HTTP头(通用信息头，请求头，实体头) – 请求报文主体(只有POST才有报文主体)，如下图</p>
-<p><img src="/2018/07/01/browseCache/1.webp" alt=""></p>
+<p><img src="browseCache/1.webp" alt></p>
 <p>HTTP响应(Response)报文，报文格式为：状态行 – HTTP头(通用信息头，响应头，实体头) – 响应报文主体，如下图</p>
-<p><img src="/2018/07/01/browseCache/2.webp" alt=""></p>
+<p><img src="browseCache/2.webp" alt></p>
 <p>注：通用信息头指的是请求和响应报文都支持的头域，分别为Cache-Control、Connection、Date、Pragma、Transfer-Encoding、Upgrade、Via；实体头则是实体信息的实体头域，分别为Allow、Content-Base、Content-Encoding、Content-Language、Content-Length、Content-Location、Content-MD5、Content-Range、Content-Type、Etag、Expires、Last-Modified、extension-header。这里只是为了方便理解，将通用信息头，响应头/请求头，实体头都归为了HTTP头。</p>
 <p>以上的概念在这里我们不做多讲解，只简单介绍，有兴趣的童鞋可以自行研究。</p>
 <h2 id="缓存过程分析"><a href="#缓存过程分析" class="headerlink" title="缓存过程分析"></a>缓存过程分析</h2><p>浏览器与服务器通信的方式为应答模式，即是：浏览器发起HTTP请求 – 服务器响应该请求。那么浏览器第一次向服务器发起该请求后拿到请求结果，会根据响应报文中HTTP头的缓存标识，决定是否缓存结果，是则将请求结果和缓存标识存入浏览器缓存中，简单的过程如下图：</p>
-<p><img src="/2018/07/01/browseCache/3.webp" alt=""></p>
+<p><img src="browseCache/3.webp" alt></p>
 <p>由上图我们可以知道：</p>
 <ul>
 <li><p>浏览器每次发起请求，都会先在浏览器缓存中查找该请求的结果以及缓存标识</p>
@@ -237,15 +237,15 @@ var themeMenus = {};
 <ul>
 <li>不存在该缓存结果和缓存标识，强制缓存失效，则直接向服务器发起请求（跟第一次发起请求一致），如下图：</li>
 </ul>
-<p><img src="/2018/07/01/browseCache/4.webp" alt=""></p>
+<p><img src="browseCache/4.webp" alt></p>
 <ul>
 <li>存在该缓存结果和缓存标识，但该结果已失效，强制缓存失效，则使用协商缓存(暂不分析)，如下图</li>
 </ul>
-<p><img src="/2018/07/01/browseCache/5.webp" alt=""></p>
+<p><img src="browseCache/5.webp" alt></p>
 <ul>
 <li>存在该缓存结果和缓存标识，且该结果尚未失效，强制缓存生效，直接返回该结果，如下图</li>
 </ul>
-<p><img src="/2018/07/01/browseCache/6.webp" alt=""></p>
+<p><img src="browseCache/6.webp" alt></p>
 <p><strong><em>那么强制缓存的缓存规则是什么？</em></strong></p>
 <p>当浏览器向服务器发起请求时，服务器会将缓存规则放入HTTP响应报文的HTTP头中和请求结果一起返回给浏览器，控制强制缓存的字段分别是<code>Expires</code>和<code>Cache-Control</code>，其中<code>Cache-Control</code>优先级比<code>Expires</code>高。</p>
 <h3 id="Expires"><a href="#Expires" class="headerlink" title="Expires"></a>Expires</h3><p><code>Expires</code>是HTTP/1.0控制网页缓存的字段，其值为服务器返回该请求结果缓存的到期时间，即再次发起该请求时，如果客户端的时间小于<code>Expires</code>的值时，直接使用缓存结果。</p>
@@ -265,7 +265,7 @@ var themeMenus = {};
 </li>
 </ul>
 <p>接下来，我们直接看一个例子，如下：</p>
-<p><img src="/2018/07/01/browseCache/7.png" alt=""></p>
+<p><img src="browseCache/7.png" alt></p>
 <p>由上面的例子我们可以知道：</p>
 <ul>
 <li><p>HTTP响应报文中<code>expires</code>的时间值，是一个绝对值</p>
@@ -277,7 +277,7 @@ var themeMenus = {};
 <p><em>注：在无法确定客户端的时间是否与服务端的时间同步的情况下，Cache-Control相比于expires是更好的选择，所以同时存在时，只有Cache-Control生效。</em></p>
 <p>了解强制缓存的过程后，我们拓展性的思考一下：</p>
 <p><strong><em>浏览器的缓存存放在哪里，如何在浏览器中判断强制缓存是否生效？</em></strong></p>
-<p><img src="/2018/07/01/browseCache/8.webp" alt=""></p>
+<p><img src="browseCache/8.webp" alt></p>
 <p>这里我们以博客的请求为例，状态码为灰色的请求则代表使用了强制缓存，请求对应的<strong>Size</strong>值则代表该缓存存放的位置，分别为<strong>from memory cache</strong> 和 <strong>from disk cache</strong>。</p>
 <p><strong><em>那么from memory cache 和 from disk cache又分别代表的是什么呢？什么时候会使用from disk cache，什么时候会使用from memory cache呢？</em></strong></p>
 <p><strong>from memory cache</strong>代表使用内存中的缓存，<strong>from disk cache</strong>则代表使用的是硬盘中的缓存，浏览器读取缓存的顺序为memory –&gt; disk。</p>
@@ -287,18 +287,18 @@ var themeMenus = {};
 <ul>
 <li>访问<a href="https://heyingye.github.io/" target="_blank" rel="noopener">https://heyingye.github.io/</a></li>
 </ul>
-<p><img src="/2018/07/01/browseCache/9.webp" alt=""></p>
+<p><img src="browseCache/9.webp" alt></p>
 <ul>
 <li><p>关闭博客的标签页</p>
 </li>
 <li><p>重新打开<a href="https://heyingye.github.io/" target="_blank" rel="noopener">https://heyingye.github.io/</a></p>
 </li>
 </ul>
-<p><img src="/2018/07/01/browseCache/10.jpeg" alt=""></p>
+<p><img src="browseCache/10.jpeg" alt></p>
 <ul>
 <li>刷新</li>
 </ul>
-<p><img src="/2018/07/01/browseCache/11.webp" alt="from disk memory"></p>
+<p><img src="browseCache/11.webp" alt="from disk memory"></p>
 <p><strong><em>看到这里可能有人小伙伴问了，最后一个步骤刷新的时候，不是同时存在着from disk cache和from memory cache吗？</em></strong></p>
 <p>对于这个问题，我们需要了解内存缓存(from memory cache)和硬盘缓存(from disk cache)，如下:</p>
 <ul>
@@ -318,31 +318,31 @@ var themeMenus = {};
 <ul>
 <li>协商缓存生效，返回<strong>304</strong>，如下</li>
 </ul>
-<p><img src="/2018/07/01/browseCache/12.webp" alt="协商缓存生效，返回304"></p>
+<p><img src="browseCache/12.webp" alt="协商缓存生效，返回304"></p>
 <ul>
 <li>协商缓存失效，返回<strong>200</strong>和请求结果结果，如下</li>
 </ul>
-<p><img src="/2018/07/01/browseCache/13.webp" alt="协商缓存失效，返回200"></p>
+<p><img src="browseCache/13.webp" alt="协商缓存失效，返回200"></p>
 <p>同样，协商缓存的标识也是在响应报文的HTTP头中和请求结果一起返回给浏览器的，控制协商缓存的字段分别有：<code>Last-Modified / If-Modified-Since</code>和<code>Etag / If-None-Match</code>，其中<code>Etag / If-None-Match</code>的优先级比<code>Last-Modified / If-Modified-Since</code>高。</p>
 <h4 id="Last-Modified-If-Modified-Since"><a href="#Last-Modified-If-Modified-Since" class="headerlink" title="Last-Modified / If-Modified-Since"></a>Last-Modified / If-Modified-Since</h4><ul>
 <li>Last-Modified是服务器响应请求时，返回该资源文件在服务器最后被修改的时间，如下。</li>
 </ul>
-<p><img src="/2018/07/01/browseCache/14.webp" alt="Last-Modified"></p>
+<p><img src="browseCache/14.webp" alt="Last-Modified"></p>
 <ul>
 <li><strong>If-Modified-Since</strong> 则是客户端再次发起该请求时，携带上次请求返回的<code>Last-Modified</code>值，通过此字段值告诉服务器该资源上次请求返回的最后被修改时间。服务器收到该请求，发现请求头含有<code>If-Modified-Since</code>字段，则会根据<code>If-Modified-Since</code>的字段值与该资源在服务器的最后被修改时间做对比，若服务器的资源最后被修改时间大于<code>If-Modified-Since</code>的字段值，则重新返回资源，状态码为<strong>200</strong>；否则则返回<strong>304</strong>，代表资源无更新，可继续使用缓存文件，如下。</li>
 </ul>
-<p><img src="/2018/07/01/browseCache/15.webp" alt="If-Modified-Since"></p>
+<p><img src="browseCache/15.webp" alt="If-Modified-Since"></p>
 <h4 id="Etag-If-None-Match"><a href="#Etag-If-None-Match" class="headerlink" title="Etag / If-None-Match"></a>Etag / If-None-Match</h4><ul>
 <li><strong>Etag</strong> 是服务器响应请求时，返回当前资源文件的一个唯一标识(由服务器生成)，如下。</li>
 </ul>
-<p><img src="/2018/07/01/browseCache/16.webp" alt="Etag"></p>
+<p><img src="browseCache/16.webp" alt="Etag"></p>
 <ul>
 <li><strong>If-None-Match</strong> 是客户端再次发起该请求时，携带上次请求返回的唯一标识<code>Etag</code>值，通过此字段值告诉服务器该资源上次请求返回的唯一标识值。服务器收到该请求后，发现该请求头中含有<code>If-None-Match</code>，则会根据<code>If-None-Match</code>的字段值与该资源在服务器的<code>Etag</code>值做对比，一致则返回<strong>304</strong>，代表资源无更新，继续使用缓存文件；不一致则重新返回资源文件，状态码为<strong>200</strong>，如下。</li>
 </ul>
-<p><img src="/2018/07/01/browseCache/17.webp" alt="If-None-Match"></p>
+<p><img src="browseCache/17.webp" alt="If-None-Match"></p>
 <p>注：Etag / If-None-Match优先级高于Last-Modified / If-Modified-Since，同时存在则只有Etag / If-None-Match生效。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>强制缓存优先于协商缓存进行，若强制缓存(<code>Expires</code>和<code>Cache-Control</code>)生效则直接使用缓存，若不生效则进行协商缓存(<code>Last-Modified / If-Modified-Since</code>和<code>Etag / If-None-Match</code>)，协商缓存由服务器决定是否使用缓存，若协商缓存失效，那么代表该请求的缓存失效，重新获取请求结果，再存入浏览器缓存中；生效则返回<code>304</code>，继续使用缓存，主要过程如下：</p>
-<p><img src="/2018/07/01/browseCache/18.webp" alt=""></p>
+<p><img src="browseCache/18.webp" alt></p>
 <p><em>转载自：<a href="https://heyingye.github.io/2018/04/16/%E5%BD%BB%E5%BA%95%E7%90%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6" target="_blank" rel="noopener">https://heyingye.github.io/2018/04/16/%E5%BD%BB%E5%BA%95%E7%90%86%E8%A7%A3%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6</a></em></p>
 
       

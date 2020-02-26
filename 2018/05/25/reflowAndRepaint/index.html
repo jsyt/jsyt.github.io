@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
 
   <!-- PACE Progress Bar START -->
@@ -16,7 +16,7 @@
   <title>浏览器渲染之回流（reflow）与重绘（repaint） | GOYTH</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="ReflowRepaint" />
+  <meta name="keywords" content="ReflowRepaint">
   
   
   
@@ -29,12 +29,12 @@
 <meta property="og:site_name" content="GOYTH">
 <meta property="og:description" content="浏览器渲染流程浏览器渲染流程如下图所示：  大概可以划分成以下几个步骤：  通过HTML解析器解析HTML文本并构建DOM tree 通过CSS解析器解析CSS样式表并构建CSSOM tree 根据DOM tree 和 CSSOM tree 构建 Render tree Render tree 刚构建完后是没有元素节点坐标、尺寸大小等信息的，此时需要通过Reflow(Layout)进行布局处理">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.goyth.com/2018/05/25/reflowAndRepaint/webkitflow.png">
+<meta property="og:image" content="http://www.goyth.com/2018/05/25/reflowAndRepaint/reflowAndRepaint/webkitflow.png">
 <meta property="og:updated_time" content="2018-12-02T08:40:00.117Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浏览器渲染之回流（Reflow）与重绘（Repaint）">
 <meta name="twitter:description" content="浏览器渲染流程浏览器渲染流程如下图所示：  大概可以划分成以下几个步骤：  通过HTML解析器解析HTML文本并构建DOM tree 通过CSS解析器解析CSS样式表并构建CSSOM tree 根据DOM tree 和 CSSOM tree 构建 Render tree Render tree 刚构建完后是没有元素节点坐标、尺寸大小等信息的，此时需要通过Reflow(Layout)进行布局处理">
-<meta name="twitter:image" content="http://www.goyth.com/2018/05/25/reflowAndRepaint/webkitflow.png">
+<meta name="twitter:image" content="http://www.goyth.com/2018/05/25/reflowAndRepaint/reflowAndRepaint/webkitflow.png">
   
     <link rel="alternate" href="/atom.xml" title="GOYTH" type="application/atom+xml">
   
@@ -57,11 +57,11 @@
   <script src="/js/jquery-3.1.1.min.js"></script>
 
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/hiero.css" >
-  <link rel="stylesheet" href="/css/glyphs.css" >
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
   
-    <link rel="stylesheet" href="/css/vdonate.css" >
+    <link rel="stylesheet" href="/css/vdonate.css">
   
 
   <!-- Custom CSS -->
@@ -75,7 +75,7 @@
       });
   </script>
 </head>
-
+</html>
 <script>
 var themeMenus = {};
 
@@ -199,7 +199,7 @@ var themeMenus = {};
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="浏览器渲染流程"><a href="#浏览器渲染流程" class="headerlink" title="浏览器渲染流程"></a>浏览器渲染流程</h2><p>浏览器渲染流程如下图所示：</p>
-<p><img src="/2018/05/25/reflowAndRepaint/webkitflow.png" alt=""></p>
+<p><img src="reflowAndRepaint/webkitflow.png" alt></p>
 <p>大概可以划分成以下几个步骤：</p>
 <ol>
 <li>通过HTML解析器解析HTML文本并构建DOM tree</li>

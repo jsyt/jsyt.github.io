@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
 
   <!-- PACE Progress Bar START -->
@@ -16,7 +16,7 @@
   <title>webpack 打包构建流程分析整理 | GOYTH</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="webpack" />
+  <meta name="keywords" content="webpack">
   
   
   
@@ -29,12 +29,12 @@
 <meta property="og:site_name" content="GOYTH">
 <meta property="og:description" content="如何调试 webpackrequire(加载) node_modules/webpack-cli/bin 目录下的cli.js，预先设置debugger（断点），然后开启调试模式。 debugger.js12var webpackPath=require(&apos;path&apos;).resolve(__dirname,&apos;node_modules&apos;, &apos;webpack-cli&apos;, &apos;bin&apos;, &apos;cli.js&apos;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.goyth.com/2018/12/10/webpackFlow/webpack2.svg">
+<meta property="og:image" content="http://www.goyth.com/2018/12/10/webpackFlow/webpackFlow/webpack2.svg">
 <meta property="og:updated_time" content="2018-12-23T13:35:44.085Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack 打包构建流程分析整理">
 <meta name="twitter:description" content="如何调试 webpackrequire(加载) node_modules/webpack-cli/bin 目录下的cli.js，预先设置debugger（断点），然后开启调试模式。 debugger.js12var webpackPath=require(&apos;path&apos;).resolve(__dirname,&apos;node_modules&apos;, &apos;webpack-cli&apos;, &apos;bin&apos;, &apos;cli.js&apos;">
-<meta name="twitter:image" content="http://www.goyth.com/2018/12/10/webpackFlow/webpack2.svg">
+<meta name="twitter:image" content="http://www.goyth.com/2018/12/10/webpackFlow/webpackFlow/webpack2.svg">
   
     <link rel="alternate" href="/atom.xml" title="GOYTH" type="application/atom+xml">
   
@@ -57,11 +57,11 @@
   <script src="/js/jquery-3.1.1.min.js"></script>
 
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/hiero.css" >
-  <link rel="stylesheet" href="/css/glyphs.css" >
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
   
-    <link rel="stylesheet" href="/css/vdonate.css" >
+    <link rel="stylesheet" href="/css/vdonate.css">
   
 
   <!-- Custom CSS -->
@@ -75,7 +75,7 @@
       });
   </script>
 </head>
-
+</html>
 <script>
 var themeMenus = {};
 
@@ -212,7 +212,7 @@ var themeMenus = {};
 </ul>
 <p>在以上过程中，Webpack 会在特定的时间点广播出特定的事件，插件在监听到感兴趣的事件后会执行特定的逻辑，并且插件可以调用 Webpack 提供的 API 改变 Webpack 的运行结果。</p>
 <a id="more"></a>
-<h2 id="webpack打包流程图"><a href="#webpack打包流程图" class="headerlink" title="webpack打包流程图"></a>webpack打包流程图</h2><p><img src="/2018/12/10/webpackFlow/webpack2.svg" alt=""></p>
+<h2 id="webpack打包流程图"><a href="#webpack打包流程图" class="headerlink" title="webpack打包流程图"></a>webpack打包流程图</h2><p><img src="webpackFlow/webpack2.svg" alt></p>
 <h2 id="流程详解"><a href="#流程详解" class="headerlink" title="流程详解"></a>流程详解</h2><h3 id="初始化阶段"><a href="#初始化阶段" class="headerlink" title="初始化阶段"></a>初始化阶段</h3><table>
 <thead>
 <tr>

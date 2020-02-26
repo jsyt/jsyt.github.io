@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
 
   <!-- PACE Progress Bar START -->
@@ -16,7 +16,7 @@
   <title>golang 学习笔记（一）——语法篇 | GOYTH</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="Golang" />
+  <meta name="keywords" content="Golang">
   
   
   
@@ -29,13 +29,13 @@
 <meta property="og:site_name" content="GOYTH">
 <meta property="og:description" content="golang 应⽤程序⼊⼝ 必须是 main 包：package main 必须是 main ⽅法：func main() ⽂件名不⼀定是 main.go  退出返回值与其他主要编程语⾔的差异  Go 中 main 函数不⽀持任何返回值 通过 os.Exit 来返回状态  获取命令⾏参数与其他主要编程语⾔的差异  main 函数不⽀持传⼊参数func main(arg []string) 在程序中">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.goyth.com/2019/06/08/golangLearning01/slice_struct.jpg">
-<meta property="og:image" content="http://www.goyth.com/2019/06/08/golangLearning01/slice_share_struct.jpg">
+<meta property="og:image" content="http://www.goyth.com/2019/06/08/golangLearning01/golangLearning01/slice_struct.jpg">
+<meta property="og:image" content="http://www.goyth.com/2019/06/08/golangLearning01/golangLearning01/slice_share_struct.jpg">
 <meta property="og:updated_time" content="2019-06-23T01:45:28.499Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="golang 学习笔记（一）——语法篇">
 <meta name="twitter:description" content="golang 应⽤程序⼊⼝ 必须是 main 包：package main 必须是 main ⽅法：func main() ⽂件名不⼀定是 main.go  退出返回值与其他主要编程语⾔的差异  Go 中 main 函数不⽀持任何返回值 通过 os.Exit 来返回状态  获取命令⾏参数与其他主要编程语⾔的差异  main 函数不⽀持传⼊参数func main(arg []string) 在程序中">
-<meta name="twitter:image" content="http://www.goyth.com/2019/06/08/golangLearning01/slice_struct.jpg">
+<meta name="twitter:image" content="http://www.goyth.com/2019/06/08/golangLearning01/golangLearning01/slice_struct.jpg">
   
     <link rel="alternate" href="/atom.xml" title="GOYTH" type="application/atom+xml">
   
@@ -58,11 +58,11 @@
   <script src="/js/jquery-3.1.1.min.js"></script>
 
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/hiero.css" >
-  <link rel="stylesheet" href="/css/glyphs.css" >
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
   
-    <link rel="stylesheet" href="/css/vdonate.css" >
+    <link rel="stylesheet" href="/css/vdonate.css">
   
 
   <!-- Custom CSS -->
@@ -76,7 +76,7 @@
       });
   </script>
 </head>
-
+</html>
 <script>
 var themeMenus = {};
 
@@ -275,7 +275,7 @@ var themeMenus = {};
 <li>数组截取<br>a[开始索引(包含), 结束索引(不包含)]</li>
 </ul>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a := [...]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br><span class="line">a[<span class="number">1</span>:<span class="number">2</span>] <span class="comment">//2</span></span><br><span class="line">a[<span class="number">1</span>:<span class="number">3</span>] <span class="comment">//2,3</span></span><br><span class="line">a[<span class="number">1</span>:<span class="built_in">len</span>(a)] <span class="comment">//2,3,4,5</span></span><br><span class="line">a[<span class="number">1</span>:] <span class="comment">//2,3,4,5</span></span><br><span class="line">a[:<span class="number">3</span>] <span class="comment">//1,2,3</span></span><br></pre></td></tr></table></figure>
-<h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2><h3 id="切片的数据结构"><a href="#切片的数据结构" class="headerlink" title="切片的数据结构"></a>切片的数据结构</h3><p><img src="/2019/06/08/golangLearning01/slice_struct.jpg" alt=""></p>
+<h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2><h3 id="切片的数据结构"><a href="#切片的数据结构" class="headerlink" title="切片的数据结构"></a>切片的数据结构</h3><p><img src="golangLearning01/slice_struct.jpg" alt></p>
 <p>切片的数据结构包含三个部分：</p>
 <ul>
 <li>第一个是一个指针，指向一片连续的存储空间，也就是指向一个数组</li>
@@ -284,7 +284,7 @@ var themeMenus = {};
 </ul>
 <p>切片是可变长的，当往切片中添加的元素超过 <code>cap</code> 属性的容量时，会重新生成一个 <code>2 * cap</code> 容量的切片，并将原有切片里的值拷贝过来。</p>
 <h3 id="切⽚片声明"><a href="#切⽚片声明" class="headerlink" title="切⽚片声明"></a>切⽚片声明</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">   <span class="keyword">var</span> s0 []<span class="keyword">int</span></span><br><span class="line">   s0 = <span class="built_in">append</span>(s0, <span class="number">1</span>)</span><br><span class="line">	 s := []<span class="keyword">int</span>&#123;&#125;</span><br><span class="line">   s1 := []<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line">   s2 := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">2</span>, <span class="number">4</span>)</span><br><span class="line"><span class="comment">/*[]type, len, cap 其中len个元素会被初始化为默认零值，未初始化元素不不可以访问</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-<h3 id="切片共享存储结构"><a href="#切片共享存储结构" class="headerlink" title="切片共享存储结构"></a>切片共享存储结构</h3><p><img src="/2019/06/08/golangLearning01/slice_share_struct.jpg" alt=""></p>
+<h3 id="切片共享存储结构"><a href="#切片共享存储结构" class="headerlink" title="切片共享存储结构"></a>切片共享存储结构</h3><p><img src="golangLearning01/slice_share_struct.jpg" alt></p>
 <p>当多个切片都指向一片相同的存储空间时，其中一个 slice 对元素做出修改后，其他的切片都会受到影响。</p>
 <h3 id="切片和数组的区别"><a href="#切片和数组的区别" class="headerlink" title="切片和数组的区别"></a>切片和数组的区别</h3><ul>
 <li>数组是定长的而切片是不定长的</li>

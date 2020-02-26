@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
 
   <!-- PACE Progress Bar START -->
@@ -16,7 +16,7 @@
   <title>websocket知识点梳理 | GOYTH</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="webSocket" />
+  <meta name="keywords" content="webSocket">
   
   
   
@@ -29,13 +29,13 @@
 <meta property="og:site_name" content="GOYTH">
 <meta property="og:description" content="什么是WebSocketWebSocket是一种在单个TCP连接上进行全双工通讯的协议。它与HTTP协一样，同属于应用层协议。 WebSocket解决了什么问题WebSocket使得客户端和服务器之间的数据交换变得更加简单，允许服务端主动向客户端推送数据。在WebSocket API中，浏览器和服务器只需要完成一次握手，两者之间就直接可以创建持久性的连接，并进行双向数据传输。简单说就是解决了浏览器">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.goyth.com/2018/07/09/webSocket/ws01.png">
-<meta property="og:image" content="http://www.goyth.com/2018/07/09/webSocket/ws02">
+<meta property="og:image" content="http://www.goyth.com/2018/07/09/webSocket/webSocket/ws01.png">
+<meta property="og:image" content="http://www.goyth.com/2018/07/09/webSocket/webSocket/ws02">
 <meta property="og:updated_time" content="2018-12-02T08:40:27.445Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WebSocket知识点梳理">
 <meta name="twitter:description" content="什么是WebSocketWebSocket是一种在单个TCP连接上进行全双工通讯的协议。它与HTTP协一样，同属于应用层协议。 WebSocket解决了什么问题WebSocket使得客户端和服务器之间的数据交换变得更加简单，允许服务端主动向客户端推送数据。在WebSocket API中，浏览器和服务器只需要完成一次握手，两者之间就直接可以创建持久性的连接，并进行双向数据传输。简单说就是解决了浏览器">
-<meta name="twitter:image" content="http://www.goyth.com/2018/07/09/webSocket/ws01.png">
+<meta name="twitter:image" content="http://www.goyth.com/2018/07/09/webSocket/webSocket/ws01.png">
   
     <link rel="alternate" href="/atom.xml" title="GOYTH" type="application/atom+xml">
   
@@ -58,11 +58,11 @@
   <script src="/js/jquery-3.1.1.min.js"></script>
 
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.css" >
-  <link rel="stylesheet" href="/css/hiero.css" >
-  <link rel="stylesheet" href="/css/glyphs.css" >
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
   
-    <link rel="stylesheet" href="/css/vdonate.css" >
+    <link rel="stylesheet" href="/css/vdonate.css">
   
 
   <!-- Custom CSS -->
@@ -76,7 +76,7 @@
       });
   </script>
 </head>
-
+</html>
 <script>
 var themeMenus = {};
 
@@ -212,7 +212,7 @@ var themeMenus = {};
 <li>可以支持扩展。Websocket定义了扩展，用户可以扩展协议、实现部分自定义的子协议。如部分浏览器支持压缩等。</li>
 <li>更好的压缩效果。相对于HTTP压缩，Websocket在适当的扩展支持下，可以沿用之前内容的上下文，在传递类似的数据时，可以显著地提高压缩率。</li>
 </ul>
-<h2 id="WebSocket兼容性情况"><a href="#WebSocket兼容性情况" class="headerlink" title="WebSocket兼容性情况"></a>WebSocket兼容性情况</h2><p><img src="/2018/07/09/webSocket/ws01.png" alt=""></p>
+<h2 id="WebSocket兼容性情况"><a href="#WebSocket兼容性情况" class="headerlink" title="WebSocket兼容性情况"></a>WebSocket兼容性情况</h2><p><img src="webSocket/ws01.png" alt></p>
 <!-- ## WebSocket的缺点 -->
 <h2 id="WebSocket握手协议"><a href="#WebSocket握手协议" class="headerlink" title="WebSocket握手协议"></a>WebSocket握手协议</h2><p>WebSocket 是独立的、创建在 TCP 上的协议。</p>
 <p>Websocket 通过 HTTP/1.1 协议的101状态码进行握手。</p>
@@ -232,7 +232,7 @@ var themeMenus = {};
 </ul>
 <h2 id="帧协议"><a href="#帧协议" class="headerlink" title="帧协议"></a>帧协议</h2><p>客户端、服务端数据的交换，离不开数据帧格式的定义。因此，在实际讲解数据交换之前，我们先来看下WebSocket的数据帧格式。</p>
 <p>WebSocket客户端、服务端通信的最小单位是帧（frame），由1个或多个帧组成一条完整的消息（message）。</p>
-<p>发送端：将消息切割成多个帧，并发送给服务端；<br>接收端：接收消息帧，并将关联的帧重新组装成完整的消息；<br>本节的重点，就是讲解数据帧的格式。详细定义可参考 <a href="https://tools.ietf.org/html/rfc6455#section-5.2" target="_blank" rel="noopener">RFC6455 5.2节</a> 。<br><img src="/2018/07/09/webSocket/ws02" alt=""></p>
+<p>发送端：将消息切割成多个帧，并发送给服务端；<br>接收端：接收消息帧，并将关联的帧重新组装成完整的消息；<br>本节的重点，就是讲解数据帧的格式。详细定义可参考 <a href="https://tools.ietf.org/html/rfc6455#section-5.2" target="_blank" rel="noopener">RFC6455 5.2节</a> 。<br><img src="webSocket/ws02" alt></p>
 <p><strong>FIN</strong>：1个比特。</p>
 <p>如果是1，表示这是消息（message）的最后一个分片（fragment），如果是0，表示不是是消息（message）的最后一个分片（fragment）。</p>
 <p><strong>RSV1, RSV2, RSV3</strong>：各占1个比特。</p>
