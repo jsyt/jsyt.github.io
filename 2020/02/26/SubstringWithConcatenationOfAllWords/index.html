@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <!-- PACE Progress Bar START -->
+  
+    <script src="/js/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>leetcode 30. 串联所有单词的子串 | GOYTH</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="字符串 LeetCode" />
+  
+  
+  
+  
+  <meta name="description" content="30. 串联所有单词的子串难度: 困难 给定一个字符串 s 和一些长度相同的单词 words找出 s 中恰好可以由 words 中所有单词串联形成的子串的起始位置。 注意子串要与 words 中的单词完全匹配，中间不能有其他字符，但不需要考虑 words中单词串联的顺序。">
+<meta name="keywords" content="字符串 LeetCode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode 30. 串联所有单词的子串">
+<meta property="og:url" content="http://www.goyth.com/2020/02/26/SubstringWithConcatenationOfAllWords/index.html">
+<meta property="og:site_name" content="GOYTH">
+<meta property="og:description" content="30. 串联所有单词的子串难度: 困难 给定一个字符串 s 和一些长度相同的单词 words找出 s 中恰好可以由 words 中所有单词串联形成的子串的起始位置。 注意子串要与 words 中的单词完全匹配，中间不能有其他字符，但不需要考虑 words中单词串联的顺序。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-02-26T07:37:18.371Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LeetCode 30. 串联所有单词的子串">
+<meta name="twitter:description" content="30. 串联所有单词的子串难度: 困难 给定一个字符串 s 和一些长度相同的单词 words找出 s 中恰好可以由 words 中所有单词串联形成的子串的起始位置。 注意子串要与 words 中的单词完全匹配，中间不能有其他字符，但不需要考虑 words中单词串联的顺序。">
+  
+    <link rel="alternate" href="/atom.xml" title="GOYTH" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
+  <!-- Google Adsense -->
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-0123456789ABCDEF",
+          enable_page_level_ads: true
+      });
+  </script>
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/categories"] = "Categories"; 
+
+  themeMenus["/tags"] = "Tags"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="GOYTH" rel="home"> GOYTH </a>
+            
+          </h1>
+
+          
+            <div class="site-description">I hear and I forget, I see and I remember, I do and I understand.</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  }
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-SubstringWithConcatenationOfAllWords" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      LeetCode 30. 串联所有单词的子串
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2020/02/26/SubstringWithConcatenationOfAllWords/" class="article-date">
+	  <time datetime="2020-02-26T03:57:49.000Z" itemprop="datePublished">February 26, 2020</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="30-串联所有单词的子串"><a href="#30-串联所有单词的子串" class="headerlink" title="30. 串联所有单词的子串"></a><a href="https://leetcode-cn.com/problems/substring-with-concatenation-of-all-words/" target="_blank" rel="noopener">30. 串联所有单词的子串</a></h2><p>难度: <strong>困难</strong></p>
+<p>给定一个字符串 <strong>s</strong> 和一些长度相同的单词 <strong>words</strong>找出 <strong>s</strong> 中恰好可以由 <strong>words</strong> 中所有单词串联形成的子串的起始位置。</p>
+<p>注意子串要与 <strong>words</strong> 中的单词完全匹配，中间不能有其他字符，但不需要考虑 <strong>words</strong>中单词串联的顺序。</p>
+<a id="more"></a>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">  s = &quot;barfoothefoobarman&quot;,</span><br><span class="line">  words = [&quot;foo&quot;,&quot;bar&quot;]</span><br><span class="line">输出：[0,9]</span><br><span class="line">解释：</span><br><span class="line">从索引 0 和 9 开始的子串分别是 &quot;barfoo&quot; 和 &quot;foobar&quot; 。</span><br><span class="line">输出的顺序不重要, [9,0] 也是有效答案。</span><br></pre></td></tr></table></figure>
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">  s = &quot;wordgoodgoodgoodbestword&quot;,</span><br><span class="line">  words = [&quot;word&quot;,&quot;good&quot;,&quot;best&quot;,&quot;word&quot;]</span><br><span class="line">输出：[]</span><br></pre></td></tr></table></figure>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>Language: <strong>JavaScript</strong></p>
+<h4 id="解法一：暴力求解"><a href="#解法一：暴力求解" class="headerlink" title="解法一：暴力求解"></a>解法一：暴力求解</h4><p><strong>解题思路：</strong></p>
+<ol>
+<li>由于子串不需要考虑 <code>words</code> 中单词出现的顺序，并且<code>words</code>中可能会出现重复单词，所以不能用 <code>set</code> 来存储<code>words</code>，我们可以用<code>map</code>来存储<code>words</code>，把<code>words</code>中的单词作为<code>key</code>，单词出现的次数作为<code>value</code></li>
+<li>循环字符串<code>s</code>，然后每次从字符串<code>s</code>中截取一段长度为 <code>words</code> 单词总长的字符串，然后按照单个<code>words</code>单词的长度，对其进行拆分成单词</li>
+<li>使用拆分后的单词去<code>map</code>中查询，如果存在，则将其 <code>value - 1</code>，否则表明当前字符串不符合要求，直接<code>break</code>跳出当前循环</li>
+<li>内层循环结束后，如果<code>map</code>所有的 <code>value</code> 都为<code>0</code>，则表明当前子字符串符合要求，将其起始索引放入结果集中</li>
+<li>最后返回结果集</li>
+</ol>
+<p><strong>代码：</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">​<span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;string&#125; s</span></span><br><span class="line"><span class="comment"> * @param &#123;string[]&#125; words</span></span><br><span class="line"><span class="comment"> * @return &#123;number[]&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> findSubstring = <span class="function"><span class="keyword">function</span>(<span class="params">s, words</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!words || !words.length) <span class="keyword">return</span>[];</span><br><span class="line">    <span class="keyword">let</span> wordLen = words[<span class="number">0</span>].length;</span><br><span class="line">    <span class="keyword">let</span> allWordsLen = wordLen * words.length;</span><br><span class="line">    <span class="keyword">let</span> ans = [], wordMap = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> w <span class="keyword">of</span> words) &#123;</span><br><span class="line">        wordMap[w] ? wordMap[w]++ :wordMap[w] = <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; s.length - allWordsLen + <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">let</span> wm = <span class="built_in">Object</span>.assign(&#123;&#125;, wordMap);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> j = i; j &lt; i + allWordsLen - wordLen + <span class="number">1</span>; j += wordLen) &#123;</span><br><span class="line">            <span class="keyword">let</span> w = s.slice(j, j + wordLen);</span><br><span class="line">            <span class="keyword">if</span> (wm[w]) &#123;</span><br><span class="line">                wm[w]--</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">Object</span>.values(wm).every(<span class="function"><span class="params">n</span> =&gt;</span> n === <span class="number">0</span>)) ans.push(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p><strong>时间复杂度</strong>：<code>O(KN)</code><br><code>N</code> 为 <code>s</code> 的长度，<code>K</code> 为 <code>words</code> 一个单词的长度</p>
+<p><strong>空间复杂度</strong>：<code>O(N + M)</code><br><code>N</code> 为 <code>s</code> 的长度，<code>M</code> 为 <code>words</code> 的长度</p>
+<h4 id="解法二：滑动窗口"><a href="#解法二：滑动窗口" class="headerlink" title="解法二：滑动窗口"></a>解法二：滑动窗口</h4><p><strong>解题思路：</strong></p>
+<ol>
+<li>在暴力求解的基础上进一步优化，我使用两个 <code>map</code>，<code>windows</code> 和 <code>needs</code>，<code>windows</code>存储<code>s</code>的子串，<code>needs</code>存储<code>words</code>，并且使用两个指针 <code>l</code> 和 <code>r</code>,表示一个窗口的左右两边的索引</li>
+<li>外层循环索引 <code>i</code> 从 <code>0</code> 开始，并且 <code>i &lt; oneWordLen</code> 只用循环一个单词的长度</li>
+<li>内层循环从 <code>i</code> 开始，<code>l = r = i</code>，依次进行截取 <code>let w = s.slice(i, i + oneWordLen)</code>，判断截取的单词 <code>w</code> 是否存在于存储 <code>needs</code> 中，如果不存在，则直接<code>continue</code>跳过当前循环</li>
+<li>如果存在则将其添加到 <code>windows</code> 中，如果 <code>windows[w] === needs[w]</code>则将<code>count++</code>，表示一个单词已经准备就绪</li>
+<li>如果 <code>count === Object.key(needs).length</code>，则表示所有的单词都已经准备就绪，由于有可能会出现多个重复的符合要求的单词，所以此时还需要判断 <code>r - l === words所有单词的长度和</code></li>
+<li>如果条件成立则表示当前子字符串符合要求，将子字符串的起始索引<code>l</code>，放入结果集中 <code>ans.push(l)</code></li>
+<li>从窗口的左边截取子字符串 <code>let w2 = s.slice(l, l + oneWordLen)</code>，如果 <code>w2</code> 存在于 <code>needs</code> 中，则<code>windows[w2]--</code>，并且如果 <code>windows[w2] &lt; needs[w2]</code>，则<code>count--</code></li>
+<li>最后返回结果集<code>ans</code></li>
+</ol>
+<p><strong>代码：</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;string&#125; s</span></span><br><span class="line"><span class="comment"> * @param &#123;string[]&#125; words</span></span><br><span class="line"><span class="comment"> * @return &#123;number[]&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> findSubstring = <span class="function"><span class="keyword">function</span>(<span class="params">s, words</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!s || !words || !words.length) <span class="keyword">return</span> [];</span><br><span class="line">    <span class="keyword">let</span> windows = &#123;&#125;, needs = &#123;&#125;, oneWordLen = words[<span class="number">0</span>].length;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> w <span class="keyword">of</span> words) &#123;</span><br><span class="line">        needs[w] ? needs[w]++ : needs[w] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> l = <span class="number">0</span>, r = <span class="number">0</span>, count = <span class="number">0</span>, needsKeyLen = <span class="built_in">Object</span>.keys(needs).length, ans = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; oneWordLen; i++) &#123;</span><br><span class="line">        windows = &#123;&#125;;</span><br><span class="line">        r = l = i;</span><br><span class="line">        count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (r &lt;= s.length - oneWordLen) &#123;</span><br><span class="line">            <span class="keyword">let</span> w1 = s.slice(r, r + oneWordLen);</span><br><span class="line">            r += oneWordLen;</span><br><span class="line">            <span class="keyword">if</span> (!needs[w1]) &#123;</span><br><span class="line">                windows = &#123;&#125;;</span><br><span class="line">                l = r;</span><br><span class="line">                count = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            windows[w1] ? windows[w1]++ : windows[w1] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (windows[w1] === needs[w1]) count++;</span><br><span class="line">            <span class="keyword">while</span> (count === needsKeyLen) &#123;</span><br><span class="line">                <span class="keyword">if</span> (r - l === oneWordLen * words.length) ans.push(l);</span><br><span class="line">                <span class="keyword">let</span> w2 = s.slice(l, l + oneWordLen);</span><br><span class="line">                l += oneWordLen;</span><br><span class="line">                <span class="keyword">if</span> (needs[w2]) &#123;</span><br><span class="line">                    windows[w2]--;</span><br><span class="line">                    <span class="keyword">if</span> (windows[w2] &lt; needs[w2]) count--;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p><strong>时间复杂度</strong>：<code>O(N)</code><br>外层循环时间复杂度为<code>O(K)</code>，<code>K</code> 为 <code>words</code> 一个单词的长度<br>内层循环时间复杂度为 <code>O(2 * N / K)</code>，即 <code>l</code>和<code>r</code>从字符串起始索引遍历到结束索引，每次递加<code>K</code><br>所以，时间复杂度为 <code>O(K * 2 * N / K) = O(2N) =&gt; O(N)</code></p>
+<p><strong>空间复杂度</strong>：<code>O(N + M)</code><br><code>N</code> 为 <code>s</code> 的长度，<code>M</code> 为 <code>words</code> 的长度</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Algorithm/">Algorithm</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/字符串-LeetCode/">字符串 LeetCode</a></li></ul>
+
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://raw.githubusercontent.com/jsyt/jsyt.github.io/master/images/WeChat.JPG',
+  alipayImage: 'https://raw.githubusercontent.com/jsyt/jsyt.github.io/master/images/ALiPay.JPG'
+});
+</script>
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/20/expressMiddleware/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Express路由与中间件原理（中间件篇）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#30-串联所有单词的子串"><span class="nav-number">1.</span> <span class="nav-text">30. 串联所有单词的子串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">1.1.</span> <span class="nav-text">Solution</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解法一：暴力求解"><span class="nav-number">1.1.1.</span> <span class="nav-text">解法一：暴力求解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解法二：滑动窗口"><span class="nav-number">1.1.2.</span> <span class="nav-text">解法二：滑动窗口</span></a></li></ol></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2020 GOYTH All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
